@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Visyn Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Lilita+One&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .not-found {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-6) var(--container-pad);
+      gap: var(--space-4);
+    }
+    .not-found-numeral {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 12rem);
+      color: var(--terracotta);
+      line-height: 1;
+    }
+    .not-found h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--amethyst);
+    }
+    .not-found p {
+      font-size: var(--text-lg);
+      color: var(--amethyst-soft);
+      max-width: 32rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <img src="assets/img/logo.png" alt="Visyn Studio" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="nav-logo-text" style="display:none">Visyn Studio</span>
+    </a>
+  </nav>
+  <div class="not-found">
+    <div class="not-found-numeral">404</div>
+    <h1>Page not found.</h1>
+    <p>The page you're looking for doesn't exist — but a great photo shoot does.</p>
+    <a href="/" class="btn btn-primary">Back to Home</a>
+  </div>
+</body>
+</html>
