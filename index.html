@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visyn Studio — Virtual Photo Shoots for Small CPG Brands</title>
-  <meta name="description" content="The photo shoot, reinvented for small brands. Pro-grade product photos and videos delivered in 48 hours. From $499.">
-  <meta property="og:title" content="Visyn Studio — Virtual Photo Shoots for Small CPG Brands">
-  <meta property="og:description" content="Pro-grade product photos and videos delivered in 48 hours. From $499.">
+  <title>Visyn Studio — A Full-Service Marketing Studio for Small CPG Brands</title>
+  <meta name="description" content="A full-service marketing studio for small CPG brands. Product shoots, websites, ads, email, and social — run by real people who know your category. Start with a free shoot.">
+  <meta property="og:title" content="Visyn Studio — A Full-Service Marketing Studio for Small CPG Brands">
+  <meta property="og:description" content="Product shoots, websites, ads, email, and social — one team for all of it. Start with a free shoot.">
   <meta property="og:image" content="https://visyn.studio/assets/img/og-image.jpg">
   <meta property="og:url" content="https://visyn.studio">
   <meta property="og:type" content="website">
@@ -20,21 +20,75 @@
 <body>
 
 <!-- =============================================
+     ICON SPRITE  (keep in sync with services.html)
+     Line icons referenced via <use href="#ic-…">.
+     ============================================= -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <!-- Trust bar -->
+  <symbol id="ic-humans" viewBox="0 0 24 24">
+    <circle cx="6" cy="8" r="2.1"/>
+    <path d="M2.5 16.5c0-2.1 1.6-3.6 3.5-3.6"/>
+    <circle cx="18" cy="8" r="2.1"/>
+    <path d="M21.5 16.5c0-2.1-1.6-3.6-3.5-3.6"/>
+    <circle cx="12" cy="9.5" r="3"/>
+    <path d="M6.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/>
+  </symbol>
+  <symbol id="ic-basket" viewBox="0 0 24 24">
+    <path d="M8.5 8.5a3.5 3.5 0 0 1 7 0"/>
+    <path d="M4 9h16l-1.3 9.1a2 2 0 0 1-2 1.7H7.3a2 2 0 0 1-2-1.7z"/>
+    <path d="M9.6 12.5l.5 4M14.4 12.5l-.5 4M12 12.5v4"/>
+  </symbol>
+  <symbol id="ic-store" viewBox="0 0 24 24">
+    <path d="M2 7l4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+    <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+    <path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/>
+  </symbol>
+  <!-- Services -->
+  <symbol id="ic-camera" viewBox="0 0 24 24">
+    <path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/>
+    <circle cx="12" cy="13" r="3.2"/>
+  </symbol>
+  <symbol id="ic-browser" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" rx="2"/>
+    <path d="M3 9h18"/>
+    <path d="M6 6.5h.01M8.5 6.5h.01M11 6.5h.01"/>
+  </symbol>
+  <symbol id="ic-megaphone" viewBox="0 0 24 24">
+    <path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/>
+    <path d="M18 8a4 4 0 0 1 0 8"/>
+    <path d="M7 14v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2"/>
+  </symbol>
+  <symbol id="ic-chat" viewBox="0 0 24 24">
+    <path d="M21 11.5a8 8 0 0 1-11.5 7.2L4 20l1.3-4.4A8 8 0 1 1 21 11.5z"/>
+    <path d="M12 14s-2.5-1.6-2.5-3.3A1.5 1.5 0 0 1 12 9.5a1.5 1.5 0 0 1 2.5 1.2C14.5 12.4 12 14 12 14z"/>
+  </symbol>
+  <symbol id="ic-envelope" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="14" rx="2"/>
+    <path d="M4 7l8 5.5L20 7"/>
+  </symbol>
+  <symbol id="ic-bulb" viewBox="0 0 24 24">
+    <path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/>
+    <path d="M9 18h6"/>
+    <path d="M10 21h4"/>
+  </symbol>
+</svg>
+
+<!-- =============================================
      NAVIGATION
      ============================================= -->
 <nav class="nav" id="nav">
-  <a href="#top" class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio">
   </a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -46,15 +100,15 @@
 </nav>
 
 <!-- =============================================
-     HERO
+     3.2 HERO
      ============================================= -->
 <section class="hero" id="top">
   <div class="hero-content">
-    <h1 class="hero-headline">Share your vision. We'll <span class="accent">shoot</span> the rest.</h1>
-    <p class="hero-subhead">Pro-grade product photos and video, delivered in 48 hours. No studio bookings. No five-figure invoices. No reshoots required.</p>
+    <h1 class="hero-headline">Share your <span class="accent">vision</span>. We'll handle the rest.</h1>
+    <p class="hero-subhead">A full-service marketing studio for small CPG brands. Product shoots, websites, ads, email, and social — run by real people who know your category, built to make you look like you belong on the top shelf.</p>
     <div class="hero-ctas">
-      <a href="#" data-book class="btn btn-primary">Get a Free Virtual Photo Shoot</a>
-      <a href="#how" class="btn btn-secondary">See How It Works</a>
+      <a href="#" data-book class="btn btn-primary">Get a Free Shoot</a>
+      <a href="/services" class="btn btn-secondary">See What We Do</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -67,35 +121,108 @@
 </section>
 
 <!-- =============================================
-     PROMISE STRIP
+     3.3 WHY US (3-up strip)
      ============================================= -->
 <section class="section section--dark promise">
   <div class="section-inner promise-grid">
     <div class="promise-item">
-      <div class="promise-icon promise-icon--circle"></div>
-      <h3>48-hour turnaround</h3>
-      <p>Visuals in hand in 2–3 business days, not weeks.</p>
+      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-humans"/></svg>
+      <h3>Real humans, real work.</h3>
+      <p>We answer our own emails. No offshore teams, no AI slop.</p>
     </div>
     <div class="promise-item">
-      <div class="promise-icon promise-icon--square"></div>
-      <h3>Unlimited revisions</h3>
-      <p>If a shot isn't right, we regenerate it. Until it works.</p>
+      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-basket"/></svg>
+      <h3>We know CPG.</h3>
+      <p>35 years in your category — food, beverage, personal care, and beyond.</p>
     </div>
     <div class="promise-item">
-      <div class="promise-icon promise-icon--triangle"></div>
-      <h3>Real humans, real work</h3>
-      <p>We answer our own emails. AI is our tool, not our identity.</p>
+      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-store"/></svg>
+      <h3>Made for small brands.</h3>
+      <p>No giant retainers, no minimums. Same care whether you're one SKU or fifty.</p>
     </div>
   </div>
 </section>
 
 <!-- =============================================
-     WORK
+     3.4 WHAT WE DO (six equal cards)
+     ============================================= -->
+<section class="section work" id="what-we-do">
+  <div class="section-inner">
+    <h2 class="section-title">One team for all of it.</h2>
+    <div class="svc-cards">
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-camera"/></svg>
+        <h3>Product Shoots</h3>
+        <p>Pro-grade product photos and video, shelf-ready in days.</p>
+        <a href="/services#product-shoots" class="btn btn-secondary">Learn more</a>
+      </article>
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-browser"/></svg>
+        <h3>Web Design</h3>
+        <p>Storefronts that sell, built and maintained on Shopify, Webflow, WordPress, and more.</p>
+        <a href="/services#web-design" class="btn btn-secondary">Learn more</a>
+      </article>
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-megaphone"/></svg>
+        <h3>Paid Ads</h3>
+        <p>Ads that pay their way across Meta, TikTok, Amazon, and Walmart — including the retail-media most agencies won't touch.</p>
+        <a href="/services#paid-ads" class="btn btn-secondary">Learn more</a>
+      </article>
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-chat"/></svg>
+        <h3>Social Media</h3>
+        <p>Content, creators, and day-to-day management that keep your feed alive and on-brand.</p>
+        <a href="/services#social-media" class="btn btn-secondary">Learn more</a>
+      </article>
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-envelope"/></svg>
+        <h3>Email Marketing</h3>
+        <p>Campaigns and automated flows that turn one-time buyers into regulars.</p>
+        <a href="/services#email-marketing" class="btn btn-secondary">Learn more</a>
+      </article>
+      <article class="svc-card">
+        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-bulb"/></svg>
+        <h3>Creative Campaigns</h3>
+        <p>One big idea, built end-to-end — page, social, email, and ads, all pointed at your next launch or sale.</p>
+        <a href="/services#creative-campaigns" class="btn btn-secondary">Learn more</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     3.5 HOW IT WORKS (3 steps)
+     ============================================= -->
+<section class="section how" id="how">
+  <div class="section-inner">
+    <h2 class="section-title">How it works.</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-numeral">01</div>
+        <h3>Start with a free shoot.</h3>
+        <p>Book a call with our team, tell us about your brand, and we'll produce real assets you can use — free — so you see how we work before anything else.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-numeral">02</div>
+        <h3>We build your plan.</h3>
+        <p>We put together the mix your brand actually needs: shoots, site, ads, email, social, or a full campaign.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-numeral">03</div>
+        <h3>We run it with you.</h3>
+        <p>Real humans, fair monthly pricing, no long contracts. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     3.6 A TASTE OF OUR WORK
      ============================================= -->
 <section class="section work" id="work">
   <div class="section-inner">
-    <h2 class="section-title">See what 48 hours looks like.</h2>
-    <p class="section-lede">We work across categories — food, beverage, personal care, and more. Each shoot is built around your product and your scenes. Here's a sample of what we've made.</p>
+    <h2 class="section-title">A taste of our work.</h2>
+    <p class="section-lede">We work across categories — and across channels. Here's a sample of what we make.</p>
     <div class="work-grid">
 
       <article class="work-card work-card--saltbird">
@@ -109,7 +236,6 @@
           <img src="assets/img/work-saltbird-3.png" alt="Saltbird in a beach cooler">
           <img src="assets/img/work-saltbird-4.png" alt="Saltbird close-up detail shot">
         </div>
-        <p class="work-caption">Yuzu + Yarrow tonic. Three scenes, twelve hours.</p>
       </article>
 
       <article class="work-card work-card--marrow">
@@ -123,7 +249,6 @@
           <img src="assets/img/work-marrow-3A.png" alt="Marrow &amp; Moss on a garden table">
           <img src="assets/img/work-marrow-4.png" alt="Marrow &amp; Moss close-up detail shot">
         </div>
-        <p class="work-caption">Cedar + Calendula oil. Three scenes, fourteen hours.</p>
       </article>
 
       <article class="work-card work-card--fieldday">
@@ -137,301 +262,32 @@
           <img src="assets/img/work-fieldday-3.png" alt="Field Day granola on a café counter">
           <img src="assets/img/work-fieldday-4A.png" alt="Field Day granola close-up detail shot">
         </div>
-        <p class="work-caption">Maple + Pecan granola. Three scenes, ten hours.</p>
       </article>
 
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS — enable after pilot customers approve
-<section class="section testimonials" id="testimonials">
-  <div class="section-inner">
-    <h2 class="section-title">What brands are saying.</h2>
-    <div class="testimonials-grid">
-      <blockquote class="testimonial-card">
-        <p>"[Quote text here]"</p>
-        <footer><cite>[Name], [Brand]</cite></footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p>"[Quote text here]"</p>
-        <footer><cite>[Name], [Brand]</cite></footer>
-      </blockquote>
-      <blockquote class="testimonial-card">
-        <p>"[Quote text here]"</p>
-        <footer><cite>[Name], [Brand]</cite></footer>
-      </blockquote>
-    </div>
-  </div>
-</section>
-END TESTIMONIALS -->
-
-<!-- CASE STUDIES — enable in 1-2 weeks
-<section class="section case-studies" id="case-studies">
-  <div class="section-inner">
-    <h2 class="section-title">In depth.</h2>
-    <p class="section-lede">A closer look at what we built together.</p>
-    <div class="case-studies-grid">
-      [case study cards go here]
-    </div>
-  </div>
-</section>
-END CASE STUDIES -->
-
 <!-- =============================================
-     HOW IT WORKS
+     3.7 FREE-SHOOT BAND
      ============================================= -->
-<section class="section how" id="how">
-  <div class="section-inner">
-    <h2 class="section-title">Three steps. Two days. Done.</h2>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-numeral">01</div>
-        <h3>Book a free virtual photo shoot.</h3>
-        <p>Hop on a call with Steve. Tell us about your brand. Pick a scene.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-numeral">02</div>
-        <h3>Send your product.</h3>
-        <p>Just the images you already have. No shipping. No studio booking.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-numeral">03</div>
-        <h3>Get your visuals in 48–72 hours.</h3>
-        <p>10 photos and 3 videos per product per scene — ready for your shop, your social, and your shelf.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     PRICING CONFIGURATOR
-     ============================================= -->
-<section class="section section--lime pricing" id="pricing">
-  <div class="section-inner">
-    <h2 class="section-title">Pricing that scales with you.</h2>
-    <p class="section-lede">No surprises. Pick a pack or build your own — and switch between one-time and monthly any time.</p>
-
-    <!-- Billing toggle — full width at top -->
-    <div class="billing-toggle-bar">
-      <div class="billing-toggle" role="tablist">
-        <button class="billing-btn" data-billing="onetime" id="billing-onetime">One-time</button>
-        <button class="billing-btn is-active" data-billing="monthly" id="billing-monthly">Monthly</button>
-      </div>
-      <p class="billing-toggle-hint" id="billing-hint">Monthly pricing shown — save vs. one-time every month.</p>
-    </div>
-
-    <!-- Pricing layout: presets left, custom right -->
-    <div class="pricing-layout">
-
-      <!-- Left 2/3: preset pack cards -->
-      <div class="pricing-presets">
-
-        <div class="pricing-preset-card" data-q="3">
-          <div class="preset-label"></div>
-          <h3 class="preset-name">3-Pack</h3>
-          <p class="preset-desc">1 product × 3 scenes, or mix any way you like.</p>
-          <div class="preset-pill">
-            <div class="pill-row"><strong class="pill-qty">30</strong><span class="pill-unit"> photos</span></div>
-            <div class="pill-sep">+</div>
-            <div class="pill-row"><strong class="pill-qty">9</strong><span class="pill-unit"> videos</span></div>
-          </div>
-          <div class="preset-price-block">
-            <div class="preset-price-row">
-              <span class="preset-main-price" id="preset-3-main"></span>
-              <span class="preset-period" id="preset-3-period"></span>
-            </div>
-            <div class="preset-compare" id="preset-3-compare"></div>
-          </div>
-          <a href="#" data-book class="btn btn-primary pricing-cta-btn">Get Started &rarr;</a>
-        </div>
-
-        <div class="pricing-preset-card pricing-preset-card--featured" data-q="6">
-          <div class="preset-label"></div>
-          <h3 class="preset-name">6-Pack</h3>
-          <p class="preset-desc">2 products × 3 scenes, or any 6-pack combo.</p>
-          <div class="preset-pill">
-            <div class="pill-row"><strong class="pill-qty">60</strong><span class="pill-unit"> photos</span></div>
-            <div class="pill-sep">+</div>
-            <div class="pill-row"><strong class="pill-qty">18</strong><span class="pill-unit"> videos</span></div>
-          </div>
-          <div class="preset-price-block">
-            <div class="preset-price-row">
-              <span class="preset-main-price" id="preset-6-main"></span>
-              <span class="preset-period" id="preset-6-period"></span>
-            </div>
-            <div class="preset-compare" id="preset-6-compare"></div>
-          </div>
-          <a href="#" data-book class="btn btn-primary pricing-cta-btn">Get Started &rarr;</a>
-        </div>
-
-        <div class="pricing-preset-card" data-q="9">
-          <div class="preset-label"></div>
-          <h3 class="preset-name">9-Pack</h3>
-          <p class="preset-desc">3 products × 3 scenes — a complete product launch.</p>
-          <div class="preset-pill">
-            <div class="pill-row"><strong class="pill-qty">90</strong><span class="pill-unit"> photos</span></div>
-            <div class="pill-sep">+</div>
-            <div class="pill-row"><strong class="pill-qty">27</strong><span class="pill-unit"> videos</span></div>
-          </div>
-          <div class="preset-price-block">
-            <div class="preset-price-row">
-              <span class="preset-main-price" id="preset-9-main"></span>
-              <span class="preset-period" id="preset-9-period"></span>
-            </div>
-            <div class="preset-compare" id="preset-9-compare"></div>
-          </div>
-          <a href="#" data-book class="btn btn-primary pricing-cta-btn">Get Started &rarr;</a>
-        </div>
-
-      </div>
-
-      <!-- Right 1/3: custom configurator -->
-      <div class="pricing-custom">
-        <div class="preset-label preset-label--terracotta">BUILD YOUR OWN</div>
-        <h3 class="pricing-custom-title">Your Pack</h3>
-        <p class="pricing-custom-desc">Mix products and scenes any way you like. Price updates instantly.</p>
-
-        <div class="pricing-controls">
-          <div class="pricing-control-row">
-            <label class="pricing-control-label" for="products">Products</label>
-            <select id="products">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10plus">10+</option>
-            </select>
-          </div>
-          <div class="pricing-control-row">
-            <div>
-              <label class="pricing-control-label" for="scenes">Scenes</label>
-              <div class="pricing-control-sublabel">per product</div>
-            </div>
-            <select id="scenes">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected>3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10plus">10+</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="preset-pill preset-pill--custom" id="custom-pill">
-          <div class="pill-row"><strong class="pill-qty" id="custom-photos">30</strong><span class="pill-unit"> photos</span></div>
-          <div class="pill-sep">+</div>
-          <div class="pill-row"><strong class="pill-qty" id="custom-videos">9</strong><span class="pill-unit"> videos</span></div>
-        </div>
-
-        <div class="pricing-display">
-          <div class="pricing-price-row">
-            <span class="pricing-price" id="price"></span>
-            <span class="pricing-period" id="period"></span>
-          </div>
-          <div class="pricing-note" id="savings-note"></div>
-        </div>
-
-        <a href="#" data-book class="btn btn-primary pricing-cta-btn" id="pricing-cta-btn">Get Started &rarr;</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     FREE PACK OFFER
-     ============================================= -->
-<section class="section free-pack" id="free-pack">
+<section class="section free-pack" id="free-shoot">
   <div class="section-inner free-pack-inner">
     <div class="free-pack-eyebrow">No commitment. No pitch. Just results.</div>
-    <h2 class="free-pack-headline">Your first pack is on us.</h2>
-    <p class="free-pack-body">Book a call with Steve. We'll learn about your brand, walk you through our process, and gather everything we need. Then we'll produce your first pack — 10 photos and 3 videos — completely free.</p>
-    <p class="free-pack-body">It's not a sales call. It's a working session. You leave with real assets you can use, whether you continue with us or not.</p>
+    <h2 class="free-pack-headline">Your first shoot is on us.</h2>
+    <p class="free-pack-body">Book a call with our team. We'll learn about your brand and produce your first pack — 10 photos and 3 videos — completely free. It's not a sales call; it's a working session. You leave with real assets whether you continue with us or not.</p>
     <a href="#" data-book class="btn btn-primary btn-large">Book Your Free Shoot</a>
     <p class="free-pack-value">A $199 value. Yours free, no strings attached.</p>
   </div>
 </section>
 
-<!-- FAQ — add when ready
-<section class="section faq" id="faq">
-  <div class="section-inner">
-    <h2 class="section-title">Common questions.</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Question one?</summary>
-        <p>Answer one.</p>
-      </details>
-    </div>
-  </div>
-</section>
-END FAQ -->
-
 <!-- =============================================
-     ABOUT
+     3.9 FINAL CTA
      ============================================= -->
-<section class="section about" id="about">
+<section class="section final-cta final-cta--light" id="book">
   <div class="section-inner">
-    <h2 class="section-title about-title">We're three people who built what we wished existed.</h2>
-    <div class="about-story">
-      <p>We met at a major CPG services company. Ian led marketing. Steve ran sales. Phil managed operations. From three different seats, we saw the same problem: small brands needed great creative, and the existing options weren't working.</p>
-      <p>Traditional photo shoots cost $5,000 to $10,000 and took weeks to schedule. DIY AI tools were faster, but the output rarely held up. And the agencies in the middle either ignored small brands entirely or charged them like big ones.</p>
-      <p>So we built Visyn Studio. Three people, 35 years of CPG creative between us, and a workflow designed around one belief: a small brand should be able to look as polished as a Fortune 500 one — without paying like one.</p>
-      <p>We use AI the way a designer uses Photoshop. It lets us move faster. But the eye, the craft, the quality bar, and the email you get back in two hours? That's still us.</p>
-    </div>
-    <div class="about-team">
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-ian.jpg</div>
-        <h3>Ian Philpot</h3>
-        <p class="team-role">Chief Marketing Officer</p>
-        <p class="team-bio">15+ years in brand and creative. Oversees the quality of every photo and video we deliver.</p>
-        <a href="https://www.linkedin.com/in/iphilpot" target="_blank" rel="noopener" class="team-linkedin" aria-label="Ian Philpot on LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-steve.jpg</div>
-        <h3>Steve Higginbotham</h3>
-        <p class="team-role">Chief Revenue Officer</p>
-        <p class="team-bio">10 years in CPG and product imaging. Talks to every brand before they buy.</p>
-        <a href="https://www.linkedin.com/in/steve-higgenbotham-057522131/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Steve Higginbotham on LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-phil.jpg</div>
-        <h3>Philip Koberlein</h3>
-        <p class="team-role">Chief Operations Officer</p>
-        <p class="team-bio">10+ years in CPG operations. Makes sure every order moves from kickoff to delivery without friction.</p>
-        <a href="https://www.linkedin.com/in/philipkoberlein/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Philip Koberlein on LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     FINAL CTA
-     ============================================= -->
-<section class="section section--dark final-cta" id="book">
-  <div class="section-inner">
-    <h2 class="final-cta-headline">Ready to <span class="accent">shoot</span>?</h2>
-    <p class="final-cta-subhead">Book a free virtual photo shoot — a $199 value. No credit card. No commitment. Just see what we can do with your brand.</p>
-    <a href="#" data-book class="btn btn-primary btn-large">Book Your Free Shoot</a>
+    <h2 class="final-cta-headline">Ready to look like the top shelf?</h2>
+    <a href="/contact" class="btn btn-primary btn-large">Get in Touch</a>
   </div>
 </section>
 
@@ -442,15 +298,14 @@ END FAQ -->
   <div class="section-inner footer-grid">
     <div class="footer-brand">
       <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
-      <p>A creative production studio for small CPG brands.</p>
+      <p>A full-service marketing studio for small CPG brands.</p>
     </div>
     <div class="footer-col">
       <h4>Studio</h4>
       <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#how">How It Works</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -480,62 +335,7 @@ END FAQ -->
   <a href="#" data-book class="btn btn-primary">Get a Free Shoot</a>
 </div>
 
-<!-- =============================================
-     SCRIPTS
-     ============================================= -->
-<script>
-  // ── Dark mode ──────────────────────────────────
-  const html = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('visyn-theme') || 'light';
-  html.setAttribute('data-theme', savedTheme);
-
-  themeToggle.addEventListener('click', function () {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('visyn-theme', next);
-  });
-
-  // ── Sticky nav shadow ──────────────────────────
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  });
-
-  // ── Hamburger menu ─────────────────────────────
-  const hamburger = document.getElementById('nav-hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', function () {
-    const open = navLinks.classList.toggle('is-open');
-    hamburger.setAttribute('aria-expanded', String(open));
-  });
-  navLinks.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      navLinks.classList.remove('is-open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // ── Mobile sticky CTA bar ──────────────────────
-  (function () {
-    const bar = document.getElementById('mobile-cta-bar');
-    const hero = document.getElementById('top');
-    const book = document.getElementById('book');
-    function checkBar() {
-      const heroBottom = hero.getBoundingClientRect().bottom;
-      const bookTop = book.getBoundingClientRect().top;
-      if (heroBottom < 0 && bookTop > window.innerHeight) {
-        bar.classList.remove('hidden');
-      } else {
-        bar.classList.add('hidden');
-      }
-    }
-    window.addEventListener('scroll', checkBar, { passive: true });
-    checkBar();
-  })();
-</script>
-<script src="assets/js/pricing.js"></script>
+<script src="assets/js/site.js"></script>
 
 </body>
 </html>
