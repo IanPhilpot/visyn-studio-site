@@ -1,1501 +1,726 @@
-/* =============================================
-   PALETTE TOKENS
-   ============================================= */
+/* =============================================================
+   Visyn Studio — v2 (TikTok Live & Shop Accelerator)
+   Design system per Site v2 build brief, Part 3.
+
+   Palette note: Terracotta and Honey Bronze are RETIRED from the
+   site palette. They survive only inside the logo artwork.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   1. TOKENS
+   ------------------------------------------------------------- */
 :root {
-  --eggshell:        #F5F2DE;
-  --amethyst:        #271442;
-  --terracotta:      #ED5C3B;
-  --moss:            #4D891F;
-  --honey:           #F1B658;
-  --lime:            #FFFE9B;
-  --terracotta-hover:#d44d2e;
-  --moss-hover:      #3d6f19;
-  --placeholder:     #d9d6c5;
-}
+  /* Core palette */
+  --eggshell:   #F5F2DE; /* main page background */
+  --amethyst:   #271442; /* hero, dark bands, footer; accent text on light */
+  --moss:       #4D891F; /* primary CTAs on light, stat/step numbers, card headers */
+  --lime-cream: #FFFE9B; /* Founding 15 background; CTA buttons on amethyst */
+  --carbon:     #222222; /* body text on light sections */
+  --near-white: #FCFCFC; /* body text on dark sections */
 
-/* =============================================
-   SEMANTIC TOKENS — LIGHT MODE (default)
-   ============================================= */
-:root {
-  --bg:              var(--eggshell);
-  --surface:         #ffffff;
-  --surface-subtle:  #f7f4e6;
-  --text:            var(--amethyst);
-  --text-secondary:  rgba(39, 20, 66, 0.62);
-  --text-muted:      rgba(39, 20, 66, 0.40);
-  --border:          rgba(39, 20, 66, 0.10);
-  --nav-bg:          var(--eggshell);
-  --nav-shadow:      rgba(39, 20, 66, 0.08);
-  --dark-bg:         var(--amethyst);
-  --dark-text:       var(--eggshell);
-  --dark-text-dim:   rgba(245, 242, 222, 0.75);
-  --pricing-bg:      var(--lime);
-  --free-pack-bg:    var(--eggshell);
-  --card-saltbird:   rgba(241, 182, 88, 0.12);
-  --card-marrow:     rgba(77,  137,  31, 0.10);
-  --card-fieldday:   rgba(237,  92,  59, 0.10);
-  --toggle-track:    rgba(39, 20, 66, 0.10);
-}
+  /* Derived states (hovers only — no new hues) */
+  --moss-hover:       #3E6F19;
+  --lime-cream-hover: #F4F27E;
+  --amethyst-hover:   #351C58;
 
-/* =============================================
-   SEMANTIC TOKENS — DARK MODE
-   ============================================= */
-[data-theme="dark"] {
-  --bg:              #1b0d2e;
-  --surface:         #2e1650;
-  --surface-subtle:  #251240;
-  --text:            var(--eggshell);
-  --text-secondary:  rgba(245, 242, 222, 0.68);
-  --text-muted:      rgba(245, 242, 222, 0.40);
-  --border:          rgba(245, 242, 222, 0.10);
-  --nav-bg:          #1b0d2e;
-  --nav-shadow:      rgba(0, 0, 0, 0.30);
-  /* In dark mode, "dark" sections flip to eggshell */
-  --dark-bg:         var(--eggshell);
-  --dark-text:       var(--amethyst);
-  --dark-text-dim:   rgba(39, 20, 66, 0.65);
-  /* Pricing section goes moss green */
-  --pricing-bg:      var(--moss);
-  --free-pack-bg:    var(--eggshell);
-  --card-saltbird:   rgba(241, 182, 88, 0.13);
-  --card-marrow:     rgba(77,  137,  31, 0.12);
-  --card-fieldday:   rgba(237,  92,  59, 0.12);
-  --toggle-track:    rgba(39, 20, 66, 0.12);
-  --placeholder:     #3a2157;
-}
+  /* Tints, all mixed from the core palette */
+  --amethyst-10: rgba(39, 20, 66, 0.10);
+  --amethyst-14: rgba(39, 20, 66, 0.14);
+  --amethyst-70: rgba(39, 20, 66, 0.70);
+  --near-white-75: rgba(252, 252, 252, 0.75);
+  --near-white-20: rgba(252, 252, 252, 0.20);
 
-/* =============================================
-   TYPE SCALE
-   ============================================= */
-:root {
-  --font-logo:    'Bagel Fat One', cursive;
-  --font-display: 'Lilita One', sans-serif;
-  --font-body:    'Lora', serif;
+  /* Type */
+  --font-logo:    'Bagel Fat One', cursive;   /* logo lockup only */
+  --font-display: 'Lilita One', sans-serif;   /* headings + button labels */
+  --font-body:    'Lora', serif;              /* body copy */
 
-  --text-xs:   0.875rem;
-  --text-sm:   1rem;
-  --text-base: 1.125rem;
-  --text-lg:   1.375rem;
-  --text-xl:   1.75rem;
-  --text-2xl:  2.5rem;
-  --text-3xl:  4rem;
-  --text-hero: clamp(2.75rem, 7vw, 5.5rem);
+  --text-sm:    1rem;      /* 16px */
+  --text-base:  1.125rem;  /* 18px — also the Moss-button floor */
+  --text-lg:    1.3125rem; /* 21px */
+  --text-xl:    1.75rem;   /* 28px */
+  --text-2xl:   2.25rem;   /* 36px */
+  --text-3xl:   3rem;      /* 48px */
+  --text-hero:  clamp(2.05rem, 6.4vw, 4.5rem);
+  --text-stat:  clamp(3rem, 8vw, 4.5rem);
 
-  --leading-tight:  1.1;
-  --leading-snug:   1.3;
-  --leading-normal: 1.6;
-}
+  --leading-tight:  1.08;
+  --leading-snug:   1.25;
+  --leading-body:   1.65;  /* brief: 1.6–1.7 */
 
-/* =============================================
-   SPACING
-   ============================================= */
-:root {
+  --measure: 68ch;         /* brief: keep Lora under ~75 characters */
+
+  /* Space */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
-  --space-4: 2rem;
-  --space-5: 3rem;
-  --space-6: 5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
   --space-7: 8rem;
-  --container-max: 1200px;
+
+  --container:     1160px;
   --container-pad: 1.5rem;
+  --radius:        14px;
+  --radius-sm:     10px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* =============================================
-   RESET & BASE
-   ============================================= */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* -------------------------------------------------------------
+   2. RESET / BASE
+   ------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  margin: 0;
+  background: var(--eggshell);
+  color: var(--carbon);
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  -webkit-font-smoothing: antialiased;
-  transition: background 200ms ease, color 200ms ease;
+  line-height: var(--leading-body);
+  /* `clip` (not `hidden`) keeps the sticky nav working while still
+     guaranteeing the page body never scrolls sideways. */
+  overflow-x: clip;
 }
 
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
+img, video, svg { max-width: 100%; height: auto; display: block; }
 
-/* =============================================
-   LAYOUT HELPERS
-   ============================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;       /* Lilita One ships a single weight */
+  line-height: var(--leading-snug);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+h1 { font-size: var(--text-hero); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-lg); }
+
+p { margin: 0 0 var(--space-2); max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+/* -------------------------------------------------------------
+   3. FOCUS — visible on every interactive element
+   ------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--amethyst);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.section--dark :focus-visible,
+.footer :focus-visible {
+  outline-color: var(--lime-cream);
+}
+.founding :focus-visible { outline-color: var(--amethyst); }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--amethyst);
+  color: var(--near-white);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Visually hidden, still read by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------------
+   4. LAYOUT
+   ------------------------------------------------------------- */
 .section { padding: var(--space-6) var(--container-pad); }
-.section-inner { max-width: var(--container-max); margin: 0 auto; }
+.section-inner { max-width: var(--container); margin: 0 auto; }
 
 .section--dark {
-  background: var(--dark-bg);
-  color: var(--dark-text);
+  background: var(--amethyst);
+  color: var(--near-white);
 }
-.section--lime {
-  background: var(--pricing-bg);
-}
-[data-theme="dark"] .section--lime {
-  background: var(--pricing-bg);
-}
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 { color: var(--near-white); }
 
-.section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  line-height: var(--leading-snug);
-  color: var(--text);
-  margin-bottom: var(--space-3);
-}
-.section--dark .section-title { color: var(--dark-text); }
-
+.section-title { margin-bottom: var(--space-3); }
 .section-lede {
   font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
-  max-width: 48rem;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
-.section--dark .section-lede { color: var(--dark-text-dim); }
 
-.accent { color: var(--terracotta); }
+/* Two Amethyst bands sit back to back at the foot of the page.
+   A thin Lime Cream rule plus extra space keeps them reading as
+   two separate sections rather than one long block. */
+.band-rule {
+  height: 3px;
+  background: var(--lime-cream);
+  border: 0;
+  margin: 0;
+}
 
-/* =============================================
-   BUTTONS
-   ============================================= */
+/* -------------------------------------------------------------
+   5. BUTTONS
+   Contrast rules (Part 3):
+   - Near White on Moss is ~4.3:1 → AA for LARGE text only, so every
+     Moss button label is Lilita One at >= 18px. That floor is set
+     here on .btn itself and must not be lowered.
+   - On Amethyst sections, primary buttons are Lime Cream with an
+     Amethyst label.
+   ------------------------------------------------------------- */
 .btn {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  padding: 1rem 2rem;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  transition: transform 150ms ease, background-color 150ms ease;
-  display: inline-block;
-  text-decoration: none;
-  line-height: 1;
-}
-.btn-primary {
-  background: var(--terracotta);
-  color: var(--eggshell);
-}
-.btn-primary:hover {
-  background: var(--terracotta-hover);
-  transform: translateY(-1px);
-}
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  padding: 0.5rem 0;
-  border-radius: 0;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--text-base);
-}
-.btn-secondary:hover { text-decoration: underline; }
-.btn-secondary::after {
-  content: " →";
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 150ms ease;
-}
-.btn-secondary:hover::after { transform: translateX(2px); }
-.btn-large { padding: 1.25rem 2.5rem; font-size: var(--text-lg); }
-
-/* =============================================
-   PLACEHOLDERS
-   ============================================= */
-.placeholder {
-  background: var(--placeholder);
-  border: 1.5px dashed rgba(39, 20, 66, 0.18);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  line-height: 1.4;
-  border-radius: 0.75rem;
-  padding: var(--space-2);
-}
-[data-theme="dark"] .placeholder {
-  border-color: rgba(245, 242, 222, 0.15);
-  color: rgba(245, 242, 222, 0.40);
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-base);   /* 18px floor — do not reduce */
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease),
+              border-color 160ms var(--ease),
+              color 160ms var(--ease);
 }
 
-/* =============================================
-   NAVIGATION
-   ============================================= */
+/* Primary CTA on light sections */
+.btn--moss {
+  background: var(--moss);
+  color: var(--near-white);
+  border-color: var(--moss);
+}
+.btn--moss:hover { background: var(--moss-hover); border-color: var(--moss-hover); }
+
+/* Primary CTA on Amethyst sections */
+.btn--lime {
+  background: var(--lime-cream);
+  color: var(--amethyst);
+  border-color: var(--lime-cream);
+}
+.btn--lime:hover { background: var(--lime-cream-hover); border-color: var(--lime-cream-hover); }
+
+/* Secondary on Amethyst */
+.btn--ghost-light {
+  background: transparent;
+  color: var(--near-white);
+  border-color: var(--near-white);
+}
+.btn--ghost-light:hover { background: var(--near-white); color: var(--amethyst); }
+
+/* Secondary on light */
+.btn--ghost-dark {
+  background: transparent;
+  color: var(--amethyst);
+  border-color: var(--amethyst);
+}
+.btn--ghost-dark:hover { background: var(--amethyst); color: var(--near-white); }
+
+.btn--large { font-size: var(--text-lg); padding: 1.05rem 2rem; }
+
+/* -------------------------------------------------------------
+   6. NAV — Eggshell background, Carbon links, Moss CTA
+   ------------------------------------------------------------- */
 .nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--nav-bg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-2) var(--container-pad);
-  transition: box-shadow 200ms ease, background 200ms ease;
-}
-.nav.scrolled {
-  box-shadow: 0 2px 16px var(--nav-shadow);
-}
-.nav-logo img {
-  height: 36px;
-  width: auto;
-}
-/* Logo stays as-is in dark mode (user preference) */
-.nav-links {
-  display: flex;
-  gap: var(--space-4);
-  align-items: center;
-}
-.nav-links a {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  color: var(--moss);
-  transition: color 150ms ease;
-}
-[data-theme="dark"] .nav-links a { color: var(--honey); }
-.nav-links a:hover { color: var(--terracotta); }
-
-.nav-actions {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  padding: 0.9rem var(--container-pad);
+  background: var(--eggshell);
+  transition: box-shadow 160ms var(--ease);
 }
+.nav.scrolled { box-shadow: 0 2px 14px var(--amethyst-10); }
 
-/* Dark mode toggle */
-.theme-toggle {
-  background: none;
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  width: 36px;
-  height: 36px;
+.nav-logo { display: inline-flex; margin-right: auto; }
+.nav-logo img { width: 168px; }
+
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
-  flex-shrink: 0;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.theme-toggle:hover {
-  color: var(--text);
-  border-color: var(--text-secondary);
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--carbon);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 160ms var(--ease);
 }
-/* Show sun in dark mode, moon in light mode */
-[data-theme="light"] .icon-sun  { display: none; }
-[data-theme="light"] .icon-moon { display: block; }
-[data-theme="dark"]  .icon-sun  { display: block; }
-[data-theme="dark"]  .icon-moon { display: none; }
+.nav-links a:hover { border-bottom-color: var(--moss); }
 
-/* Hamburger */
+.nav-cta { padding: 0.6rem 1.15rem; }
+
 .nav-hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: var(--space-1);
 }
 .nav-hamburger span {
   display: block;
-  width: 24px;
   height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform 200ms ease, opacity 200ms ease;
-}
-
-@media (max-width: 767px) {
-  .nav-hamburger { display: flex; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--nav-bg);
-    flex-direction: column;
-    gap: 0;
-    padding: var(--space-2) var(--container-pad) var(--space-3);
-    box-shadow: 0 8px 24px var(--nav-shadow);
-  }
-  .nav-links.is-open { display: flex; }
-  .nav-links li { border-bottom: 1px solid var(--border); }
-  .nav-links a { display: block; padding: var(--space-2) 0; }
-  .nav-logo img { height: 28px; }
-  .nav-cta { font-size: var(--text-xs); padding: 0.6rem 1.2rem; }
-}
-
-/* =============================================
-   HERO
-   ============================================= */
-.hero {
-  background: var(--bg);
-  padding: var(--space-6) var(--container-pad);
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: var(--space-5);
-  align-items: center;
-  max-width: var(--container-max);
+  width: 24px;
   margin: 0 auto;
+  background: var(--carbon);
 }
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: var(--text-hero);
-  line-height: var(--leading-tight);
-  color: var(--text);
-  margin-bottom: var(--space-3);
+
+/* -------------------------------------------------------------
+   7. HERO — Amethyst, Near White, Lime Cream CTA
+   ------------------------------------------------------------- */
+.hero {
+  background: var(--amethyst);
+  color: var(--near-white);
+  padding: var(--space-7) var(--container-pad);
 }
+.hero-inner { max-width: var(--container); margin: 0 auto; }
+
+/* The hero eyebrow is the ONLY eyebrow label on the page, and it is
+   sentence case — there are no all-caps labels anywhere on the site. */
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--lime-cream);
+  margin-bottom: var(--space-2);
+  max-width: var(--measure);
+}
+
+.hero-headline { max-width: 18ch; margin-bottom: var(--space-3); text-wrap: balance; }
+
 .hero-subhead {
   font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  max-width: 32rem;
+  color: var(--near-white);
   margin-bottom: var(--space-4);
-  color: var(--text-secondary);
-}
-.hero-ctas {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-}
-.hero-visual video,
-.hero-visual img {
-  width: 100%;
-  aspect-ratio: 2/3;
-  object-fit: cover;
-  border-radius: 1.5rem;
-  display: block;
 }
 
-@media (max-width: 767px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding: var(--space-4) var(--container-pad);
+.hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* The single deliberate motion moment on the page, on load only.
+   No fade-and-slide on any other section. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-inner > * {
+    animation: hero-rise 620ms var(--ease) both;
   }
-  .hero-visual { order: 2; }
-  .hero-content { order: 1; }
+  .hero-inner > *:nth-child(2) { animation-delay: 70ms; }
+  .hero-inner > *:nth-child(3) { animation-delay: 140ms; }
+  .hero-inner > *:nth-child(4) { animation-delay: 210ms; }
+}
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* =============================================
-   PROMISE STRIP
-   ============================================= */
-.promise { background: var(--dark-bg); transition: background 200ms ease; }
-.promise-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-.promise-item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-.promise-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--honey);
-  flex-shrink: 0;
-}
-.promise-icon--circle  { border-radius: 50%; }
-.promise-icon--square  { border-radius: 4px; }
-.promise-icon--triangle {
-  background: transparent;
-  width: 0;
-  height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-bottom: 32px solid var(--honey);
-}
-.promise-item h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  line-height: var(--leading-snug);
-  color: var(--dark-text);
-}
-.promise-item p {
-  font-size: var(--text-base);
-  color: var(--dark-text-dim);
-  line-height: var(--leading-normal);
-}
+/* -------------------------------------------------------------
+   8. THE PROBLEM / THE GUIDE — plain Eggshell prose
+   ------------------------------------------------------------- */
+.prose p + p { margin-top: var(--space-2); }
+.prose p { font-size: var(--text-base); }
 
-@media (max-width: 767px) {
-  .promise-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-}
-
-/* =============================================
-   WORK
-   ============================================= */
-.work { background: var(--bg); }
-.work-grid {
+/* -------------------------------------------------------------
+   9. HOW IT WORKS
+   Numbered markers appear ONLY here, because this content is a
+   real sequence. Do not add numerals to any other section.
+   ------------------------------------------------------------- */
+.how-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
-  align-items: start;
+  margin-top: var(--space-4);
 }
-.work-card:nth-child(2) { margin-top: 3rem; }
-.work-card {
-  border-radius: 1.5rem;
-  padding: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-.work-card--saltbird { background: var(--card-saltbird); }
-.work-card--marrow   { background: var(--card-marrow); }
-.work-card--fieldday { background: var(--card-fieldday); }
+.how-step { min-width: 0; }
 
-.work-card header h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  color: var(--text);
-  line-height: var(--leading-snug);
-}
-.work-type {
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  margin-top: 0.25rem;
-}
-.work-thumbs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-.work-thumbs img {
-  aspect-ratio: 1;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 0.75rem;
-}
-.work-caption {
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-@media (max-width: 767px) {
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card:nth-child(2) { margin-top: 0; }
-}
-
-/* =============================================
-   HOW IT WORKS
-   ============================================= */
-.how { background: var(--surface-subtle); }
-[data-theme="dark"] .how { background: var(--surface-subtle); }
-
-.how-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.how-step {
-  padding: var(--space-4);
-  border-right: 2px solid var(--honey);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-.how-step:last-child { border-right: none; }
 .how-numeral {
   font-family: var(--font-display);
-  font-size: 96px;
+  font-size: var(--text-3xl);   /* large — Moss on Eggshell is fine at this size */
   line-height: 1;
-  color: var(--terracotta);
-  opacity: 0.85;
-}
-.how-step h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  line-height: var(--leading-snug);
-  color: var(--text);
-}
-.how-step p {
-  font-size: var(--text-base);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-}
-
-@media (max-width: 767px) {
-  .how-steps { grid-template-columns: 1fr; }
-  .how-step {
-    border-right: none;
-    border-left: 4px solid var(--honey);
-    padding-left: var(--space-3);
-  }
-  .how-numeral { font-size: 72px; }
-}
-
-/* =============================================
-   PRICING
-   ============================================= */
-.pricing { background: var(--pricing-bg); }
-.pricing .section-title { color: var(--amethyst); }
-[data-theme="dark"] .pricing .section-title { color: var(--eggshell); }
-.pricing .section-lede { color: rgba(39, 20, 66, 0.62); }
-[data-theme="dark"] .pricing .section-lede { color: rgba(245, 242, 222, 0.65); }
-
-/* Billing toggle bar */
-.billing-toggle-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
-}
-.billing-toggle {
-  display: flex;
-  background: var(--toggle-track);
-  border-radius: 999px;
-  padding: 4px;
-  gap: 4px;
-}
-.billing-btn {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  padding: 0.55rem 1.75rem;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: var(--amethyst);
-  transition: background 150ms ease, color 150ms ease;
-  line-height: 1;
-}
-[data-theme="dark"] .billing-btn { color: var(--eggshell); }
-.billing-btn.is-active {
-  background: var(--terracotta);
-  color: var(--eggshell);
-}
-.billing-toggle-hint {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
   color: var(--moss);
-  font-style: italic;
+  margin-bottom: var(--space-1);
 }
-[data-theme="dark"] .billing-toggle-hint { color: var(--honey); }
+.how-step h3 { margin-bottom: 0.4rem; }
+.how-step p { font-size: var(--text-sm); }
 
-/* Pricing layout */
-.pricing-layout {
+/* -------------------------------------------------------------
+   10. WHAT WE HANDLE — four cards, deliberately NOT numbered
+   ------------------------------------------------------------- */
+.handle-cards {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-4);
-  align-items: start;
-}
-.pricing-presets {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-3);
+  margin-top: var(--space-4);
 }
-
-/* Preset cards */
-.pricing-presets {
-  background: var(--surface-subtle);
-  border-radius: 1.5rem;
+.handle-card {
+  min-width: 0;
   padding: var(--space-3);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2);
+  background: var(--eggshell);
+  border: 2px solid var(--amethyst-14);
+  border-radius: var(--radius);
 }
-[data-theme="dark"] .pricing-presets {
-  background: rgba(245, 242, 222, 0.04);
-}
-
-.pricing-preset-card {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: var(--space-3) var(--space-3) var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  box-shadow: 0 1px 4px rgba(39, 20, 66, 0.05);
-  transition: box-shadow 200ms ease, transform 200ms ease;
-  position: relative;
-}
-.pricing-preset-card:hover {
-  box-shadow: 0 4px 16px rgba(39, 20, 66, 0.10);
-  transform: translateY(-2px);
-}
-.pricing-preset-card--featured {
-  border: 2px solid var(--terracotta);
-}
-
-.preset-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  min-height: 1em;
-}
-.preset-label--terracotta {
-  color: var(--terracotta);
-}
-
-.preset-name {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  color: var(--text);
-  line-height: 1;
-}
-.preset-desc {
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-}
-
-/* Pill */
-.preset-pill {
-  background: var(--amethyst);
-  color: var(--eggshell);
-  border-radius: 12px;
-  padding: 0.55rem 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.05rem;
-  font-family: var(--font-body);
-  align-self: stretch;
-}
-[data-theme="dark"] .preset-pill {
-  background: rgba(245, 242, 222, 0.12);
-  border: 1px solid rgba(245, 242, 222, 0.15);
-}
-.pill-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.2rem;
-  line-height: 1.2;
-}
-.pill-qty {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--eggshell);
-  line-height: 1;
-}
-.pill-unit {
-  font-size: var(--text-xs);
-  color: rgba(245, 242, 222, 0.75);
-}
-.pill-sep {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--eggshell);
-  line-height: 1;
-}
-
-/* Custom pill — slightly different treatment, full width */
-.preset-pill--custom {
-  border-radius: 12px;
-  align-self: stretch;
-  flex-direction: row;
-  justify-content: center;
-  gap: var(--space-3);
-}
-.preset-pill--custom .pill-sep {
-  font-size: var(--text-base);
-  align-self: center;
-}
-
-/* Price block */
-.preset-price-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin: var(--space-1) 0 0;
-}
-.preset-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-.preset-main-price {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  color: var(--terracotta);
-  line-height: 1;
-}
-.preset-period {
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  font-style: italic;
-}
-.preset-compare {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  line-height: var(--leading-snug);
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-.preset-compare s { opacity: 0.6; }
-.preset-compare .save-note {
+/* Card headers in Moss. Held at 24px so Moss-on-Eggshell stays in
+   WCAG "large text" territory — never drop this below 1.5rem. */
+.handle-card h3 {
+  font-size: 1.5rem;
   color: var(--moss);
-  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
-[data-theme="dark"] .preset-compare .save-note { color: var(--honey); }
+.handle-card p { font-size: var(--text-sm); }
 
-/* CTA buttons in pricing cards */
-.pricing-cta-btn {
-  text-align: center;
-  width: 100%;
-  margin-top: auto;
-}
+/* -------------------------------------------------------------
+   11. RESULTS
+   ------------------------------------------------------------- */
+.results-lede { font-size: var(--text-base); margin-bottom: var(--space-4); }
 
-/* Custom configurator */
-.pricing-custom {
-  background: var(--surface);
-  border-radius: 1.25rem;
-  padding: var(--space-4) var(--space-3);
+.stat-row {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  box-shadow: 0 2px 8px rgba(39, 20, 66, 0.06);
-  position: sticky;
-  top: 80px;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: var(--space-4) 0;
 }
-.pricing-custom-title {
+.stat-number {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
-  color: var(--text);
-  line-height: var(--leading-snug);
+  font-size: var(--text-stat);   /* big stat numbers — Moss is allowed here */
+  line-height: 1;
+  color: var(--moss);
 }
-.pricing-custom-desc {
+.stat-label {
+  font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-  margin-top: -0.5rem;
+  color: var(--carbon);
+  margin-top: 0.25rem;
 }
 
-/* Controls: label + select on same row */
-.pricing-controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-.pricing-control-row {
+/* Placeholder blocks stand in for real footage. No AI imagery. */
+.placeholder-block {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-}
-.pricing-control-label {
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3);
+  border-radius: var(--radius);
   font-family: var(--font-display);
   font-size: var(--text-base);
-  color: var(--text);
-  cursor: default;
+  letter-spacing: 0.02em;
+}
+.placeholder-block--amethyst { background: var(--amethyst); color: var(--near-white); }
+.placeholder-block--moss     { background: var(--moss);     color: var(--near-white); }
+.placeholder-block--16x9     { aspect-ratio: 16 / 9; width: 100%; }
+
+.video-frame { margin-top: var(--space-4); max-width: 880px; }
+.video-frame iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius);
   display: block;
 }
-.pricing-control-sublabel {
-  font-family: var(--font-body);
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  margin-top: 1px;
-}
-.pricing-controls select {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--text);
-  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23271442' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 0.6rem center;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 0.4rem 2rem 0.4rem 0.6rem;
-  min-width: 72px;
-  appearance: none;
-  cursor: pointer;
-  transition: border-color 150ms ease;
-  flex-shrink: 0;
-}
-.pricing-controls select:focus {
-  outline: none;
-  border-color: var(--terracotta);
-}
-[data-theme="dark"] .pricing-controls select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23F5F2DE' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-}
 
-.pricing-display {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-.pricing-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-.pricing-price {
+/* -------------------------------------------------------------
+   12. FOUNDING 15 — Lime Cream band
+   Amethyst headings, Carbon body, Moss CTA.
+   ------------------------------------------------------------- */
+.founding { background: var(--lime-cream); color: var(--carbon); }
+.founding h2 { color: var(--amethyst); margin-bottom: var(--space-3); }
+.founding p { font-size: var(--text-base); }
+.founding .lede-strong {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  color: var(--terracotta);
-  line-height: 1;
+  font-size: var(--text-xl);
+  color: var(--amethyst);
+  margin: var(--space-3) 0 var(--space-1);
+  max-width: var(--measure);
 }
-.pricing-period {
-  font-family: var(--font-body);
-  font-style: italic;
-  color: var(--text-secondary);
+/* Pricing/fee line is intentionally empty pending a team decision. */
+.fee-detail { margin: 0 0 var(--space-3); min-height: 0; }
+.fee-detail:empty { display: none; }
+.founding .btn { margin-top: var(--space-2); }
+
+/* -------------------------------------------------------------
+   13. WHY VISYN — comparison table
+   On mobile the TABLE scrolls inside its own container with the
+   first column pinned. The page body never scrolls sideways.
+   ------------------------------------------------------------- */
+.table-scroll {
+  margin-top: var(--space-4);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+}
+.compare-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
   font-size: var(--text-sm);
+  text-align: left;
 }
-.pricing-note {
-  font-size: var(--text-xs);
+.compare-table th,
+.compare-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 2px solid var(--amethyst-10);
+  vertical-align: top;
+  background: var(--eggshell);
+}
+.compare-table thead th {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--amethyst);
+  border-bottom-width: 3px;
+}
+/* The Visyn column header is the one Moss item here, held at 24px
+   so it stays within the large-text contrast allowance. */
+.compare-table thead th.col-visyn {
+  font-size: 1.5rem;
   color: var(--moss);
-  font-style: italic;
-  line-height: var(--leading-normal);
-  min-height: 1.4em;
 }
-[data-theme="dark"] .pricing-note { color: var(--lime); }
-
-@media (max-width: 1024px) {
-  .pricing-layout { grid-template-columns: 1fr; }
-  .pricing-presets { grid-template-columns: repeat(3, 1fr); }
-  .pricing-custom { position: static; }
-}
-@media (max-width: 767px) {
-  .pricing-presets { grid-template-columns: 1fr; gap: var(--space-3); }
-}
-
-/* =============================================
-   FREE PACK
-   ============================================= */
-.free-pack {
-  background: var(--amethyst);
-  text-align: center;
-}
-[data-theme="dark"] .free-pack { background: var(--dark-bg); }
-
-.free-pack-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  max-width: 640px;
-}
-.free-pack-eyebrow {
-  font-family: var(--font-body);
-  font-size: var(--text-xs);
+.compare-table td.col-visyn { font-weight: 600; }
+.compare-table th:first-child,
+.compare-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--honey);
+  box-shadow: 1px 0 0 var(--amethyst-10);
 }
-.free-pack-headline {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  line-height: var(--leading-tight);
-  color: var(--eggshell);
-}
-.free-pack-body {
-  font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  color: rgba(245, 242, 222, 0.80);
-  max-width: 36rem;
-}
-.free-pack-value {
-  font-family: var(--font-body);
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td { border-bottom: 0; }
+
+.table-hint {
   font-size: var(--text-sm);
-  color: rgba(245, 242, 222, 0.50);
-  font-style: italic;
+  color: var(--amethyst);   /* small accent text on light is Amethyst, never Moss */
+  margin-top: var(--space-1);
+}
+/* The table only overflows on narrow screens, so the hint only shows there. */
+@media (min-width: 861px) { .table-hint { display: none; } }
+
+/* -------------------------------------------------------------
+   14. FOOTER
+   ------------------------------------------------------------- */
+.footer {
+  background: var(--amethyst);
+  color: var(--near-white);
+  padding: var(--space-5) var(--container-pad) var(--space-4);
+}
+.footer-inner { max-width: var(--container); margin: 0 auto; }
+.footer-logo { width: 168px; margin-bottom: var(--space-3); }
+.footer-blurb { color: var(--near-white); max-width: var(--measure); }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  list-style: none;
+  margin: var(--space-4) 0 var(--space-3);
+  padding: 0;
+  font-size: var(--text-sm);
+}
+.footer-links a {
+  color: var(--near-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-links a:hover { color: var(--lime-cream); }
+
+.footer-fine {
+  font-size: var(--text-sm);
+  color: var(--near-white-75);
+  border-top: 1px solid var(--near-white-20);
+  padding-top: var(--space-3);
+  margin: 0;
 }
 
-/* =============================================
-   ABOUT
-   ============================================= */
-.about { background: var(--bg); }
-.about-title { text-align: center; }
-.about-story {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 42rem;
-  margin: 0 auto var(--space-6);
-  text-align: center;
+/* -------------------------------------------------------------
+   15. MOBILE STICKY CTA
+   Appears once the hero has scrolled away; hides again while the
+   closing CTA section is on screen.
+   ------------------------------------------------------------- */
+.mobile-cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  display: none;
+  padding: 0.75rem var(--container-pad);
+  background: var(--eggshell);
+  box-shadow: 0 -2px 16px var(--amethyst-14);
 }
-.about-story p {
-  font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
+.mobile-cta-bar .btn { width: 100%; }
+.mobile-cta-bar.is-visible { display: block; }
+@media (min-width: 861px) {
+  .mobile-cta-bar, .mobile-cta-bar.is-visible { display: none; }
 }
+
+/* -------------------------------------------------------------
+   16. ABOUT — team, Amethyst avatar circles with Near White initials
+   ------------------------------------------------------------- */
 .about-team {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
+  margin-top: var(--space-4);
 }
-.team-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-2);
-}
-.team-photo {
-  width: 100%;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-.team-card img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  border-radius: 1rem;
-}
-.team-card h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--text);
-}
-.team-role {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  color: var(--terracotta);
-}
-.team-bio {
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-}
-.team-linkedin {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: color 150ms ease;
-  margin-top: 0.25rem;
-}
-.team-linkedin:hover { color: var(--terracotta); }
-
-@media (max-width: 767px) {
-  .about-team { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-}
-
-/* =============================================
-   FINAL CTA
-   ============================================= */
-.final-cta {
-  text-align: center;
-  padding: var(--space-7) var(--container-pad);
-}
-.final-cta .section-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-4);
-}
-.final-cta-headline {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  line-height: var(--leading-tight);
-  color: var(--dark-text);
-}
-.final-cta-headline .accent { color: var(--terracotta); }
-.final-cta-subhead {
-  font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  max-width: 36rem;
-  color: var(--dark-text-dim);
-}
-
-/* =============================================
-   FOOTER
-   ============================================= */
-.footer {
-  background: var(--dark-bg);
-  color: var(--dark-text);
-  padding: var(--space-6) var(--container-pad) var(--space-4);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-5);
-  margin-bottom: var(--space-5);
-}
-.footer-logo {
-  height: 28px;
-  width: auto;
-  margin-bottom: var(--space-2);
-  filter: brightness(0) invert(1);
-}
-.footer-brand p {
-  font-size: var(--text-sm);
-  color: var(--dark-text-dim);
-  line-height: var(--leading-normal);
-  max-width: 22rem;
-}
-.footer-col h4 {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  color: var(--honey);
-  margin-bottom: var(--space-2);
-}
-.footer-col ul { display: flex; flex-direction: column; gap: var(--space-1); }
-.footer-col a {
-  font-size: var(--text-sm);
-  color: var(--dark-text-dim);
-  transition: color 150ms ease;
-}
-.footer-col a:hover { color: var(--terracotta); }
-.footer-fine {
-  border-top: 1px solid rgba(245, 242, 222, 0.15);
-  padding-top: var(--space-3);
-  text-align: center;
-}
-.footer-fine p {
-  font-size: var(--text-xs);
-  color: rgba(245, 242, 222, 0.35);
-}
-
-@media (max-width: 767px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-  .footer-brand { grid-column: 1 / -1; }
-}
-@media (max-width: 480px) {
-  .footer-grid { grid-template-columns: 1fr; }
-}
-
-/* =============================================
-   MOBILE STICKY CTA BAR
-   ============================================= */
-.mobile-cta-bar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--dark-bg);
-  padding: var(--space-2) var(--container-pad);
-  z-index: 200;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-}
-.mobile-cta-bar .btn { width: 100%; text-align: center; }
-@media (max-width: 767px) {
-  .mobile-cta-bar { display: block; }
-  .mobile-cta-bar.hidden { display: none; }
-}
-
-/* =============================================
-   DARK MODE SECTION OVERRIDES
-   When dark mode is active, "dark" sections flip to eggshell
-   (i.e. --dark-bg = eggshell, --dark-text = amethyst via tokens).
-   The overrides below fix any hardcoded colour values that don't
-   follow the token system.
-   ============================================= */
-
-/* --- Promise strip --- */
-/* h3/p already use var(--dark-text) / var(--dark-text-dim) which
-   resolve correctly in dark mode (amethyst). Icons stay honey. */
-
-/* --- Free pack (now eggshell bg in dark mode) --- */
-[data-theme="dark"] .free-pack-eyebrow  { color: var(--terracotta); }
-[data-theme="dark"] .free-pack-headline { color: var(--amethyst); }
-[data-theme="dark"] .free-pack-body     { color: rgba(39, 20, 66, 0.65); }
-[data-theme="dark"] .free-pack-value    { color: rgba(39, 20, 66, 0.42); }
-
-/* --- Footer (stays dark amethyst in dark mode) --- */
-[data-theme="dark"] .footer {
+.team-card { min-width: 0; }
+.team-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
   background: var(--amethyst);
-  color: var(--eggshell);
-}
-
-/* --- Pricing section (moss green bg in dark mode) --- */
-/* Preset group wrapper: subtle dark inset on moss */
-[data-theme="dark"] .pricing-presets {
-  background: rgba(0, 0, 0, 0.13);
-}
-/* Billing toggle track: dark overlay on moss */
-[data-theme="dark"] .billing-toggle {
-  background: rgba(0, 0, 0, 0.20);
-}
-[data-theme="dark"] .billing-btn { color: var(--eggshell); }
-/* Billing hint: moss text switches to lime on moss bg */
-[data-theme="dark"] .billing-toggle-hint { color: var(--lime); }
-/* Save note inside preset compare: lime on dark purple card */
-[data-theme="dark"] .preset-compare .save-note { color: var(--lime); }
-/* Custom configurator select arrow already handled above */
-
-/* =============================================
-   UTILITY
-   ============================================= */
-.visually-hidden {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-
-/* =============================================
-   V2 MULTI-PAGE ADDITIONS (Home rebuild + Services)
-   Additive only — reuses the existing token system and
-   does not modify any rule above this banner.
-   ============================================= */
-
-/* Deep-link offset so the sticky nav doesn't cover anchored sections */
-section[id] { scroll-margin-top: 90px; }
-
-/* --- Nav: Services dropdown --- */
-.nav-links .has-dropdown { position: relative; }
-.nav-parent { display: inline-flex; align-items: center; gap: 0.25rem; }
-.nav-parent::after {
-  content: "";
-  width: 0; height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 5px solid currentColor;
-  opacity: 0.6;
-}
-.nav-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 230px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 28px var(--nav-shadow);
-  padding: 0.4rem;
-  flex-direction: column;
-  z-index: 120;
-}
-.nav-links .has-dropdown:hover > .nav-dropdown,
-.nav-links .has-dropdown:focus-within > .nav-dropdown { display: flex; }
-.nav-dropdown li { border-bottom: none !important; }
-.nav-dropdown a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-.nav-dropdown a:hover { background: var(--surface-subtle); color: var(--terracotta); }
-
-@media (max-width: 767px) {
-  /* Inside the mobile column menu, show the dropdown inline + indented */
-  .nav-dropdown {
-    position: static;
-    display: flex;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 0 0 var(--space-1) var(--space-3);
-    min-width: 0;
-  }
-  .nav-dropdown a { padding: var(--space-1) 0; }
-}
-
-/* --- Centered narrative block (soft pricing line, "why us" prose) --- */
-.narrative {
-  max-width: 46rem;
-  margin: 0 auto;
-  text-align: center;
+  color: var(--near-white);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-}
-.narrative p {
-  font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
-}
-.section--dark .narrative p { color: var(--dark-text-dim); }
-
-/* --- Home: "What we do" — six equal service cards --- */
-.svc-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
-}
-.svc-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  padding: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  transition: box-shadow 200ms ease, transform 200ms ease;
-}
-.svc-card:hover {
-  box-shadow: 0 6px 20px rgba(39, 20, 66, 0.08);
-  transform: translateY(-2px);
-}
-.svc-card h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--text);
-  line-height: var(--leading-snug);
-}
-.svc-card p {
-  font-size: var(--text-base);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-  flex: 1;
-}
-.svc-card .btn-secondary { align-self: flex-start; margin-top: var(--space-1); }
-
-@media (max-width: 900px) { .svc-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .svc-cards { grid-template-columns: 1fr; } }
-
-/* --- Services page: hero montage --- */
-.hero-montage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2);
-}
-.hero-montage img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 1rem;
-}
-
-/* --- Services page: the six service blocks --- */
-.svc-blocks { display: flex; flex-direction: column; }
-.svc-block {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-5) 0;
-  border-bottom: 1px solid var(--border);
-}
-.svc-block:first-child { padding-top: var(--space-3); }
-.svc-block:last-child { border-bottom: none; }
-.svc-num {
+  justify-content: center;
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  color: var(--honey);
-  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-2);
 }
-.svc-block h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  color: var(--text);
-  line-height: var(--leading-snug);
+.team-card h3 { margin-bottom: 0.2rem; }
+.team-role {
+  font-size: var(--text-sm);
+  color: var(--amethyst);
+  margin-bottom: 0.4rem;
 }
-.svc-block p {
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-  max-width: 54rem;
-}
-.svc-block .btn-secondary { align-self: flex-start; margin-top: var(--space-1); }
+.team-card p { font-size: var(--text-sm); }
 
-/* Service-block head: icon + index number on one row */
-.svc-block-head {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
+/* -------------------------------------------------------------
+   17. SIMPLE INNER PAGES (Services, Contact, 404)
+   ------------------------------------------------------------- */
+.page-head { padding: var(--space-6) var(--container-pad) var(--space-3); }
+.page-head .section-inner > p { font-size: var(--text-lg); }
 
-/* --- Line icons (shared sprite, colored via currentColor) --- */
-.icon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  display: block;
-  width: 40px;
-  height: 40px;
-}
-/* Trust-bar icons sit on the dark band — honey, matching the original shapes */
-.promise-icon-svg { color: var(--honey); }
-/* Service-card icons — terracotta (the brand's primary accent) */
-.svc-card-icon { color: var(--terracotta); margin-bottom: var(--space-1); }
-/* Services block icons — 50% larger, with a periodic brand "glitch" burst.
-   Colors mirror the logo (terracotta fill, moss shadow) plus honey/lime splits. */
-.svc-block-head .icon {
-  color: var(--terracotta);
-  width: 48px;
-  height: 48px;
-  animation: iconGlitch 10s linear infinite;
-}
-/* Desync each icon: different speeds AND different phases (negative delays) */
-.svc-blocks .svc-block:nth-child(1) .icon { animation-duration:  9s; animation-delay: -1s; }
-.svc-blocks .svc-block:nth-child(2) .icon { animation-duration: 11s; animation-delay: -5s; }
-.svc-blocks .svc-block:nth-child(3) .icon { animation-duration:  8s; animation-delay: -3s; }
-.svc-blocks .svc-block:nth-child(4) .icon { animation-duration: 12s; animation-delay: -7.5s; }
-.svc-blocks .svc-block:nth-child(5) .icon { animation-duration: 10s; animation-delay: -2s; }
-.svc-blocks .svc-block:nth-child(6) .icon { animation-duration: 13s; animation-delay: -9s; }
-
-@keyframes iconGlitch {
-  /* Idle ~80% of the loop — colored copies stacked at 0,0 (hidden behind the stroke) */
-  0%, 80% {
-    transform: translate(0, 0) scale(1);
-    filter: drop-shadow(0 0 0 var(--moss)) drop-shadow(0 0 0 var(--honey)) drop-shadow(0 0 0 var(--lime));
-  }
-  /* Glitch burst — shake + expand + colored split */
-  82% { transform: translate(-5px, 2px)  scale(1.14); filter: drop-shadow(5px 0 0 var(--moss))   drop-shadow(-5px 0 0 var(--honey))  drop-shadow(0 4px 0 var(--lime)); }
-  85% { transform: translate(5px, -3px)  scale(1.18); filter: drop-shadow(-6px 2px 0 var(--moss)) drop-shadow(6px -2px 0 var(--honey)) drop-shadow(0 -4px 0 var(--lime)); }
-  88% { transform: translate(-4px, -2px) scale(1.12); filter: drop-shadow(4px 3px 0 var(--moss))  drop-shadow(-4px -3px 0 var(--honey)) drop-shadow(3px 0 0 var(--lime)); }
-  91% { transform: translate(6px, 2px)   scale(1.20); filter: drop-shadow(-5px 0 0 var(--moss))  drop-shadow(5px 0 0 var(--honey))   drop-shadow(0 4px 0 var(--lime)); }
-  94% { transform: translate(-3px, 4px)  scale(1.13); filter: drop-shadow(4px -2px 0 var(--moss)) drop-shadow(-4px 2px 0 var(--honey)) drop-shadow(-3px 0 0 var(--lime)); }
-  97% { transform: translate(2px, -2px)  scale(1.08); filter: drop-shadow(-2px 1px 0 var(--moss)) drop-shadow(2px -1px 0 var(--honey)) drop-shadow(0 -2px 0 var(--lime)); }
-  100% {
-    transform: translate(0, 0) scale(1);
-    filter: drop-shadow(0 0 0 var(--moss)) drop-shadow(0 0 0 var(--honey)) drop-shadow(0 0 0 var(--lime));
-  }
-}
-
-/* --- Final CTA on a light background (contrast against the dark band above) --- */
-.final-cta--light { background: var(--bg); }
-.final-cta--light .final-cta-headline { color: var(--text); }
-.final-cta--light .final-cta-subhead { color: var(--text-secondary); }
-
-/* --- Contact form --- */
-.contact-layout {
+.stack-cards {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: var(--space-6);
-  align-items: start;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
-.contact-intro .section-title { margin-bottom: var(--space-3); }
-.contact-intro p {
-  font-size: var(--text-lg);
-  color: var(--text-secondary);
-  line-height: var(--leading-normal);
-  margin-bottom: var(--space-3);
-  max-width: 34rem;
+
+.contact-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
-.contact-intro a { color: var(--terracotta); text-decoration: underline; cursor: pointer; }
-.contact-form {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  padding: var(--space-4);
+.contact-card {
+  flex: 1 1 260px;
+  min-width: 0;
+  padding: var(--space-3);
+  border: 2px solid var(--amethyst-14);
+  border-radius: var(--radius);
+}
+.contact-card h3 { font-size: 1.5rem; color: var(--moss); margin-bottom: 0.4rem; }
+.contact-card p { font-size: var(--text-sm); }
+.contact-card a { color: var(--amethyst); }
+
+.not-found {
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  box-shadow: 0 2px 12px rgba(39, 20, 66, 0.05);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--container-pad);
 }
-.form-row { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-row label {
+.not-found-numeral {
   font-family: var(--font-display);
-  font-size: var(--text-sm);
-  color: var(--text);
+  font-size: var(--text-stat);
+  line-height: 1;
+  color: var(--moss);
 }
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--text);
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 0.7rem 0.9rem;
-  width: 100%;
-  transition: border-color 150ms ease;
-}
-.contact-form textarea { resize: vertical; min-height: 7rem; }
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--terracotta);
-}
-.contact-form select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23271442' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.9rem center;
-  padding-right: 2.2rem;
-  cursor: pointer;
-}
-[data-theme="dark"] .contact-form select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23F5F2DE' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-.contact-form .btn { margin-top: var(--space-1); align-self: flex-start; }
-.contact-hp { display: none; }
+.not-found p { max-width: 46ch; }
 
-@media (max-width: 767px) {
-  .contact-layout { grid-template-columns: 1fr; gap: var(--space-4); }
-}
+/* -------------------------------------------------------------
+   18. RESPONSIVE
+   ------------------------------------------------------------- */
+@media (max-width: 860px) {
+  :root { --space-6: 4rem; --space-7: 5rem; }
 
-/* =============================================
-   ABOUT — pizzazz (floating brand shapes, entrance stagger, hover)
-   ============================================= */
-.about { position: relative; overflow: hidden; }
-.about .section-inner { position: relative; z-index: 1; }
+  .nav-hamburger { display: flex; order: 3; }
+  .nav-links {
+    order: 4;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    display: none;
+    padding-top: var(--space-2);
+  }
+  .nav-links.is-open { display: flex; }
+  .nav { flex-wrap: wrap; }
+  /* CTA rides inside the menu on small screens — the hero CTA and the
+     sticky bottom bar cover the need while the menu is shut. */
+  .nav-cta {
+    order: 5;
+    flex-basis: 100%;
+    display: none;
+    margin-bottom: var(--space-1);
+  }
+  .nav-links.is-open ~ .nav-cta { display: inline-flex; }
 
-.about-decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.about-decor .shape { position: absolute; will-change: transform; }
-.shape--circle {
-  width: 68px; height: 68px; border-radius: 50%;
-  background: var(--honey); opacity: 0.45;
-  top: 9%; left: 4%;
-  animation: floaty 7s ease-in-out infinite;
-}
-.shape--square {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: var(--moss); opacity: 0.38;
-  top: 20%; right: 6%;
-  animation: floaty 9s ease-in-out infinite 0.6s;
-}
-.shape--triangle {
-  width: 0; height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 52px solid var(--terracotta);
-  opacity: 0.32;
-  bottom: 15%; left: 7%;
-  animation: floaty 8s ease-in-out infinite 0.3s;
-}
-.shape--ring {
-  width: 84px; height: 84px; border-radius: 50%;
-  border: 10px solid var(--lime); opacity: 0.6;
-  bottom: 11%; right: 9%;
-  animation: floaty 10s ease-in-out infinite 0.9s;
-}
-.shape--pill {
-  width: 96px; height: 34px; border-radius: 999px;
-  background: var(--terracotta); opacity: 0.16;
-  top: 48%; left: 45%;
-  animation: drift 12s ease-in-out infinite;
+  .how-steps,
+  .handle-cards,
+  .stack-cards,
+  .about-team { grid-template-columns: 1fr; }
+
+  .stat-row { gap: var(--space-4); }
+
+  /* Keep the sticky bar from covering the last of the page. */
+  .footer { padding-bottom: 6rem; }
 }
 
-@keyframes floaty {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-26px) rotate(10deg); }
-}
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50%      { transform: translate(22px, -16px) rotate(-8deg); }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+@media (max-width: 420px) {
+  :root { --container-pad: 1.15rem; }
+  .nav-logo img, .footer-logo { width: 140px; }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas .btn,
+  .founding .btn,
+  .section--dark .btn,
+  .contact-card .btn,
+  .not-found .btn { width: 100%; }
 }
 
-/* Entrance stagger */
-.about-story p { animation: fadeUp 0.7s ease both; }
-.about-story p:nth-child(1) { animation-delay: 0.05s; }
-.about-story p:nth-child(2) { animation-delay: 0.15s; }
-.about-story p:nth-child(3) { animation-delay: 0.25s; }
-.about-story p:nth-child(4) { animation-delay: 0.35s; }
-.about-team .team-card { animation: fadeUp 0.7s ease both; }
-.about-team .team-card:nth-child(1) { animation-delay: 0.30s; }
-.about-team .team-card:nth-child(2) { animation-delay: 0.45s; }
-.about-team .team-card:nth-child(3) { animation-delay: 0.60s; }
-
-/* Playful team hover */
-.about-team .team-card { transition: transform 220ms ease; }
-.about-team .team-card:hover { transform: translateY(-6px); }
-.about-team .team-card .team-role { transition: color 200ms ease; }
-
+/* -------------------------------------------------------------
+   19. REDUCED MOTION
+   ------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .about-decor .shape,
-  .about-story p,
-  .about-team .team-card,
-  .svc-block-head .icon { animation: none !important; }
-  .about-story p,
-  .about-team .team-card { opacity: 1; transform: none; }
-  .svc-block-head .icon { transform: none; filter: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

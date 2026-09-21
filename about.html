@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <!--
-  INTERIM About page. Full About treatment follows in a separate spec.
-  This is the only page where founder names appear. Kept noindex, nofollow.
-  Founder content migrated from the original single-page home; LinkedIn links
-  removed site-wide per spec.
+  About page. This is the ONLY page where founder names appear —
+  they must never go on the homepage. Kept noindex, nofollow.
 -->
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,119 +18,96 @@
 </head>
 <body>
 
-<!-- =============================================
-     NAVIGATION
-     ============================================= -->
+<a class="skip-link" href="#main">Skip to content</a>
+
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo">
+  <a href="/" class="nav-logo" aria-label="Visyn Studio — home">
     <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio">
   </a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/services">Services</a></li>
+    <li><a href="/#how-it-works">How It Works</a></li>
+    <li><a href="/#results">Results</a></li>
+    <li><a href="/#founding-15">Founding 15</a></li>
+    <li><a href="/#tools">Tools</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/contact">Contact</a></li>
   </ul>
-  <div class="nav-actions">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <a href="#" data-book class="btn btn-primary nav-cta">Get a Free Shoot</a>
-  </div>
+  <a href="#" data-book class="btn btn--moss nav-cta">Book a Growth Call</a>
 </nav>
 
-<!-- =============================================
-     ABOUT (migrated from original home; names allowed here only)
-     ============================================= -->
-<section class="section about" id="top">
-  <div class="about-decor" aria-hidden="true">
-    <span class="shape shape--circle"></span>
-    <span class="shape shape--square"></span>
-    <span class="shape shape--triangle"></span>
-    <span class="shape shape--ring"></span>
-    <span class="shape shape--pill"></span>
+<main id="main">
+
+<section class="section" id="top">
+  <div class="section-inner prose">
+    <h1>We left to fix it.</h1>
+    <p>We met at a major CPG services company. Ian led marketing. Steve ran sales. Phil managed operations. From three different seats, we saw the same problem: small brands had great products and real momentum, but the agencies around them either ignored them or charged them like Fortune 500 companies.</p>
+    <p>Then we watched live selling change the game. A founder with a great product and a phone can move more inventory in one stream than a month of static ads. What those founders were missing was everything around the stream: the ads, the follow-up, the tracking, the tools. So that’s what we built Visyn Studio to do.</p>
+    <p>We don’t do retainers. We get paid when our brands grow, which keeps us honest and keeps us focused on the numbers that matter to you.</p>
   </div>
+</section>
+
+<section class="section">
   <div class="section-inner">
-    <h2 class="section-title about-title">We're three people who built what we wished existed.</h2>
-    <div class="about-story">
-      <p>We met at a major CPG services company. Ian led marketing. Steve ran sales. Phil managed operations. From three different seats, we saw the same problem: small brands needed great creative, and the existing options weren't working.</p>
-      <p>Traditional photo shoots cost $5,000 to $10,000 and took weeks to schedule. DIY AI tools were faster, but the output rarely held up. And the agencies in the middle either ignored small brands entirely or charged them like big ones.</p>
-      <p>So we built Visyn Studio. Three people, 35 years of CPG creative between us, and a workflow designed around one belief: a small brand should be able to look as polished as a Fortune 500 one — without paying like one.</p>
-      <p>We use AI the way a designer uses Photoshop. It lets us move faster. But the eye, the craft, the quality bar, and the email you get back in two hours? That's still us.</p>
-    </div>
+    <h2 class="section-title">The team</h2>
     <div class="about-team">
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-ian.jpg</div>
+      <article class="team-card">
+        <div class="team-avatar" aria-hidden="true">IP</div>
         <h3>Ian Philpot</h3>
-        <p class="team-role">Chief Marketing Officer</p>
-        <p class="team-bio">15+ years in brand and creative. Oversees the quality of every photo and video we deliver.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-steve.jpg</div>
-        <h3>Steve Higginbotham</h3>
-        <p class="team-role">Chief Revenue Officer</p>
-        <p class="team-bio">10 years in CPG and product imaging. Talks to every brand before they buy.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-photo placeholder" style="aspect-ratio:4/5">team-phil.jpg</div>
+        <p class="team-role">CMO</p>
+        <p>15+ years in brand and creative. Leads strategy, brand, and the tools we build.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" aria-hidden="true">SH</div>
+        <!-- TODO: confirm surname spelling. The v2 brief says "Higgenbotham";
+             the v1 site said "Higginbotham". Using the brief's spelling. -->
+        <h3>Steve Higgenbotham</h3>
+        <p class="team-role">CRO</p>
+        <p>10 years in CPG. Talks to every brand before they sign on.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" aria-hidden="true">PK</div>
         <h3>Philip Koberlein</h3>
-        <p class="team-role">Chief Operations Officer</p>
-        <p class="team-bio">10+ years in CPG operations. Makes sure every order moves from kickoff to delivery without friction.</p>
-      </div>
+        <p class="team-role">COO</p>
+        <p>10+ years in CPG operations. Runs the technical side, from Shopify to Klaviyo.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- =============================================
-     FINAL CTA
-     ============================================= -->
-<section class="section section--dark final-cta" id="book">
-  <div class="section-inner">
-    <h2 class="final-cta-headline">Ready to look like the top shelf?</h2>
-    <a href="#" data-book class="btn btn-primary btn-large">Get a Free Shoot</a>
+<hr class="band-rule">
+
+<section class="section section--dark" id="closing-cta">
+  <div class="section-inner prose">
+    <h2 class="section-title">Let’s talk.</h2>
+    <p>Tell us about your brand, your lives, and where you want to be in six months.</p>
+    <p><a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a></p>
   </div>
 </section>
 
-<!-- =============================================
-     FOOTER
-     ============================================= -->
-<footer class="footer" id="contact">
-  <div class="section-inner footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
-      <p>A full-service marketing studio for small CPG brands.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Studio</h4>
-      <ul>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
-        <li><a href="#" data-book>Book a free shoot</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-fine">
-    <p>Made in Chicago for visionaries everywhere — our fellow Visyonaries. &copy; 2026 Visyn Studio.</p>
+</main>
+
+<hr class="band-rule">
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
+    <p class="footer-blurb">Visyn Studio is a TikTok Live and Shop accelerator for small CPG brands. We manage ads, email, and TikTok Shop around each brand’s lives, and we’re paid on performance instead of retainers. Founded by three CPG industry veterans, Visyn Studio is based in Chicago.</p>
+    <ul class="footer-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="#" data-book>Book a Growth Call</a></li>
+      <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
+    </ul>
+    <p class="footer-fine">&copy; <span data-year>2026</span> Visyn Studio. All rights reserved.</p>
   </div>
 </footer>
+
+<div class="mobile-cta-bar" id="mobile-cta-bar">
+  <a href="#" data-book class="btn btn--moss">Book a Growth Call</a>
+</div>
 
 <script src="assets/js/site.js"></script>
 

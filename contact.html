@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<!-- INTERIM Contact page. Full Contact treatment (form, etc.) follows in a separate spec. -->
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Visyn Studio</title>
-  <meta name="description" content="Talk to our team. Book a free shoot or drop us a line — we answer our own emails.">
+  <meta name="description" content="Talk to Visyn Studio. Book a growth call or email us directly — we answer our own emails.">
+  <meta property="og:title" content="Contact — Visyn Studio">
+  <meta property="og:description" content="Book a growth call or email us directly — we answer our own emails.">
+  <meta property="og:image" content="https://visyn.studio/assets/img/og-image.png">
+  <meta property="og:url" content="https://visyn.studio/contact">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,129 +19,83 @@
 </head>
 <body>
 
-<!-- =============================================
-     NAVIGATION
-     ============================================= -->
+<a class="skip-link" href="#main">Skip to content</a>
+
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo">
+  <a href="/" class="nav-logo" aria-label="Visyn Studio — home">
     <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio">
   </a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/services">Services</a></li>
+    <li><a href="/#how-it-works">How It Works</a></li>
+    <li><a href="/#results">Results</a></li>
+    <li><a href="/#founding-15">Founding 15</a></li>
+    <li><a href="/#tools">Tools</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/contact">Contact</a></li>
   </ul>
-  <div class="nav-actions">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <a href="#" data-book class="btn btn-primary nav-cta">Get a Free Shoot</a>
-  </div>
+  <a href="#" data-book class="btn btn--moss nav-cta">Book a Growth Call</a>
 </nav>
 
-<!-- =============================================
-     CONTACT
-     Netlify handles submissions (data-netlify="true"). The hidden
-     form-name + honeypot fields are required for that to work.
-     ============================================= -->
+<main id="main">
+
 <section class="section" id="top">
-  <div class="section-inner contact-layout">
-    <div class="contact-intro">
-      <div class="free-pack-eyebrow">Let's talk</div>
-      <h1 class="section-title">Tell us about your brand.</h1>
-      <p>The best place to start is a free shoot — a working session where we produce real assets for your brand, no strings attached. Fill out the form and we'll get back to you within one business day.</p>
-      <p>Prefer to grab a time right now? <a href="#" data-book>Book a slot on our calendar</a>. Or email <a href="mailto:hello@visyn.studio">hello@visyn.studio</a> — we answer our own emails.</p>
+  <div class="section-inner prose">
+    <h1>Let’s talk.</h1>
+    <p>Tell us about your brand, your lives, and where you want to be in six months. We answer our own emails, and we take calls with video on.</p>
+
+    <div class="contact-methods">
+      <div class="contact-card">
+        <h3>Book a growth call.</h3>
+        <p>The fastest way to start. Thirty minutes, no pitch deck — we look at your setup and tell you what we see.</p>
+        <p><a href="#" data-book class="btn btn--moss">Book a Growth Call</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Email us.</h3>
+        <p>Prefer to write first? Send us a note and you’ll hear back from one of us, not a queue.</p>
+        <p><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Where we are.</h3>
+        <p>Visyn Studio is based in Chicago and works with small CPG brands across the country.</p>
+      </div>
     </div>
-
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-      <input type="hidden" name="form-name" value="contact">
-      <p class="contact-hp"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
-
-      <div class="form-row">
-        <label for="cf-name">Name</label>
-        <input id="cf-name" name="name" type="text" required autocomplete="name">
-      </div>
-      <div class="form-row">
-        <label for="cf-email">Email</label>
-        <input id="cf-email" name="email" type="email" required autocomplete="email">
-      </div>
-      <div class="form-row">
-        <label for="cf-brand">Brand / website</label>
-        <input id="cf-brand" name="brand" type="text" placeholder="yourbrand.com">
-      </div>
-      <div class="form-row">
-        <label for="cf-interest">What can we help with?</label>
-        <select id="cf-interest" name="interest">
-          <option value="Start with a free shoot">Start with a free shoot</option>
-          <option value="Product Shoots">Product Shoots</option>
-          <option value="Web Design">Web Design</option>
-          <option value="Paid Ads">Paid Ads</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Email Marketing">Email Marketing</option>
-          <option value="Creative Campaigns">Creative Campaigns</option>
-          <option value="Not sure yet">Not sure yet</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label for="cf-message">Tell us a little about your brand</label>
-        <textarea id="cf-message" name="message" rows="4"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-large">Send it over</button>
-    </form>
   </div>
 </section>
 
-<!-- =============================================
-     FINAL CTA
-     ============================================= -->
-<section class="section section--dark final-cta" id="book">
-  <div class="section-inner">
-    <h2 class="final-cta-headline">Ready to hand it off?</h2>
-    <a href="#" data-book class="btn btn-primary btn-large">Get a Free Shoot</a>
+<hr class="band-rule">
+
+<section class="section section--dark" id="closing-cta">
+  <div class="section-inner prose">
+    <h2 class="section-title">A small brand should be able to sell like a big one.</h2>
+    <p>Your products are great. Your lives are proof. Let’s build the engine behind them.</p>
+    <p><a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a></p>
   </div>
 </section>
 
-<!-- =============================================
-     FOOTER
-     ============================================= -->
-<footer class="footer" id="contact">
-  <div class="section-inner footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
-      <p>A full-service marketing studio for small CPG brands.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Studio</h4>
-      <ul>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
-        <li><a href="#" data-book>Book a free shoot</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-fine">
-    <p>Made in Chicago for visionaries everywhere — our fellow Visyonaries. &copy; 2026 Visyn Studio.</p>
+</main>
+
+<hr class="band-rule">
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
+    <p class="footer-blurb">Visyn Studio is a TikTok Live and Shop accelerator for small CPG brands. We manage ads, email, and TikTok Shop around each brand’s lives, and we’re paid on performance instead of retainers. Founded by three CPG industry veterans, Visyn Studio is based in Chicago.</p>
+    <ul class="footer-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="#" data-book>Book a Growth Call</a></li>
+      <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
+    </ul>
+    <p class="footer-fine">&copy; <span data-year>2026</span> Visyn Studio. All rights reserved.</p>
   </div>
 </footer>
+
+<div class="mobile-cta-bar" id="mobile-cta-bar">
+  <a href="#" data-book class="btn btn--moss">Book a Growth Call</a>
+</div>
 
 <script src="assets/js/site.js"></script>
 
