@@ -1,93 +1,112 @@
-// =============================================
-//  Visyn Studio — shared site script (multi-page)
-//  Powers Home, Services, About, Contact.
-//  (The archived original home uses pricing.js instead.)
-// =============================================
+// =============================================================
+//  Visyn Studio — shared site script
+//  Powers Home, About, Services, Contact, 404.
+// =============================================================
 
-// ── Swappable URL constants ─────────────────────────────
-// Single source of truth for the booking flow. Swap to TidyCal/Cal.com here.
-const BOOKING_URL = "https://cal.com/visyn-studio/free-shoot"; // TODO: replace with real booking link
+// ── Swappable config ────────────────────────────────────────
+// Single source of truth for the booking flow. Every "Book a Growth
+// Call" and "Claim a Founding Spot" button on every page resolves to
+// this one value via the [data-book] attribute.
+const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 
-// Per-service "Learn more" destinations. Each defaults to the contact flow and
-// gets flipped to its real subpage URL the moment that subpage ships.
-// Product Shoots can point at its subpage as soon as it's live.
-const SERVICE_URLS = {
-  "product-shoots":    "/contact", // TODO: → "/services/product-shoots" when live
-  "web-design":        "/contact", // TODO: → "/services/web-design" when live
-  "paid-ads":          "/contact", // TODO: → "/services/paid-ads" when live
-  "social-media":      "/contact", // TODO: → "/services/social-media" when live
-  "email-marketing":   "/contact", // TODO: → "/services/email-marketing" when live
-  "creative-campaigns":"/contact", // TODO: → "/services/creative-campaigns" when live
-};
+// Boxed Joy Co. stat callouts (15 lives in July / $458 average per live).
+// Pending Kelly's approval — keep false until she signs off. When false
+// the stat row is removed and the paragraph above it stands on its own.
+const SHOW_BOXED_JOY_STATS = false;
 
-// ── Dark mode ───────────────────────────────────────────
+// YouTube video ID for Kelly's story. While this is empty the 16:9
+// placeholder block shows instead. Drop the bare ID in (not a full URL).
+const BOXED_JOY_VIDEO_ID = "";
+
+// ── Sticky nav shadow ───────────────────────────────────────
 (function () {
-  const html = document.documentElement;
-  const savedTheme = localStorage.getItem('visyn-theme') || 'light';
-  html.setAttribute('data-theme', savedTheme);
-
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('visyn-theme', next);
-    });
-  }
-})();
-
-// ── Sticky nav shadow ───────────────────────────────────
-(function () {
-  const nav = document.getElementById('nav');
+  const nav = document.getElementById("nav");
   if (!nav) return;
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
+  const onScroll = function () {
+    nav.classList.toggle("scrolled", window.scrollY > 20);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 })();
 
-// ── Hamburger menu ──────────────────────────────────────
+// ── Hamburger menu ──────────────────────────────────────────
 (function () {
-  const hamburger = document.getElementById('nav-hamburger');
-  const navLinks = document.getElementById('nav-links');
+  const hamburger = document.getElementById("nav-hamburger");
+  const navLinks = document.getElementById("nav-links");
   if (!hamburger || !navLinks) return;
-  hamburger.addEventListener('click', function () {
-    const open = navLinks.classList.toggle('is-open');
-    hamburger.setAttribute('aria-expanded', String(open));
+
+  hamburger.addEventListener("click", function () {
+    const open = navLinks.classList.toggle("is-open");
+    hamburger.setAttribute("aria-expanded", String(open));
+    hamburger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
-  // Close the menu when a real (non-dropdown-parent) link is tapped.
-  navLinks.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      navLinks.classList.remove('is-open');
-      hamburger.setAttribute('aria-expanded', 'false');
+
+  navLinks.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      navLinks.classList.remove("is-open");
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Open menu");
     });
   });
 })();
 
-// ── Mobile sticky CTA bar ───────────────────────────────
+// ── Mobile sticky CTA bar ───────────────────────────────────
+// Shows once the hero has scrolled out of view, and hides again while
+// the closing CTA section is on screen so the two never compete.
 (function () {
-  const bar = document.getElementById('mobile-cta-bar');
-  const hero = document.getElementById('top');
-  const book = document.getElementById('book');
-  if (!bar || !hero || !book) return;
-  function checkBar() {
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    const bookTop = book.getBoundingClientRect().top;
-    if (heroBottom < 0 && bookTop > window.innerHeight) {
-      bar.classList.remove('hidden');
-    } else {
-      bar.classList.add('hidden');
+  const bar = document.getElementById("mobile-cta-bar");
+  const hero = document.getElementById("top");
+  if (!bar || !hero) return;
+  const closing = document.getElementById("closing-cta");
+
+  function update() {
+    const heroGone = hero.getBoundingClientRect().bottom < 0;
+    let closingVisible = false;
+    if (closing) {
+      const r = closing.getBoundingClientRect();
+      closingVisible = r.top < window.innerHeight && r.bottom > 0;
     }
+    bar.classList.toggle("is-visible", heroGone && !closingVisible);
   }
-  window.addEventListener('scroll', checkBar, { passive: true });
-  checkBar();
+
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+  update();
 })();
 
-// ── Wire booking + per-service links ────────────────────
-document.querySelectorAll('[data-book]').forEach(function (el) {
-  el.setAttribute('href', BOOKING_URL);
+// ── Boxed Joy stat callouts ─────────────────────────────────
+(function () {
+  const row = document.getElementById("boxed-joy-stats");
+  if (!row) return;
+  if (SHOW_BOXED_JOY_STATS) {
+    row.hidden = false;
+  } else {
+    row.remove();
+  }
+})();
+
+// ── Boxed Joy video slot ────────────────────────────────────
+(function () {
+  const frame = document.getElementById("boxed-joy-video");
+  if (!frame) return;
+  const id = String(BOXED_JOY_VIDEO_ID || "").trim();
+  if (!id) return; // leave the placeholder in place
+
+  const iframe = document.createElement("iframe");
+  iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id);
+  iframe.title = "Kelly's story — Boxed Joy Co.";
+  iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+  iframe.allowFullscreen = true;
+  frame.replaceChildren(iframe);
+})();
+
+// ── Wire every booking CTA ──────────────────────────────────
+document.querySelectorAll("[data-book]").forEach(function (el) {
+  el.setAttribute("href", BOOKING_URL);
 });
-document.querySelectorAll('[data-service]').forEach(function (el) {
-  const key = el.getAttribute('data-service');
-  if (SERVICE_URLS[key]) el.setAttribute('href', SERVICE_URLS[key]);
+
+// ── Dynamic copyright year ──────────────────────────────────
+document.querySelectorAll("[data-year]").forEach(function (el) {
+  el.textContent = String(new Date().getFullYear());
 });

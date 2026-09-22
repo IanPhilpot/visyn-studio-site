@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visyn Studio — A Full-Service Marketing Studio for Small CPG Brands</title>
-  <meta name="description" content="A full-service marketing studio for small CPG brands. Product shoots, websites, ads, email, and social — run by real people who know your category. Start with a free shoot.">
-  <meta property="og:title" content="Visyn Studio — A Full-Service Marketing Studio for Small CPG Brands">
-  <meta property="og:description" content="Product shoots, websites, ads, email, and social — one team for all of it. Start with a free shoot.">
-  <meta property="og:image" content="https://visyn.studio/assets/img/og-image.jpg">
+  <title>Visyn Studio | TikTok Live &amp; Shop Accelerator for Small CPG Brands</title>
+  <meta name="description" content="We turn TikTok lives into a growth engine for small CPG brands. Ads, email, and Shop management, with no retainer. We get paid when you grow.">
+
+  <meta property="og:title" content="Visyn Studio | TikTok Live &amp; Shop Accelerator for Small CPG Brands">
+  <meta property="og:description" content="We turn TikTok lives into a growth engine for small CPG brands. Ads, email, and Shop management, with no retainer. We get paid when you grow.">
+  <meta property="og:image" content="https://visyn.studio/assets/img/og-image.png">
   <meta property="og:url" content="https://visyn.studio">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -19,320 +20,275 @@
 </head>
 <body>
 
-<!-- =============================================
-     ICON SPRITE  (keep in sync with services.html)
-     Line icons referenced via <use href="#ic-…">.
-     ============================================= -->
-<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
-  <!-- Trust bar -->
-  <symbol id="ic-humans" viewBox="0 0 24 24">
-    <circle cx="6" cy="8" r="2.1"/>
-    <path d="M2.5 16.5c0-2.1 1.6-3.6 3.5-3.6"/>
-    <circle cx="18" cy="8" r="2.1"/>
-    <path d="M21.5 16.5c0-2.1-1.6-3.6-3.5-3.6"/>
-    <circle cx="12" cy="9.5" r="3"/>
-    <path d="M6.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/>
-  </symbol>
-  <symbol id="ic-basket" viewBox="0 0 24 24">
-    <path d="M8.5 8.5a3.5 3.5 0 0 1 7 0"/>
-    <path d="M4 9h16l-1.3 9.1a2 2 0 0 1-2 1.7H7.3a2 2 0 0 1-2-1.7z"/>
-    <path d="M9.6 12.5l.5 4M14.4 12.5l-.5 4M12 12.5v4"/>
-  </symbol>
-  <symbol id="ic-store" viewBox="0 0 24 24">
-    <path d="M2 7l4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
-    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-    <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
-    <path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/>
-  </symbol>
-  <!-- Services -->
-  <symbol id="ic-camera" viewBox="0 0 24 24">
-    <path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/>
-    <circle cx="12" cy="13" r="3.2"/>
-  </symbol>
-  <symbol id="ic-browser" viewBox="0 0 24 24">
-    <rect x="3" y="4" width="18" height="16" rx="2"/>
-    <path d="M3 9h18"/>
-    <path d="M6 6.5h.01M8.5 6.5h.01M11 6.5h.01"/>
-  </symbol>
-  <symbol id="ic-megaphone" viewBox="0 0 24 24">
-    <path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/>
-    <path d="M18 8a4 4 0 0 1 0 8"/>
-    <path d="M7 14v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2"/>
-  </symbol>
-  <symbol id="ic-chat" viewBox="0 0 24 24">
-    <path d="M21 11.5a8 8 0 0 1-11.5 7.2L4 20l1.3-4.4A8 8 0 1 1 21 11.5z"/>
-    <path d="M12 14s-2.5-1.6-2.5-3.3A1.5 1.5 0 0 1 12 9.5a1.5 1.5 0 0 1 2.5 1.2C14.5 12.4 12 14 12 14z"/>
-  </symbol>
-  <symbol id="ic-envelope" viewBox="0 0 24 24">
-    <rect x="3" y="5" width="18" height="14" rx="2"/>
-    <path d="M4 7l8 5.5L20 7"/>
-  </symbol>
-  <symbol id="ic-bulb" viewBox="0 0 24 24">
-    <path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/>
-    <path d="M9 18h6"/>
-    <path d="M10 21h4"/>
-  </symbol>
-</svg>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- =============================================
-     NAVIGATION
+     NAVIGATION — Eggshell, Carbon links, Moss CTA
      ============================================= -->
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo">
+  <a href="/" class="nav-logo" aria-label="Visyn Studio — home">
     <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio">
   </a>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#founding-15">Founding 15</a></li>
+    <li><a href="#tools">Tools</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/contact">Contact</a></li>
   </ul>
-  <div class="nav-actions">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <a href="#" data-book class="btn btn-primary nav-cta">Get a Free Shoot</a>
-  </div>
+  <a href="#" data-book class="btn btn--moss nav-cta">Book a Growth Call</a>
 </nav>
 
+<main id="main">
+
 <!-- =============================================
-     3.2 HERO
+     HERO — Amethyst / Near White / Lime Cream CTA
      ============================================= -->
 <section class="hero" id="top">
-  <div class="hero-content">
-    <h1 class="hero-headline">Share your <span class="accent">vision</span>. We'll handle the rest.</h1>
-    <p class="hero-subhead">A full-service marketing studio for small CPG brands. Product shoots, websites, ads, email, and social — run by real people who know your category, built to make you look like you belong on the top shelf.</p>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">The TikTok Live &amp; Shop accelerator for small CPG brands</p>
+    <h1 class="hero-headline">Go live. We’ll grow the rest.</h1>
+    <p class="hero-subhead">Ads, email, and Shop management built around your lives. No retainer. We get paid when you grow.</p>
     <div class="hero-ctas">
-      <a href="#" data-book class="btn btn-primary">Get a Free Shoot</a>
-      <a href="/services" class="btn btn-secondary">See What We Do</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <video autoplay muted loop playsinline poster="assets/img/hero-saltbird-kitchen-2-2x3.png">
-      <source src="assets/video/saltbird-zoom.mp4" type="video/mp4">
-      <img src="assets/img/hero-saltbird-kitchen-2-2x3.png"
-           alt="Saltbird Yuzu + Yarrow sparkling tonic on a sunlit kitchen counter">
-    </video>
-  </div>
-</section>
-
-<!-- =============================================
-     3.3 WHY US (3-up strip)
-     ============================================= -->
-<section class="section section--dark promise">
-  <div class="section-inner promise-grid">
-    <div class="promise-item">
-      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-humans"/></svg>
-      <h3>Real humans, real work.</h3>
-      <p>We answer our own emails. No offshore teams, no AI slop.</p>
-    </div>
-    <div class="promise-item">
-      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-basket"/></svg>
-      <h3>We know CPG.</h3>
-      <p>35 years in your category — food, beverage, personal care, and beyond.</p>
-    </div>
-    <div class="promise-item">
-      <svg class="icon promise-icon-svg" aria-hidden="true"><use href="#ic-store"/></svg>
-      <h3>Made for small brands.</h3>
-      <p>No giant retainers, no minimums. Same care whether you're one SKU or fifty.</p>
+      <a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a>
+      <a href="#results" class="btn btn--ghost-light btn--large">See the Boxed Joy Story</a>
     </div>
   </div>
 </section>
 
 <!-- =============================================
-     3.4 WHAT WE DO (six equal cards)
+     THE PROBLEM — Eggshell
      ============================================= -->
-<section class="section work" id="what-we-do">
+<section class="section">
+  <div class="section-inner prose">
+    <h2 class="section-title">Your lives are selling. Your growth plan isn’t.</h2>
+    <p>You go live, the chat fills up, and orders start rolling in. Then the stream ends and the momentum goes with it. Ad money gets spent without a plan, the follow-up emails never go out, and nobody can tell you which part is actually working.</p>
+    <p>Most agencies want a month of discovery and a signed retainer before they touch anything. You don’t need another vendor. You need a partner who understands live selling and only wins when you do.</p>
+  </div>
+</section>
+
+<!-- =============================================
+     THE GUIDE — Eggshell
+     ============================================= -->
+<section class="section">
+  <div class="section-inner prose">
+    <h2 class="section-title">Real humans who’ve been in the CPG trenches.</h2>
+    <p>We spent 35+ years combined in CPG marketing, sales, and operations before starting Visyn Studio. We know what it takes to move product for a small brand, because we watched too many of them get ignored or overcharged. We answer our own emails. We take calls with video on. And we only take on brands we believe we can grow.</p>
+  </div>
+</section>
+
+<!-- =============================================
+     HOW IT WORKS — Eggshell, Moss step numbers
+     The ONLY numbered section on the page.
+     ============================================= -->
+<section class="section" id="how-it-works">
   <div class="section-inner">
-    <h2 class="section-title">One team for all of it.</h2>
-    <div class="svc-cards">
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-camera"/></svg>
-        <h3>Product Shoots</h3>
-        <p>Pro-grade product photos and video, shelf-ready in days.</p>
-        <a href="/services#product-shoots" class="btn btn-secondary">Learn more</a>
+    <h2 class="section-title">Three steps. That’s the whole thing.</h2>
+    <ol class="how-steps" role="list">
+      <li class="how-step">
+        <div class="how-numeral" aria-hidden="true">1</div>
+        <h3>Book a growth call.</h3>
+        <p>Tell us about your brand, your lives, and where you want to be in six months.</p>
+      </li>
+      <li class="how-step">
+        <div class="how-numeral" aria-hidden="true">2</div>
+        <h3>We audit your setup.</h3>
+        <p>We go through your TikTok, ads, Shopify, and email, then show you in plain English what’s working and where money is leaking.</p>
+      </li>
+      <li class="how-step">
+        <div class="how-numeral" aria-hidden="true">3</div>
+        <h3>We run the plan.</h3>
+        <p>We time your ads to your lives, set up emails that bring buyers back, and manage your Shop week to week. You keep going live. We handle the rest.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- =============================================
+     WHAT WE HANDLE — Eggshell, Moss card headers.
+     Deliberately NOT numbered: this is not a sequence.
+     ============================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">What we handle.</h2>
+    <div class="handle-cards">
+      <article class="handle-card">
+        <h3>TikTok Live &amp; Shop.</h3>
+        <p>We handle your Shop setup, product listings, and a live schedule built around the days that actually sell.</p>
       </article>
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-browser"/></svg>
-        <h3>Web Design</h3>
-        <p>Storefronts that sell, built and maintained on Shopify, Webflow, WordPress, and more.</p>
-        <a href="/services#web-design" class="btn btn-secondary">Learn more</a>
+      <article class="handle-card">
+        <h3>Ads that follow your lives.</h3>
+        <p>We boost your best live content to warm audiences and scale spend only when the numbers say so.</p>
       </article>
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-megaphone"/></svg>
-        <h3>Paid Ads</h3>
-        <p>Ads that pay their way across Meta, TikTok, Amazon, and Walmart — including the retail-media most agencies won't touch.</p>
-        <a href="/services#paid-ads" class="btn btn-secondary">Learn more</a>
+      <article class="handle-card">
+        <h3>Email &amp; SMS.</h3>
+        <p>We build Klaviyo flows that tell your buyers you’re live and bring them back between streams.</p>
       </article>
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-chat"/></svg>
-        <h3>Social Media</h3>
-        <p>Content, creators, and day-to-day management that keep your feed alive and on-brand.</p>
-        <a href="/services#social-media" class="btn btn-secondary">Learn more</a>
-      </article>
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-envelope"/></svg>
-        <h3>Email Marketing</h3>
-        <p>Campaigns and automated flows that turn one-time buyers into regulars.</p>
-        <a href="/services#email-marketing" class="btn btn-secondary">Learn more</a>
-      </article>
-      <article class="svc-card">
-        <svg class="icon svc-card-icon" aria-hidden="true"><use href="#ic-bulb"/></svg>
-        <h3>Creative Campaigns</h3>
-        <p>One big idea, built end-to-end — page, social, email, and ads, all pointed at your next launch or sale.</p>
-        <a href="/services#creative-campaigns" class="btn btn-secondary">Learn more</a>
+      <article class="handle-card">
+        <h3>Amazon strategy.</h3>
+        <p>If Amazon is part of your plan, we’ll help you decide how and when to add it.</p>
       </article>
     </div>
   </div>
 </section>
 
 <!-- =============================================
-     3.5 HOW IT WORKS (3 steps)
+     RESULTS — Eggshell, Moss stat numbers
      ============================================= -->
-<section class="section how" id="how">
+<section class="section" id="results">
   <div class="section-inner">
-    <h2 class="section-title">How it works.</h2>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-numeral">01</div>
-        <h3>Start with a free shoot.</h3>
-        <p>Book a call with our team, tell us about your brand, and we'll produce real assets you can use — free — so you see how we work before anything else.</p>
+    <h2 class="section-title">Boxed Joy Co.: from ads nobody could see to her best month in years.</h2>
+    <p class="results-lede">Kelly sells candy live on TikTok, and she’s great at it. When we came on, we found ad spend running outside the reporting view she’d been shown, with almost nothing to show for it. We shut it down, rebuilt her tracking, timed her ads to her lives, and launched her email program. July was her strongest month in years.</p>
+
+    <!-- Stat callouts are gated on SHOW_BOXED_JOY_STATS in assets/js/site.js.
+         TODO: pending Kelly's approval — flip that flag to true once she signs off. -->
+    <div class="stat-row" id="boxed-joy-stats" hidden>
+      <div class="stat">
+        <div class="stat-number">15</div>
+        <p class="stat-label">lives in July</p>
       </div>
-      <div class="how-step">
-        <div class="how-numeral">02</div>
-        <h3>We build your plan.</h3>
-        <p>We put together the mix your brand actually needs: shoots, site, ads, email, social, or a full campaign.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-numeral">03</div>
-        <h3>We run it with you.</h3>
-        <p>Real humans, fair monthly pricing, no long contracts. Cancel anytime.</p>
+      <div class="stat">
+        <div class="stat-number">$458</div>
+        <p class="stat-label">average per live</p>
       </div>
     </div>
+
+    <!-- TODO: pending — set BOXED_JOY_VIDEO_ID in assets/js/site.js to swap
+         this placeholder for the real embed. -->
+    <div class="video-frame" id="boxed-joy-video">
+      <div class="placeholder-block placeholder-block--amethyst placeholder-block--16x9">
+        Kelly’s story — video coming soon.
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- =============================================
-     3.6 A TASTE OF OUR WORK
+     FOUNDING 15 — Lime Cream band
      ============================================= -->
-<section class="section work" id="work">
+<section class="section founding" id="founding-15">
   <div class="section-inner">
-    <h2 class="section-title">A taste of our work.</h2>
-    <p class="section-lede">We work across categories — and across channels. Here's a sample of what we make.</p>
-    <div class="work-grid">
-
-      <article class="work-card work-card--saltbird">
-        <header>
-          <h3>Saltbird</h3>
-          <p class="work-type">Botanical sparkling tonic</p>
-        </header>
-        <div class="work-thumbs">
-          <img src="assets/img/work-saltbird-1.png" alt="Saltbird on a sunlit kitchen counter">
-          <img src="assets/img/work-saltbird-2.png" alt="Saltbird on a summer picnic blanket">
-          <img src="assets/img/work-saltbird-3.png" alt="Saltbird in a beach cooler">
-          <img src="assets/img/work-saltbird-4.png" alt="Saltbird close-up detail shot">
-        </div>
-      </article>
-
-      <article class="work-card work-card--marrow">
-        <header>
-          <h3>Marrow &amp; Moss</h3>
-          <p class="work-type">Botanical body oil</p>
-        </header>
-        <div class="work-thumbs">
-          <img src="assets/img/work-marrow-1.png" alt="Marrow &amp; Moss on a marble bathroom vanity">
-          <img src="assets/img/work-marrow-2.png" alt="Marrow &amp; Moss on a sunlit dresser">
-          <img src="assets/img/work-marrow-3A.png" alt="Marrow &amp; Moss on a garden table">
-          <img src="assets/img/work-marrow-4.png" alt="Marrow &amp; Moss close-up detail shot">
-        </div>
-      </article>
-
-      <article class="work-card work-card--fieldday">
-        <header>
-          <h3>Field Day</h3>
-          <p class="work-type">Small-batch granola</p>
-        </header>
-        <div class="work-thumbs">
-          <img src="assets/img/work-fieldday-1.png" alt="Field Day granola on a breakfast tablescape">
-          <img src="assets/img/work-fieldday-2.png" alt="Field Day granola at a trail rest stop">
-          <img src="assets/img/work-fieldday-3.png" alt="Field Day granola on a café counter">
-          <img src="assets/img/work-fieldday-4A.png" alt="Field Day granola close-up detail shot">
-        </div>
-      </article>
-
-    </div>
+    <h2 class="section-title">The Founding 15.</h2>
+    <p>We’re taking on 15 brands with an offer we’ll never run again. You get TikTok Live and Shop management, ad strategy and management, email and SMS, an Amazon strategy consultation, and a free consultation on custom tools for your business.</p>
+    <p class="lede-strong">Zero upfront. No retainer.</p>
+    <p>We earn a share of what we help you grow.</p>
+    <!-- TODO: PENDING PRICING DECISION — the revenue share / fee detail goes in
+         the empty <p class="fee-detail"> below. Do not invent a percentage. -->
+    <p class="fee-detail"></p>
+    <a href="#" data-book class="btn btn--moss btn--large">Claim a Founding Spot</a>
   </div>
 </section>
 
 <!-- =============================================
-     3.7 FREE-SHOOT BAND
+     WHY VISYN — Eggshell, comparison table
      ============================================= -->
-<section class="section free-pack" id="free-shoot">
-  <div class="section-inner free-pack-inner">
-    <div class="free-pack-eyebrow">No commitment. No pitch. Just results.</div>
-    <h2 class="free-pack-headline">Your first shoot is on us.</h2>
-    <p class="free-pack-body">Book a call with our team. We'll learn about your brand and produce your first pack — 10 photos and 3 videos — completely free. It's not a sales call; it's a working session. You leave with real assets whether you continue with us or not.</p>
-    <a href="#" data-book class="btn btn-primary btn-large">Book Your Free Shoot</a>
-    <p class="free-pack-value">A $199 value. Yours free, no strings attached.</p>
-  </div>
-</section>
-
-<!-- =============================================
-     3.9 FINAL CTA
-     ============================================= -->
-<section class="section final-cta final-cta--light" id="book">
+<section class="section">
   <div class="section-inner">
-    <h2 class="final-cta-headline">Ready to look like the top shelf?</h2>
-    <a href="/contact" class="btn btn-primary btn-large">Get in Touch</a>
+    <h2 class="section-title">Why brands pick Visyn.</h2>
+    <p class="table-hint">Swipe the table to compare all three.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="compare-caption">
+      <table class="compare-table">
+        <caption id="compare-caption" class="sr-only">Visyn Studio compared with a generalist agency and a TikTok agency on retainer</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">Comparison</span></th>
+            <th scope="col" class="col-visyn">Visyn Studio</th>
+            <th scope="col">Generalist agency</th>
+            <th scope="col">TikTok agency on retainer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">How you pay</th>
+            <td class="col-visyn">Performance-based</td>
+            <td>Monthly retainer</td>
+            <td>Monthly retainer</td>
+          </tr>
+          <tr>
+            <th scope="row">Getting started</th>
+            <td class="col-visyn">Days</td>
+            <td>Weeks of discovery</td>
+            <td>Varies</td>
+          </tr>
+          <tr>
+            <th scope="row">Focus</th>
+            <td class="col-visyn">TikTok Live &amp; Shop</td>
+            <td>A little of everything</td>
+            <td>TikTok content</td>
+          </tr>
+          <tr>
+            <th scope="row">Email &amp; Shopify</th>
+            <td class="col-visyn">Included</td>
+            <td>Extra</td>
+            <td>Rarely</td>
+          </tr>
+          <tr>
+            <th scope="row">When you don’t grow</th>
+            <td class="col-visyn">We don’t either</td>
+            <td>They still get paid</td>
+            <td>They still get paid</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
 <!-- =============================================
-     FOOTER
+     TOOLS FOR LIVE SELLERS — Amethyst
      ============================================= -->
-<footer class="footer" id="contact">
-  <div class="section-inner footer-grid">
-    <div class="footer-brand">
-      <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
-      <p>A full-service marketing studio for small CPG brands.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Studio</h4>
-      <ul>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
-        <li><a href="#" data-book>Book a free shoot</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
-    </div>
+<section class="section section--dark" id="tools">
+  <div class="section-inner prose">
+    <h2 class="section-title">We build the tools, too.</h2>
+    <p>Live selling comes with problems off-the-shelf software doesn’t solve, so we build tools for them. Our live dashboard gives your team a working view during the stream and puts a display screen on set for your viewers. Founding brands get a free tools consultation and discounted custom builds.</p>
   </div>
-  <div class="footer-fine">
-    <p>Made in Chicago for visionaries everywhere — our fellow Visyonaries. &copy; 2026 Visyn Studio.</p>
+</section>
+
+<!-- Thin Lime Cream rule: keeps the two back-to-back Amethyst bands
+     reading as two separate sections. -->
+<hr class="band-rule">
+
+<!-- =============================================
+     CLOSING CTA — Amethyst
+     ============================================= -->
+<section class="section section--dark" id="closing-cta">
+  <div class="section-inner prose">
+    <h2 class="section-title">A small brand should be able to sell like a big one.</h2>
+    <p>Your products are great. Your lives are proof. Let’s build the engine behind them.</p>
+    <p><a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a></p>
+  </div>
+</section>
+
+</main>
+
+<hr class="band-rule">
+
+<!-- =============================================
+     FOOTER — Amethyst
+     ============================================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio" class="footer-logo">
+    <p class="footer-blurb">Visyn Studio is a TikTok Live and Shop accelerator for small CPG brands. We manage ads, email, and TikTok Shop around each brand’s lives, and we’re paid on performance instead of retainers. Founded by three CPG industry veterans, Visyn Studio is based in Chicago.</p>
+    <ul class="footer-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="#" data-book>Book a Growth Call</a></li>
+      <li><a href="mailto:hello@visyn.studio">hello@visyn.studio</a></li>
+    </ul>
+    <p class="footer-fine">&copy; <span data-year>2026</span> Visyn Studio. All rights reserved.</p>
   </div>
 </footer>
 
 <!-- =============================================
-     MOBILE STICKY CTA BAR
+     MOBILE STICKY CTA
      ============================================= -->
-<div class="mobile-cta-bar hidden" id="mobile-cta-bar">
-  <a href="#" data-book class="btn btn-primary">Get a Free Shoot</a>
+<div class="mobile-cta-bar" id="mobile-cta-bar">
+  <a href="#" data-book class="btn btn--moss">Book a Growth Call</a>
 </div>
 
 <script src="assets/js/site.js"></script>

@@ -3,52 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Page Not Found — Visyn Studio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Lilita+One&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    .not-found {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: var(--space-6) var(--container-pad);
-      gap: var(--space-4);
-    }
-    .not-found-numeral {
-      font-family: var(--font-display);
-      font-size: clamp(6rem, 20vw, 12rem);
-      color: var(--terracotta);
-      line-height: 1;
-    }
-    .not-found h1 {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      color: var(--amethyst);
-    }
-    .not-found p {
-      font-size: var(--text-lg);
-      color: var(--amethyst-soft);
-      max-width: 32rem;
-    }
-  </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <img src="assets/img/logo.png" alt="Visyn Studio" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="nav-logo-text" style="display:none">Visyn Studio</span>
-    </a>
-  </nav>
-  <div class="not-found">
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo" aria-label="Visyn Studio — home">
+    <img src="assets/img/visyn-studio-logo-RGB-450x81.png" alt="Visyn Studio">
+  </a>
+  <a href="#" data-book class="btn btn--moss nav-cta">Book a Growth Call</a>
+</nav>
+
+<main>
+  <section class="not-found">
     <div class="not-found-numeral">404</div>
-    <h1>Page not found.</h1>
-    <p>The page you're looking for doesn't exist — but a great photo shoot does.</p>
-    <a href="/" class="btn btn-primary">Back to Home</a>
+    <h1>This page went off-script.</h1>
+    <p>The link you followed doesn’t exist any more. The good stuff is still on the homepage.</p>
+    <p>
+      <a href="/" class="btn btn--moss btn--large">Back to the homepage</a>
+    </p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-fine">&copy; <span data-year>2026</span> Visyn Studio. All rights reserved.</p>
   </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+
 </body>
 </html>
