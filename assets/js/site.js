@@ -10,9 +10,9 @@
 const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 
 // Boxed Joy Co. stat callouts (15 lives in July / $458 average per live).
-// Pending Kelly's approval — keep false until she signs off. When false
-// the stat row is removed and the paragraph above it stands on its own.
-const SHOW_BOXED_JOY_STATS = false;
+// When false the stat row is removed and the paragraph above it stands
+// on its own. These are Kelly's revenue figures on a public page.
+const SHOW_BOXED_JOY_STATS = true;
 
 // YouTube video ID for Kelly's story. While this is empty the 16:9
 // placeholder block shows instead. Drop the bare ID in (not a full URL).

@@ -31,7 +31,6 @@
   --near-white-20: rgba(252, 252, 252, 0.20);
 
   /* Type */
-  --font-logo:    'Bagel Fat One', cursive;   /* logo lockup only */
   --font-display: 'Jost', sans-serif;         /* headings + button labels */
   --font-body:    'Lora', serif;              /* body copy */
 
