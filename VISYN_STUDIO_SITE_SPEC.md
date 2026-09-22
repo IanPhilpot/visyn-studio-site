@@ -59,7 +59,7 @@ Measured ratios (verified against WCAG 2.1):
 
 | Pair | Ratio | Rule |
 |---|---|---|
-| Near White on Moss | **4.17:1** | Large text only. Every Moss button label is Lilita One at **≥18px** — the floor is set on `.btn` and must not be lowered |
+| Near White on Moss | **4.17:1** | Large text only. WCAG counts "large" as ≥24px at any weight **or** ≥18.66px at 700+. Moss button labels are Jost **700 at 19px** (`--btn-label`); lowering either the weight or the size breaks AA |
 | Moss on Eggshell | **3.79:1** | Large text only. Card headers and the table's Visyn column header are held at **≥24px**. Never use Moss at body size on Eggshell |
 | Carbon on Eggshell | 14.12:1 | Body text on light |
 | Near White on Amethyst | 16.18:1 | Body text on dark |
@@ -97,8 +97,11 @@ sections.
 
 Google Fonts, loaded on every page:
 
-- **Bagel Fat One** — logo lockup only
-- **Lilita One** — headings and button labels
+- **Bagel Fat One** — reserved for the logo lockup. Currently unused:
+  the wordmark is a PNG, so nothing on the site sets `--font-logo`.
+- **Jost** — headings and button labels, at **weight 700**. Jost's 400 is
+  light, unlike the single heavy weight Lilita One shipped, so the 700 is
+  load-bearing for both look and contrast.
 - **Lora** — body copy
 
 Body copy is capped at `--measure` (68ch, under the ~75-character target) with

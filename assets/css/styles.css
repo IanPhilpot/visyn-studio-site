@@ -32,11 +32,12 @@
 
   /* Type */
   --font-logo:    'Bagel Fat One', cursive;   /* logo lockup only */
-  --font-display: 'Lilita One', sans-serif;   /* headings + button labels */
+  --font-display: 'Jost', sans-serif;         /* headings + button labels */
   --font-body:    'Lora', serif;              /* body copy */
 
   --text-sm:    1rem;      /* 16px */
-  --text-base:  1.125rem;  /* 18px — also the Moss-button floor */
+  --text-base:  1.125rem;  /* 18px */
+  --btn-label:  1.1875rem; /* 19px — WCAG bold-large floor, see buttons */
   --text-lg:    1.3125rem; /* 21px */
   --text-xl:    1.75rem;   /* 28px */
   --text-2xl:   2.25rem;   /* 36px */
@@ -90,7 +91,7 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 400;       /* Lilita One ships a single weight */
+  font-weight: 700;       /* Jost is a light 400 — headings need 700 */
   line-height: var(--leading-snug);
   letter-spacing: 0.01em;
   margin: 0;
@@ -127,6 +128,7 @@ a { color: inherit; }
   background: var(--amethyst);
   color: var(--near-white);
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-base);
   padding: var(--space-1) var(--space-2);
   border-radius: 0 0 var(--radius-sm) 0;
@@ -178,9 +180,10 @@ a { color: inherit; }
 /* -------------------------------------------------------------
    5. BUTTONS
    Contrast rules (Part 3):
-   - Near White on Moss is ~4.3:1 → AA for LARGE text only, so every
-     Moss button label is Lilita One at >= 18px. That floor is set
-     here on .btn itself and must not be lowered.
+   - Near White on Moss is 4.17:1 → AA for LARGE text only. WCAG counts
+     "large" as >=24px at any weight, or >=18.66px at 700+. Jost 400 is
+     light, so every Moss button label is Jost 700 at 19px (--btn-label).
+     Lowering either the weight or the size breaks AA.
    - On Amethyst sections, primary buttons are Lime Cream with an
      Amethyst label.
    ------------------------------------------------------------- */
@@ -190,7 +193,8 @@ a { color: inherit; }
   justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-display);
-  font-size: var(--text-base);   /* 18px floor — do not reduce */
+  font-weight: 700;
+  font-size: var(--btn-label);   /* 19px floor — do not reduce, see note above */
   line-height: 1.2;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -366,6 +370,7 @@ a { color: inherit; }
 
 .how-numeral {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-3xl);   /* large — Moss on Eggshell is fine at this size */
   line-height: 1;
   color: var(--moss);
@@ -412,6 +417,7 @@ a { color: inherit; }
 }
 .stat-number {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-stat);   /* big stat numbers — Moss is allowed here */
   line-height: 1;
   color: var(--moss);
@@ -432,6 +438,7 @@ a { color: inherit; }
   padding: var(--space-3);
   border-radius: var(--radius);
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-base);
   letter-spacing: 0.02em;
 }
@@ -457,6 +464,7 @@ a { color: inherit; }
 .founding p { font-size: var(--text-base); }
 .founding .lede-strong {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-xl);
   color: var(--amethyst);
   margin: var(--space-3) 0 var(--space-1);
@@ -494,6 +502,7 @@ a { color: inherit; }
 }
 .compare-table thead th {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: 1.25rem;
   color: var(--amethyst);
   border-bottom-width: 3px;
@@ -602,6 +611,7 @@ a { color: inherit; }
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-xl);
   letter-spacing: 0.02em;
   margin-bottom: var(--space-2);
@@ -656,6 +666,7 @@ a { color: inherit; }
 }
 .not-found-numeral {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-stat);
   line-height: 1;
   color: var(--moss);
