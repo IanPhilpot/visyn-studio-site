@@ -7,8 +7,7 @@
 // Single source of truth for the booking flow. Every "Book a Growth
 // Call" and "Claim a Founding Spot" button on every page resolves to
 // this one value via the [data-book] attribute.
-// TODO: replace with the real Cal.com/TidyCal growth-call link.
-const BOOKING_URL = "https://cal.com/visyn-studio/growth-call";
+const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 
 // Boxed Joy Co. stat callouts (15 lives in July / $458 average per live).
 // Pending Kelly's approval — keep false until she signs off. When false

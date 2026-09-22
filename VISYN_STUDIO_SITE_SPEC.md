@@ -29,7 +29,7 @@ All in `assets/js/site.js`, at the top of the file:
 
 | Constant | Current value | Notes |
 |---|---|---|
-| `BOOKING_URL` | `https://cal.com/visyn-studio/growth-call` | **Placeholder.** Every `[data-book]` element resolves to this. Single source of truth |
+| `BOOKING_URL` | `https://calendar.app.google/4ZqwkECFsBakrisj9` | Google Calendar appointment page. Every `[data-book]` element resolves to this. Single source of truth |
 | `SHOW_BOXED_JOY_STATS` | `false` | Gates the "15 lives / $458 average" stat row. Pending Kelly's approval |
 | `BOXED_JOY_VIDEO_ID` | `""` | Bare YouTube ID. While empty, the 16:9 placeholder block shows |
 
@@ -132,10 +132,7 @@ Body copy is capped at `--measure` (68ch, under the ~75-character target) with
 
 ## 5. Open TODOs
 
-- `BOOKING_URL` is a placeholder — swap in the real growth-call link.
 - **Founding 15 fee detail**: `<p class="fee-detail">` on the homepage is
   intentionally empty, pending a pricing decision. Do not invent a percentage.
 - **Boxed Joy stats** pending Kelly's approval → flip `SHOW_BOXED_JOY_STATS`.
 - **Kelly's story video** pending → set `BOXED_JOY_VIDEO_ID`.
-- Confirm the spelling of Steve's surname on `/about` (the v2 brief says
-  "Higgenbotham"; the v1 site said "Higginbotham").
