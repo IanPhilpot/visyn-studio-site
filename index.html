@@ -143,18 +143,27 @@
     <h2 class="section-title">Boxed Joy Co.: from ads nobody could see to her best month in years.</h2>
     <p class="results-lede">Kelly sells candy live on TikTok, and she’s great at it. When we came on, we found ad spend running outside the reporting view she’d been shown, with almost nothing to show for it. We shut it down, rebuilt her tracking, timed her ads to her lives, and launched her email program. July was her strongest month in years.</p>
 
-    <!-- Stat cards. Gated on SHOW_BOXED_JOY_STATS in assets/js/site.js;
-         the hidden attribute is the no-JS default, cleared by the script.
-         TODO: swap in Ian's preferred stat set — these are the two from the
-         original brief, standing in until that list lands. -->
-    <div class="stat-cards" id="boxed-joy-stats" hidden>
-      <div class="stat-card">
-        <div class="stat-number">15</div>
-        <p class="stat-label">lives in July</p>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">$458</div>
-        <p class="stat-label">average per live</p>
+    <!-- Boxed Joy stat cards.
+         TODO: the three values below are PLACEHOLDERS. Replace each
+         data-pending number with the real figure and delete its
+         data-pending attribute. site.js refuses to reveal the cards
+         while any data-pending remains, so placeholders cannot ship
+         even if SHOW_BOXED_JOY_STATS is flipped to true by mistake. -->
+    <div id="boxed-joy-stats" hidden>
+      <p class="stat-caption">July and August 2026, against the two months before.</p>
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-number" data-pending>+__%</div>
+          <p class="stat-label">revenue</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-pending>+__%</div>
+          <p class="stat-label">average order value</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-pending>+__%</div>
+          <p class="stat-label">orders</p>
+        </div>
       </div>
     </div>
 

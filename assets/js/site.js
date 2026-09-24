@@ -75,11 +75,23 @@ const SHOW_BOXED_JOY_STATS = false;
 (function () {
   const row = document.getElementById("boxed-joy-stats");
   if (!row) return;
-  if (SHOW_BOXED_JOY_STATS) {
-    row.hidden = false;
-  } else {
+  if (!SHOW_BOXED_JOY_STATS) {
     row.remove();
+    return;
   }
+  // Safety net: these are a real brand's revenue figures. If any value is
+  // still a placeholder, keep the whole block out of the page rather than
+  // publish a made-up number.
+  const pending = row.querySelectorAll("[data-pending]").length;
+  if (pending) {
+    console.warn(
+      "Boxed Joy stats withheld: " + pending + " placeholder value(s) remain. " +
+      "Set the real figures and remove their data-pending attributes."
+    );
+    row.remove();
+    return;
+  }
+  row.hidden = false;
 })();
 
 // ── Wire every booking CTA ──────────────────────────────────
