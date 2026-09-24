@@ -30,7 +30,7 @@ All in `assets/js/site.js`, at the top of the file:
 | Constant | Current value | Notes |
 |---|---|---|
 | `BOOKING_URL` | `https://calendar.app.google/4ZqwkECFsBakrisj9` | Google Calendar appointment page. Every `[data-book]` element resolves to this. Single source of truth |
-| `SHOW_BOXED_JOY_STATS` | `true` | Gates the Boxed Joy stat cards in `#results` |
+| `SHOW_BOXED_JOY_STATS` | `false` | Gates the Boxed Joy stat cards in `#results`. Held false until the final stat set is confirmed |
 
 Add a booking CTA by putting `data-book` on the anchor — never hard-code the URL.
 
