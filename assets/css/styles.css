@@ -19,7 +19,7 @@
   --near-white: #FCFCFC; /* body text on dark sections */
 
   /* Derived states (hovers only — no new hues) */
-  --moss-hover:       #3E6F19;
+  --moss-deep:        #3E6F19; /* 5.34:1 on Eggshell — AA at body size */
   --lime-cream-hover: #F4F27E;
   --amethyst-hover:   #351C58;
 
@@ -212,7 +212,7 @@ a { color: inherit; }
   color: var(--near-white);
   border-color: var(--moss);
 }
-.btn--moss:hover { background: var(--moss-hover); border-color: var(--moss-hover); }
+.btn--moss:hover { background: var(--moss-deep); border-color: var(--moss-deep); }
 
 /* Primary CTA on Amethyst sections */
 .btn--lime {
@@ -270,13 +270,16 @@ a { color: inherit; }
 .nav-links a {
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: var(--carbon);
+  color: var(--moss-deep);
   text-decoration: none;
   padding: 0.35rem 0;
   border-bottom: 2px solid transparent;
-  transition: border-color 160ms var(--ease);
+  transition: border-color 160ms var(--ease), color 160ms var(--ease);
 }
-.nav-links a:hover { border-bottom-color: var(--moss); }
+.nav-links a:hover {
+  color: var(--amethyst);
+  border-bottom-color: var(--moss-deep);
+}
 
 .nav-cta { padding: 0.6rem 1.15rem; }
 
@@ -414,6 +417,34 @@ a { color: inherit; }
   gap: var(--space-5);
   margin: var(--space-4) 0;
 }
+
+/* Stat cards — auto-fit so 2, 3 or 4 cards all sit correctly. */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+.stat-card {
+  min-width: 0;
+  padding: var(--space-3);
+  border: 2px solid var(--amethyst-14);
+  border-radius: var(--radius);
+  background: var(--eggshell);
+}
+.stat-card .stat-number { margin-bottom: 0.35rem; }
+.stat-card .stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--carbon);
+  margin: 0;
+}
+.stat-card .stat-note {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--amethyst);
+  margin: 0.5rem 0 0;
+}
 .stat-number {
   font-family: var(--font-display);
   font-weight: 700;
@@ -444,15 +475,6 @@ a { color: inherit; }
 .placeholder-block--amethyst { background: var(--amethyst); color: var(--near-white); }
 .placeholder-block--moss     { background: var(--moss);     color: var(--near-white); }
 .placeholder-block--16x9     { aspect-ratio: 16 / 9; width: 100%; }
-
-.video-frame { margin-top: var(--space-4); max-width: 880px; }
-.video-frame iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  border-radius: var(--radius);
-  display: block;
-}
 
 /* -------------------------------------------------------------
    12. FOUNDING 15 — Lime Cream band

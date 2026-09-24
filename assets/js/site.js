@@ -14,10 +14,6 @@ const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 // on its own. These are Kelly's revenue figures on a public page.
 const SHOW_BOXED_JOY_STATS = true;
 
-// YouTube video ID for Kelly's story. While this is empty the 16:9
-// placeholder block shows instead. Drop the bare ID in (not a full URL).
-const BOXED_JOY_VIDEO_ID = "";
-
 // ── Sticky nav shadow ───────────────────────────────────────
 (function () {
   const nav = document.getElementById("nav");
@@ -83,22 +79,6 @@ const BOXED_JOY_VIDEO_ID = "";
   } else {
     row.remove();
   }
-})();
-
-// ── Boxed Joy video slot ────────────────────────────────────
-(function () {
-  const frame = document.getElementById("boxed-joy-video");
-  if (!frame) return;
-  const id = String(BOXED_JOY_VIDEO_ID || "").trim();
-  if (!id) return; // leave the placeholder in place
-
-  const iframe = document.createElement("iframe");
-  iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id);
-  iframe.title = "Kelly's story — Boxed Joy Co.";
-  iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  iframe.referrerPolicy = "strict-origin-when-cross-origin";
-  iframe.allowFullscreen = true;
-  frame.replaceChildren(iframe);
 })();
 
 // ── Wire every booking CTA ──────────────────────────────────
