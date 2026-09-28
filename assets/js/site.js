@@ -9,11 +9,10 @@
 // this one value via the [data-book] attribute.
 const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 
-// Boxed Joy Co. stat cards. Held false while Ian settles the final stat
-// set — the cards in #results still carry the brief's placeholder values
-// (15 lives in July / $458 average per live), and these are Kelly's
-// revenue figures on a public page. Flip to true once the set is final.
-const SHOW_BOXED_JOY_STATS = false;
+// Boxed Joy Co. stat cards. Figures come from the store's own order export
+// for May-Aug 2026; see VISYN_STUDIO_SITE_SPEC.md for how they are derived.
+// These are a real brand's revenue figures, so the block stays gated.
+const SHOW_BOXED_JOY_STATS = true;
 
 // ── Sticky nav shadow ───────────────────────────────────────
 (function () {
