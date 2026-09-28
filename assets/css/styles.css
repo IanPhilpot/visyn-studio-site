@@ -423,7 +423,15 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+/* Caption sits above the grid, NOT inside it — a child spanning 1/-1 keeps
+   auto-fit's empty tracks alive and pins the cards to their min width. */
+.stat-caption {
   margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--amethyst);   /* small accent text on light is Amethyst, never Moss */
+  margin: 0;
 }
 .stat-card {
   min-width: 0;
@@ -432,7 +440,13 @@ a { color: inherit; }
   border-radius: var(--radius);
   background: var(--eggshell);
 }
-.stat-card .stat-number { margin-bottom: 0.35rem; }
+/* Held below the section-level stat size so a 5-character figure such as
+   "+214%" still fits when four cards share the row. Floor stays well above
+   the 24px that Moss-on-Eggshell needs. */
+.stat-card .stat-number {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 0.35rem;
+}
 .stat-card .stat-label {
   font-family: var(--font-body);
   font-size: var(--text-sm);

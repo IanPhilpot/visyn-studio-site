@@ -30,7 +30,7 @@ All in `assets/js/site.js`, at the top of the file:
 | Constant | Current value | Notes |
 |---|---|---|
 | `BOOKING_URL` | `https://calendar.app.google/4ZqwkECFsBakrisj9` | Google Calendar appointment page. Every `[data-book]` element resolves to this. Single source of truth |
-| `SHOW_BOXED_JOY_STATS` | `false` | Gates the Boxed Joy stat cards in `#results`. Held false until the final stat set is confirmed |
+| `SHOW_BOXED_JOY_STATS` | `true` | Gates the Boxed Joy stat cards in `#results` |
 
 Add a booking CTA by putting `data-book` on the anchor — never hard-code the URL.
 
@@ -129,6 +129,36 @@ Body copy is capped at `--measure` (68ch, under the ~75-character target) with
   hides while `#closing-cta` is on screen. Hidden entirely above 860px.
 
 ---
+
+## 4b. Boxed Joy stat cards — how the figures were derived
+
+Source: Boxed Joy Co.'s own Shopify order export, 1 May – 31 Aug 2026
+(1,128 line-item rows / 752 orders, all USD).
+
+**Method**
+
+- The export has one row per *line item*. Order-level rows are those carrying
+  a `Total`; continuation rows were excluded so orders are not double-counted.
+- Period split on `Created at`: **before** = May + Jun, **after** = Jul + Aug.
+- 4 cancelled orders excluded. Refunds netted off (`Total` − `Refunded Amount`);
+  22 orders carried refunds totalling $228.71.
+- Revenue basis is order `Total` (includes shipping and tax), matching what
+  the store's own Shopify reporting shows.
+
+**Published figures**
+
+| Card | Before | After | Change |
+|---|---|---|---|
+| revenue | $5,217.64 | $20,730.34 | **+297%** |
+| new customers (distinct emails) | 106 | 307 | **+190%** |
+| orders | 136 | 612 | **+350%** |
+
+**Not published, and why.** Average order value *fell* over the same period,
+from $38.36 to $33.87 (**−11.7%**). The direction holds on the median
+(−11.9%) and excluding shipping and tax (−12.3%), so it is real rather than a
+rounding artefact — a wave of smaller first-time orders pulled the average
+down while total revenue tripled. It was replaced with new customers rather
+than published as an increase.
 
 ## 5. Open TODOs
 

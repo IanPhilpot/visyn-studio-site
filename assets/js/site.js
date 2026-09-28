@@ -9,11 +9,10 @@
 // this one value via the [data-book] attribute.
 const BOOKING_URL = "https://calendar.app.google/4ZqwkECFsBakrisj9";
 
-// Boxed Joy Co. stat cards. Held false while Ian settles the final stat
-// set — the cards in #results still carry the brief's placeholder values
-// (15 lives in July / $458 average per live), and these are Kelly's
-// revenue figures on a public page. Flip to true once the set is final.
-const SHOW_BOXED_JOY_STATS = false;
+// Boxed Joy Co. stat cards. Figures come from the store's own order export
+// for May-Aug 2026; see VISYN_STUDIO_SITE_SPEC.md for how they are derived.
+// These are a real brand's revenue figures, so the block stays gated.
+const SHOW_BOXED_JOY_STATS = true;
 
 // ── Sticky nav shadow ───────────────────────────────────────
 (function () {
@@ -75,11 +74,23 @@ const SHOW_BOXED_JOY_STATS = false;
 (function () {
   const row = document.getElementById("boxed-joy-stats");
   if (!row) return;
-  if (SHOW_BOXED_JOY_STATS) {
-    row.hidden = false;
-  } else {
+  if (!SHOW_BOXED_JOY_STATS) {
     row.remove();
+    return;
   }
+  // Safety net: these are a real brand's revenue figures. If any value is
+  // still a placeholder, keep the whole block out of the page rather than
+  // publish a made-up number.
+  const pending = row.querySelectorAll("[data-pending]").length;
+  if (pending) {
+    console.warn(
+      "Boxed Joy stats withheld: " + pending + " placeholder value(s) remain. " +
+      "Set the real figures and remove their data-pending attributes."
+    );
+    row.remove();
+    return;
+  }
+  row.hidden = false;
 })();
 
 // ── Wire every booking CTA ──────────────────────────────────
