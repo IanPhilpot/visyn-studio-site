@@ -49,8 +49,29 @@ Add a booking CTA by putting `data-book` on the anchor — never hard-code the U
 | `--carbon` | `#222222` | Body text on light sections |
 | `--near-white` | `#FCFCFC` | Body text on dark sections |
 
-**Terracotta and Honey Bronze are retired** from the site palette. They remain
-only inside the logo artwork, which is used as-is and never recolored.
+**Terracotta and Honey Bronze are fully retired.** They were previously kept
+alive by the old wordmark; with the green logo in place they no longer appear
+anywhere on the site.
+
+### Logo
+
+Two files, identical geometry (627 x 105, transparent PNG), so they are
+drop-in interchangeable:
+
+| File | Ink | Used on |
+|---|---|---|
+| `visyn-studio-logo.png` | green `#40891F`, exactly as supplied | Nav (Eggshell) |
+| `visyn-studio-logo-reversed.png` | Near White | Footer and OG image (Amethyst) |
+
+The reversed file exists because the green measures only **3.81:1** on
+Amethyst. That clears the 3:1 non-text minimum, but it reads muddy — the mark
+sinks into the purple. The reversed version is the same letterforms with the
+ink swapped; no shapes were altered. **If an official reversed logo arrives,
+replace that file and nothing else needs to change.**
+
+Display widths are tokens (`--logo-w`, `--logo-w-small`), not per-rule values.
+The artwork carries roughly 7% transparent padding, so the tokens run slightly
+wider than the visible ink.
 
 ### Contrast rules — requirements, not suggestions
 
