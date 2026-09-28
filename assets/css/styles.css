@@ -59,6 +59,11 @@
   --space-6: 6rem;
   --space-7: 8rem;
 
+  /* Logo display widths. The supplied artwork carries ~7% transparent
+     padding, so these run a little wider than the ink itself. */
+  --logo-w:       184px;
+  --logo-w-small: 152px;
+
   --container:     1160px;
   --container-pad: 1.5rem;
   --radius:        14px;
@@ -257,7 +262,7 @@ a { color: inherit; }
 .nav.scrolled { box-shadow: 0 2px 14px var(--amethyst-10); }
 
 .nav-logo { display: inline-flex; margin-right: auto; }
-.nav-logo img { width: 168px; }
+.nav-logo img { width: var(--logo-w); }
 
 .nav-links {
   display: flex;
@@ -577,7 +582,7 @@ a { color: inherit; }
   padding: var(--space-5) var(--container-pad) var(--space-4);
 }
 .footer-inner { max-width: var(--container); margin: 0 auto; }
-.footer-logo { width: 168px; margin-bottom: var(--space-3); }
+.footer-logo { width: var(--logo-w); margin-bottom: var(--space-3); }
 .footer-blurb { color: var(--near-white); max-width: var(--measure); }
 
 .footer-links {
@@ -749,7 +754,7 @@ a { color: inherit; }
 
 @media (max-width: 420px) {
   :root { --container-pad: 1.15rem; }
-  .nav-logo img, .footer-logo { width: 140px; }
+  .nav-logo img, .footer-logo { width: var(--logo-w-small); }
   .hero-ctas { flex-direction: column; align-items: stretch; }
   .hero-ctas .btn,
   .founding .btn,
