@@ -16,6 +16,7 @@ via GitHub Pages from `main` at the repo root. The `CNAME` file must stay.
 | `index.html` | `/` | yes | Homepage — the whole pitch |
 | `services.html` | `/services` | yes | What we handle, in more depth |
 | `contact.html` | `/contact` | yes | Booking + email |
+| `privacy.html` | `/privacy` | yes | Privacy policy: Google Analytics, Google Fonts, Google Calendar booking, GitHub Pages hosting. Linked from every footer. **Update it whenever a new third-party service is added to the site** |
 | `about.html` | `/about` | **no** (`noindex, nofollow`) | Founder story. The only page where founder names appear |
 | `404.html` | — | no | Not-found |
 

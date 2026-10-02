@@ -714,6 +714,15 @@ a { color: inherit; }
 .not-found p { max-width: 46ch; }
 
 /* -------------------------------------------------------------
+   17b. POLICY PAGE
+   ------------------------------------------------------------- */
+.policy h1 { font-size: var(--text-3xl); margin-bottom: var(--space-1); }
+.policy-updated { font-size: var(--text-sm); color: var(--amethyst); margin-bottom: var(--space-3); }
+.policy h2 { font-size: var(--text-xl); margin: var(--space-4) 0 var(--space-1); }
+.policy a { color: var(--amethyst); text-underline-offset: 3px; }
+.policy strong { font-weight: 600; }
+
+/* -------------------------------------------------------------
    18. RESPONSIVE
    ------------------------------------------------------------- */
 @media (max-width: 860px) {
