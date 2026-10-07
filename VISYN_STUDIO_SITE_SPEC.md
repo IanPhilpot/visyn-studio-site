@@ -62,7 +62,7 @@ drop-in interchangeable.
 
 | File | Wordmark | Used on | Source |
 |---|---|---|---|
-| `visyn-studio-logo.svg` | Moss `#4D891F` | Nav (Eggshell) | **Derived** — supplied dark-bg file with only the wordmark fill changed, mirroring the supplied `visyn-cloud-logo.svg`. Replace with an official light-background file if one is produced |
+| `visyn-studio-logo.svg` | Amethyst `#271442` | Nav (Eggshell) | **Derived** — supplied dark-bg file with only the wordmark fill changed to Amethyst. Replace with an official light-background file if one is produced |
 | `visyn-studio-logo-dark-bg.svg` | White | Footer and OG image (Amethyst) | Supplied, unmodified |
 | `visyn-studio-logo-mono-white.svg` | White, flat V | Not used yet — for photos or busy backgrounds | Supplied, unmodified |
 
