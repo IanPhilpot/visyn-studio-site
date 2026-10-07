@@ -130,7 +130,7 @@ if (!REDUCED_MOTION && CAN_OBSERVE) document.documentElement.classList.add("moti
 })();
 
 // ── Pause / play looping animation ──────────────────────────
-// The spotlights, strip, bulbs and prism glint loop forever, so WCAG 2.2.2
+// The spotlights, prism glint and live-tile rings loop forever, so WCAG 2.2.2
 // needs a way to stop them. The choice sticks across visits.
 (function () {
   const btn = document.getElementById("motion-toggle");
