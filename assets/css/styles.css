@@ -59,10 +59,10 @@
   --space-6: 6rem;
   --space-7: 8rem;
 
-  /* Logo display widths. The supplied artwork carries ~7% transparent
-     padding, so these run a little wider than the ink itself. */
-  --logo-w:       184px;
-  --logo-w-small: 152px;
+  /* Logo display widths. In the SVG lockup the prism V is nearly twice the
+     height of the wordmark, so these run wide to keep the letters legible. */
+  --logo-w:       220px;
+  --logo-w-small: 176px;
 
   --container:     1160px;
   --container-pad: 1.5rem;
