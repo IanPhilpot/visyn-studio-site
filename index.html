@@ -45,7 +45,7 @@
   <ul class="nav-links" id="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#results">Results</a></li>
-    <li><a href="#founding-15">Founding 15</a></li>
+    <li><a href="#founding-5">Founding 5</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="/about">About</a></li>
   </ul>
@@ -56,37 +56,133 @@
 
 <!-- =============================================
      HERO — Amethyst / Near White / Lime Cream CTA
+     Spotlights in the logo's prism colours sweep up from the
+     bottom edge; the prism V sits on the right. Both are
+     decorative, pause with the motion button in the services
+     strip, and hold still under prefers-reduced-motion.
      ============================================= -->
 <section class="hero" id="top">
+  <div class="hero-lights" aria-hidden="true">
+    <span class="beam beam--lime"></span>
+    <span class="beam beam--violet"></span>
+    <span class="beam beam--green"></span>
+    <span class="beam beam--cream"></span>
+  </div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">The TikTok Live &amp; Shop accelerator for growing CPG brands</p>
-    <h1 class="hero-headline">Go live. We’ll grow the rest.</h1>
-    <p class="hero-subhead">Ads, email, and Shop management built around your lives. No retainer. We get paid when you grow.</p>
-    <div class="hero-ctas">
-      <a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a>
-      <a href="#results" class="btn btn--ghost-light btn--large">See the Boxed Joy Story</a>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">The TikTok Live &amp; Shop accelerator for growing CPG brands</p>
+      <h1 class="hero-headline">Go live. We’ll grow the rest.</h1>
+      <p class="hero-subhead">Ads, email, and Shop management built around your lives. No retainer. We get paid when you grow.</p>
+      <div class="hero-ctas">
+        <a href="#" data-book class="btn btn--lime btn--large">Book a Growth Call</a>
+        <a href="#results" class="btn btn--ghost-light btn--large">See the Boxed Joy Story</a>
+      </div>
+    </div>
+    <!-- The facets of the logo's prism V, enlarged. -->
+    <svg class="hero-prism" viewBox="0 0 432.4 314.1" aria-hidden="true" focusable="false">
+      <path class="facet" style="--o:.10" d="M134.2 0 L0 0 L95.44 105.37Z M147.9 314.1 L195.12 215.42 L140.99 155.66Z"/>
+      <path class="facet" style="--o:.06" d="M0 0 L75.34 160 L95.44 105.37Z M134.2 0 L95.44 105.37 L140.99 155.66Z"/>
+      <path class="facet" style="--o:.03" d="M75.34 160 L147.9 314.1 L140.99 155.66 L95.44 105.37Z"/>
+      <path class="facet facet--glint" style="--o:.14" d="M216.2 171.37 L134.2 0 L140.99 155.66 L195.12 215.42Z"/>
+      <path class="facet" style="--o:.09" d="M432.4 0 L298.2 0 L336.96 105.37Z M237.28 215.42 L284.5 314.1 L291.41 155.66Z"/>
+      <path class="facet facet--glint" style="--o:.05" d="M357.06 160 L432.4 0 L336.96 105.37Z M298.2 0 L291.41 155.66 L336.96 105.37Z"/>
+      <path class="facet" style="--o:.02" d="M284.5 314.1 L357.06 160 L336.96 105.37 L291.41 155.66Z"/>
+      <path class="facet facet--lime" style="--o:.85" d="M216.2 171.37 L237.28 215.42 L291.41 155.66 L298.2 0Z"/>
+      <path class="facet facet--glint" style="--o:.18" d="M237.28 215.42 L216.2 171.37 L195.12 215.42 L216.2 238.69Z"/>
+      <path class="facet" style="--o:.11" d="M284.5 314.1 L237.28 215.42 L216.2 238.69Z M195.12 215.42 L147.9 314.1 L216.2 238.69Z"/>
+      <path class="facet" style="--o:.04" d="M147.9 314.1 L284.5 314.1 L216.2 238.69Z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- =============================================
+     SERVICES STRIP — Lime Cream, framed by marquee bulbs
+     The scrolling track is decorative; screen readers get the
+     plain list instead.
+     ============================================= -->
+<div class="strip" id="services-strip">
+  <p class="sr-only">What we handle: TikTok Live, TikTok Shop, ads that follow your lives, Klaviyo email and SMS, Amazon strategy, and custom live tools.</p>
+  <div class="strip-window" aria-hidden="true">
+    <div class="strip-track">
+      <div class="strip-item">TikTok Live<i></i>TikTok Shop<i></i>Ads that follow your lives<i></i>Klaviyo email &amp; SMS<i></i>Amazon strategy<i></i>Custom live tools<i></i></div>
+      <div class="strip-item">TikTok Live<i></i>TikTok Shop<i></i>Ads that follow your lives<i></i>Klaviyo email &amp; SMS<i></i>Amazon strategy<i></i>Custom live tools<i></i></div>
     </div>
   </div>
-</section>
+  <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false" aria-label="Pause animations" title="Pause animations">
+    <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"/></svg>
+    <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+  </button>
+</div>
 
 <!-- =============================================
-     THE PROBLEM — Eggshell
+     THE PROBLEM — Eggshell, with an illustrative chart
+     The chart draws itself when it scrolls into view. The toggle
+     switches between the two lines.
      ============================================= -->
 <section class="section">
-  <div class="section-inner prose">
-    <h2 class="section-title">Your lives are selling. Your growth plan isn’t.</h2>
-    <p>You go live, the chat fills up, and orders start rolling in. Then the stream ends and the momentum goes with it. Ad money gets spent without a plan, the follow-up emails never go out, and nobody can tell you which part is actually working.</p>
-    <p>Most agencies want a month of discovery and a signed retainer before they touch anything. You don’t need another vendor. You need a partner who understands live selling and only wins when you do.</p>
+  <div class="section-inner problem">
+    <div class="prose">
+      <h2 class="section-title">Your lives are selling. Your growth plan isn’t.</h2>
+      <p>You go live, the chat fills up, and orders start rolling in. Then the stream ends and the momentum goes with it. Ad money gets spent without a plan, the follow-up emails never go out, and nobody can tell you which part is actually working.</p>
+      <p>Most agencies want a month of discovery and a signed retainer before they touch anything. You don’t need another vendor. You need a partner who understands live selling and only wins when you do.</p>
+    </div>
+
+    <figure class="chart" id="problem-chart">
+      <div class="chart-toggle" role="group" aria-label="Lines shown on the chart">
+        <button type="button" class="chart-btn" data-show="without" aria-pressed="false"><i class="swatch swatch--dash" aria-hidden="true"></i>Without a plan</button>
+        <button type="button" class="chart-btn" data-show="with" aria-pressed="true"><i class="swatch" aria-hidden="true"></i>With Visyn</button>
+      </div>
+      <div class="chart-plot">
+        <svg viewBox="0 0 640 260" preserveAspectRatio="none" role="img" aria-label="Illustration: orders spike while a live stream is on air. Without a plan they fall to almost nothing once the stream ends. With Visyn they stay raised, with a bump when ads retarget live viewers and another when a “Missed the live?” email goes out.">
+          <defs>
+            <clipPath id="wipe-without"><rect class="chart-wipe chart-wipe--without" x="0" y="0" width="640" height="260"/></clipPath>
+            <clipPath id="wipe-with"><rect class="chart-wipe chart-wipe--with" x="0" y="0" width="640" height="260"/></clipPath>
+          </defs>
+          <rect class="chart-onair" x="110" y="20" width="120" height="196"/>
+          <line class="chart-axis" x1="48" y1="216" x2="620" y2="216"/>
+          <g clip-path="url(#wipe-without)">
+            <path class="chart-line chart-line--without" d="M48 212 L100 210 C118 198 130 84 160 64 C185 52 205 72 225 120 C240 170 250 204 280 210 L620 212"/>
+          </g>
+          <g clip-path="url(#wipe-with)">
+            <path class="chart-line chart-line--with" d="M48 212 L100 210 C118 198 130 84 160 64 C185 52 205 72 225 120 C238 150 262 166 300 168 C322 169 335 136 350 134 C368 133 380 163 410 168 C445 173 462 126 480 124 C500 122 515 158 560 164 L620 166"/>
+          </g>
+        </svg>
+        <!-- Labels and markers are HTML so they stay readable at any chart width.
+             Positions are percentages of the 640 x 260 viewBox. -->
+        <span class="chart-label chart-label--onair" style="--x:26.5625%;--y:13%" aria-hidden="true">On air</span>
+        <span class="chart-label chart-label--axis chart-label--start" style="--x:17.1875%;--y:91.5%" aria-hidden="true">Stream starts</span>
+        <span class="chart-label chart-label--axis chart-label--start" style="--x:35.9375%;--y:91.5%" aria-hidden="true">Stream ends</span>
+        <span class="chart-label chart-label--axis chart-label--end" style="--x:96.875%;--y:91.5%" aria-hidden="true">Next day</span>
+        <span class="chart-label chart-label--axis chart-label--y" style="--x:3.125%;--y:46%" aria-hidden="true">Orders</span>
+        <span class="chart-dot" style="--x:54.6875%;--y:51.54%;--i:0" aria-hidden="true"></span>
+        <span class="chart-dot" style="--x:75%;--y:47.69%;--i:1" aria-hidden="true"></span>
+        <span class="chart-note" style="--x:54.6875%;--y:73%;--i:0" aria-hidden="true">Ads retarget live viewers</span>
+        <span class="chart-note chart-note--high" style="--x:75%;--y:38%;--i:1" aria-hidden="true">“Missed the live?” email</span>
+      </div>
+      <figcaption class="chart-caption">Illustration, not real data.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- =============================================
-     THE GUIDE — Eggshell
+     THE GUIDE — Eggshell, led by the 35+ figure
+     No founder names or photos on the homepage; those live on About.
      ============================================= -->
 <section class="section">
-  <div class="section-inner prose">
-    <h2 class="section-title">Real humans who’ve been in the CPG trenches.</h2>
-    <p>We spent 35+ years combined in CPG marketing, sales, and operations before starting Visyn Studio. We know what it takes to move product for a growing brand, because we watched too many of them get ignored or overcharged. We answer our own emails. We take calls with video on. And we only take on brands we believe we can grow.</p>
+  <div class="section-inner guide">
+    <div class="guide-figure">
+      <p class="big-num"><span aria-hidden="true" data-count="35" data-suffix="+">35+</span><span class="sr-only">35+</span></p>
+      <p class="big-num-label">years combined in CPG marketing, sales, and operations</p>
+    </div>
+    <div class="prose">
+      <h2 class="section-title">Real humans who’ve been in the CPG trenches.</h2>
+      <p>We know what it takes to move product for a growing brand, because we watched too many of them get ignored or overcharged.</p>
+      <ul class="chips">
+        <li>We answer our own emails</li>
+        <li>We take calls with video on</li>
+        <li>We only take on brands we believe we can grow</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -118,145 +214,178 @@
 </section>
 
 <!-- =============================================
-     WHAT WE HANDLE — Eggshell, Moss card headers.
-     Deliberately NOT numbered: this is not a sequence.
+     RESULTS — Amethyst band, Lime Cream figures
+     Moved up to follow How it works, so the proof follows the process.
      ============================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="section-title">What we handle.</h2>
-    <div class="handle-cards">
-      <article class="handle-card">
-        <h3>TikTok Live &amp; Shop.</h3>
-        <p>We handle your Shop setup, product listings, and a live schedule built around the days that actually sell.</p>
-      </article>
-      <article class="handle-card">
-        <h3>Ads that follow your lives.</h3>
-        <p>We boost your best live content to warm audiences and scale spend only when the numbers say so.</p>
-      </article>
-      <article class="handle-card">
-        <h3>Email &amp; SMS.</h3>
-        <p>We build Klaviyo flows that tell your buyers you’re live and bring them back between streams.</p>
-      </article>
-      <article class="handle-card">
-        <h3>Amazon strategy.</h3>
-        <p>If Amazon is part of your plan, we’ll help you decide how and when to add it.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================
-     RESULTS — Eggshell, Moss stat numbers
-     ============================================= -->
-<section class="section" id="results">
+<section class="section section--dark results" id="results">
   <div class="section-inner">
     <h2 class="section-title">Boxed Joy Co.: from ads nobody could see to her best month in years.</h2>
     <p class="results-lede">Kelly sells candy live on TikTok, and she’s great at it. When we came on, we found ad spend running outside the reporting view she’d been shown, with almost nothing to show for it. We shut it down, rebuilt her tracking, timed her ads to her lives, and launched her email program. July and August were her strongest months in years.</p>
 
-    <!-- Boxed Joy stat cards. Figures derived from the store's own order
-         export for May-Aug 2026: Jul+Aug against May+Jun, cancelled orders
-         excluded and refunds netted off. See VISYN_STUDIO_SITE_SPEC.md for
-         the full basis. site.js refuses to reveal this block while any
-         [data-pending] value remains. -->
+    <!-- Boxed Joy figures. Derived from the store's own order export for
+         May-Aug 2026: Jul+Aug against May+Jun, cancelled orders excluded and
+         refunds netted off. See VISYN_STUDIO_SITE_SPEC.md for the full basis.
+         site.js refuses to reveal this block while any [data-pending] value
+         remains. Each figure counts up once on screen; the sr-only copy
+         carries the final value for screen readers. -->
     <div id="boxed-joy-stats" hidden>
-      <p class="stat-caption">July and August 2026, against the two months before.</p>
-      <div class="stat-cards">
-        <div class="stat-card">
-          <div class="stat-number">+297%</div>
-          <p class="stat-label">revenue</p>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number" aria-hidden="true" data-count="297" data-prefix="+" data-suffix="%">+297%</span>
+          <span class="sr-only">+297%</span>
+          <span class="stat-label">revenue</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">+190%</div>
-          <p class="stat-label">new customers</p>
+        <div class="stat">
+          <span class="stat-number" aria-hidden="true" data-count="190" data-prefix="+" data-suffix="%">+190%</span>
+          <span class="sr-only">+190%</span>
+          <span class="stat-label">new customers</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">+350%</div>
-          <p class="stat-label">orders</p>
+        <div class="stat">
+          <span class="stat-number" aria-hidden="true" data-count="350" data-prefix="+" data-suffix="%">+350%</span>
+          <span class="sr-only">+350%</span>
+          <span class="stat-label">orders</span>
         </div>
       </div>
+      <p class="stat-caption">July and August 2026, against the two months before.</p>
     </div>
-
   </div>
 </section>
 
 <!-- =============================================
-     FOUNDING 15 — Lime Cream band
+     WHAT WE HANDLE + TOOLS — Eggshell, bento grid
+     Deliberately NOT numbered: this is not a sequence.
+     Icons sit on faceted badges in the logo's prism colours.
+     The Tools tile keeps id="tools" for the nav link.
      ============================================= -->
-<section class="section founding" id="founding-15">
+<section class="section">
   <div class="section-inner">
-    <h2 class="section-title">The Founding 15.</h2>
-    <p>We’re taking on 15 brands with an offer we’ll never run again. You get TikTok Live and Shop management, ad strategy and management, email and SMS, an Amazon strategy consultation, and a free consultation on custom tools for your business.</p>
-    <p class="lede-strong">Zero upfront. No retainer.</p>
-    <p>We earn a share of what we help you grow.</p>
-    <!-- TODO: PENDING PRICING DECISION — the revenue share / fee detail goes in
-         the empty <p class="fee-detail"> below. Do not invent a percentage. -->
-    <p class="fee-detail"></p>
-    <a href="#" data-book class="btn btn--moss btn--large">Claim a Founding Spot</a>
+    <h2 class="section-title">What we handle.</h2>
+    <div class="bento">
+      <article class="tile tile--live">
+        <span class="facet-badge facet-badge--large" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="2"/><path class="live-wave" d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6"/><path class="live-wave live-wave--outer" d="M5.4 5.4a9.3 9.3 0 0 0 0 13.2M18.6 5.4a9.3 9.3 0 0 1 0 13.2"/></svg>
+        </span>
+        <h3>TikTok Live &amp; Shop.</h3>
+        <p>We handle your Shop setup, product listings, and a live schedule built around the days that actually sell.</p>
+      </article>
+      <article class="tile tile--ads">
+        <span class="facet-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 8a4 4 0 0 1 0 8"/><path d="M7 14v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2"/></svg>
+        </span>
+        <h3>Ads that follow your lives.</h3>
+        <p>We boost your best live content to warm audiences and scale spend only when the numbers say so.</p>
+      </article>
+      <article class="tile tile--email">
+        <span class="facet-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 5.5L20 7"/></svg>
+        </span>
+        <h3>Email &amp; SMS.</h3>
+        <p>We build Klaviyo flows that tell your buyers you’re live and bring them back between streams.</p>
+      </article>
+      <article class="tile tile--amazon">
+        <span class="facet-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 8.5a3.5 3.5 0 0 1 7 0"/><path d="M4 9h16l-1.3 9.1a2 2 0 0 1-2 1.7H7.3a2 2 0 0 1-2-1.7z"/><path d="M9.6 12.5l.5 4M14.4 12.5l-.5 4M12 12.5v4"/></svg>
+        </span>
+        <h3>Amazon strategy.</h3>
+        <p>If Amazon is part of your plan, we’ll help you decide how and when to add it.</p>
+      </article>
+      <article class="tile tile--tools" id="tools">
+        <span class="facet-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+        </span>
+        <h3>We build the tools, too.</h3>
+        <p>Live selling comes with problems off-the-shelf software doesn’t solve, so we build tools for them. Our live dashboard gives your team a working view during the stream and puts a display screen on set for your viewers. Founding brands get a free tools consultation and discounted custom builds.</p>
+      </article>
+    </div>
   </div>
 </section>
 
 <!-- =============================================
-     WHY VISYN — Eggshell, comparison table
+     FOUNDING 5 — Lime Cream band, with a five-seat ticket
+     ============================================= -->
+<section class="section founding" id="founding-5">
+  <div class="section-inner founding-inner">
+    <div>
+      <h2 class="section-title">The Founding 5.</h2>
+      <p>We’re taking on 5 brands with an offer we’ll never run again. You get TikTok Live and Shop management, ad strategy and management, email and SMS, an Amazon strategy consultation, and a free consultation on custom tools for your business.</p>
+      <p class="lede-strong">Zero upfront. No retainer.</p>
+      <p>We earn a share of what we help you grow.</p>
+      <!-- TODO: PENDING PRICING DECISION — the revenue share / fee detail goes in
+           the empty <p class="fee-detail"> below. Do not invent a percentage. -->
+      <p class="fee-detail"></p>
+    </div>
+    <div class="ticket" id="founding-ticket">
+      <div class="ticket-top"><span class="ticket-title">Founding spot</span><span class="ticket-count">5 seats</span></div>
+      <div class="seats" role="img" aria-label="5 founding spots">
+        <span class="seat" style="--i:0">1</span>
+        <span class="seat" style="--i:1">2</span>
+        <span class="seat" style="--i:2">3</span>
+        <span class="seat" style="--i:3">4</span>
+        <span class="seat" style="--i:4">5</span>
+      </div>
+      <a href="#" data-book class="btn btn--moss btn--large">Claim a Founding Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHY VISYN — Eggshell, comparison table with the Visyn
+     column raised as its own card. Still a real <table>.
      ============================================= -->
 <section class="section">
   <div class="section-inner">
     <h2 class="section-title">Why brands pick Visyn</h2>
     <p class="table-hint">Swipe the table to compare all three.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-labelledby="compare-caption">
-      <table class="compare-table">
-        <caption id="compare-caption" class="sr-only">Visyn Studio compared with a generalist agency and a TikTok agency on retainer</caption>
-        <thead>
-          <tr>
-            <th scope="col"><span class="sr-only">Comparison</span></th>
-            <th scope="col" class="col-visyn">Visyn Studio</th>
-            <th scope="col">Generalist agency</th>
-            <th scope="col">TikTok agency on retainer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">How you pay</th>
-            <td class="col-visyn">Performance-based</td>
-            <td>Monthly retainer</td>
-            <td>Monthly retainer</td>
-          </tr>
-          <tr>
-            <th scope="row">Getting started</th>
-            <td class="col-visyn">Days</td>
-            <td>Weeks of discovery</td>
-            <td>Varies</td>
-          </tr>
-          <tr>
-            <th scope="row">Email &amp; Shopify</th>
-            <td class="col-visyn">Included</td>
-            <td>Extra</td>
-            <td>Rarely</td>
-          </tr>
-          <tr>
-            <th scope="row">When you don’t grow</th>
-            <td class="col-visyn">We don’t either</td>
-            <td>They still get paid</td>
-            <td>They still get paid</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="compare-wrap">
+        <div class="compare-raise" aria-hidden="true"></div>
+        <table class="compare-table">
+          <caption id="compare-caption" class="sr-only">Visyn Studio compared with a generalist agency and a TikTok agency on retainer</caption>
+          <colgroup>
+            <col class="col-w-label">
+            <col class="col-w-visyn">
+            <col class="col-w-other">
+            <col class="col-w-other">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Comparison</span></th>
+              <th scope="col" class="col-visyn">Visyn Studio</th>
+              <th scope="col">Generalist agency</th>
+              <th scope="col">TikTok agency on retainer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">How you pay</th>
+              <td class="col-visyn"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>Performance-based</td>
+              <td>Monthly retainer</td>
+              <td>Monthly retainer</td>
+            </tr>
+            <tr>
+              <th scope="row">Getting started</th>
+              <td class="col-visyn"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>Days</td>
+              <td>Weeks of discovery</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <th scope="row">Email &amp; Shopify</th>
+              <td class="col-visyn"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>Included</td>
+              <td>Extra</td>
+              <td>Rarely</td>
+            </tr>
+            <tr>
+              <th scope="row">When you don’t grow</th>
+              <td class="col-visyn"><svg class="tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg>We don’t either</td>
+              <td>They still get paid</td>
+              <td>They still get paid</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- =============================================
-     TOOLS FOR LIVE SELLERS — Amethyst
-     ============================================= -->
-<section class="section section--dark" id="tools">
-  <div class="section-inner prose">
-    <h2 class="section-title">We build the tools, too.</h2>
-    <p>Live selling comes with problems off-the-shelf software doesn’t solve, so we build tools for them. Our live dashboard gives your team a working view during the stream and puts a display screen on set for your viewers. Founding brands get a free tools consultation and discounted custom builds.</p>
-  </div>
-</section>
-
-<!-- Thin Lime Cream rule: keeps the two back-to-back Amethyst bands
-     reading as two separate sections. -->
-<hr class="band-rule">
 
 <!-- =============================================
      CLOSING CTA — Amethyst

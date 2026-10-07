@@ -14,9 +14,21 @@
   --eggshell:   #F5F2DE; /* main page background */
   --amethyst:   #271442; /* hero, dark bands, footer; accent text on light */
   --moss:       #4D891F; /* primary CTAs on light, stat/step numbers, card headers */
-  --lime-cream: #FFFE9B; /* Founding 15 background; CTA buttons on amethyst */
+  --lime-cream: #FFFE9B; /* Founding 5 background; CTA buttons on amethyst */
   --carbon:     #222222; /* body text on light sections */
   --near-white: #FCFCFC; /* body text on dark sections */
+
+  /* Prism colours, sampled from the logo's V. Decorative only:
+     spotlights, icon badges, marquee bulbs, separators. Never text. */
+  --prism-green:      #4E781B;
+  --prism-green-deep: #3C591E;
+  --prism-olive:      #313C1D;
+  --prism-sage:       #688857;
+  --prism-violet:     #653B7B;
+  --prism-plum:       #3E2154;
+  --prism-night:      #221131;
+  --prism-lime:       #FFFF94;
+  --prism-cream:      #EFE6B9;
 
   /* Derived states (hovers only — no new hues) */
   --moss-deep:        #3E6F19; /* 5.34:1 on Eggshell — AA at body size */
@@ -310,13 +322,30 @@ a { color: inherit; }
 
 /* -------------------------------------------------------------
    7. HERO — Amethyst, Near White, Lime Cream CTA
+   Spotlights in the prism colours sweep up from the bottom edge,
+   like searchlights over a theatre marquee. The prism V sits in
+   the right column on desktop and behind the copy, faded, on
+   phones. All of it is decorative (aria-hidden).
    ------------------------------------------------------------- */
 .hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--amethyst);
   color: var(--near-white);
   padding: var(--space-7) var(--container-pad);
 }
-.hero-inner { max-width: var(--container); margin: 0 auto; }
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+.hero-copy { min-width: 0; }
 
 /* The hero eyebrow is the ONLY eyebrow label on the page, and it is
    sentence case — there are no all-caps labels anywhere on the site. */
@@ -338,26 +367,417 @@ a { color: inherit; }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 
-/* The single deliberate motion moment on the page, on load only.
-   No fade-and-slide on any other section. */
+/* Prism V. Facet opacities come from each path's --o. */
+.hero-prism {
+  --prism-o: 1;
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+  overflow: visible;
+  opacity: var(--prism-o);
+}
+.hero-prism .facet { fill: var(--near-white); fill-opacity: var(--o); }
+.hero-prism .facet--lime { fill: var(--lime-cream); }
+
+/* Spotlights. Each beam is a soft cone (a conic gradient pivoting on the
+   bottom-centre of its box) that fades out as it rises. Peak alphas are
+   kept low so Near White and Lime Cream text stay above 4.5:1 wherever
+   beams cross it — tests sample the rendered pixels to prove it. */
+.hero-lights {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.beam {
+  position: absolute;
+  bottom: -2%;
+  left: var(--x);
+  width: 44rem;
+  height: 135%;
+  margin-left: -22rem;
+  transform-origin: 50% 100%;
+  rotate: var(--from);
+  background: conic-gradient(from -11deg at 50% 100%,
+    transparent 0deg,
+    var(--beam-soft) 5deg,
+    var(--beam) 11deg,
+    var(--beam-soft) 17deg,
+    transparent 22deg);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 92%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 92%);
+}
+.beam--lime   { --x: 12%; --from: -10deg; --to: 38deg;  --t: 12s; --d: -3s;
+                --beam: rgba(255, 255, 148, 0.30); --beam-soft: rgba(255, 255, 148, 0.10); }
+.beam--violet { --x: 40%; --from: 28deg;  --to: -26deg; --t: 14s; --d: -9s;
+                --beam: rgba(101, 59, 123, 0.80);  --beam-soft: rgba(101, 59, 123, 0.30); }
+.beam--green  { --x: 68%; --from: -30deg; --to: 20deg;  --t: 10s; --d: -1s;
+                --beam: rgba(104, 136, 87, 0.48);  --beam-soft: rgba(104, 136, 87, 0.16); }
+.beam--cream  { --x: 90%; --from: 8deg;   --to: -40deg; --t: 16s; --d: -6s;
+                --beam: rgba(239, 230, 185, 0.24); --beam-soft: rgba(239, 230, 185, 0.08); }
+
 @media (prefers-reduced-motion: no-preference) {
-  .hero-inner > * {
+  /* Copy rises in once on load. */
+  .hero-copy > * {
     animation: hero-rise 620ms var(--ease) both;
   }
-  .hero-inner > *:nth-child(2) { animation-delay: 70ms; }
-  .hero-inner > *:nth-child(3) { animation-delay: 140ms; }
-  .hero-inner > *:nth-child(4) { animation-delay: 210ms; }
+  .hero-copy > *:nth-child(2) { animation-delay: 70ms; }
+  .hero-copy > *:nth-child(3) { animation-delay: 140ms; }
+  .hero-copy > *:nth-child(4) { animation-delay: 210ms; }
+  .hero-prism { animation: prism-in 900ms var(--ease) 180ms both; }
+
+  /* Ambient: beams sweep, prism facets catch the light. These loop, so
+     the strip's pause button stops them (WCAG 2.2.2). */
+  .beam { animation: sweep var(--t) ease-in-out var(--d) infinite alternate; }
+  .hero-prism .facet--glint { animation: glint 7s ease-in-out infinite; }
+  .hero-prism .facet--glint:nth-of-type(6) { animation-delay: -2.4s; }
+  .hero-prism .facet--glint:nth-of-type(9) { animation-delay: -4.8s; }
+  .hero-prism .facet--lime { animation: lime-glow 7s ease-in-out -1.2s infinite; }
 }
 @keyframes hero-rise {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: none; }
 }
+@keyframes prism-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: var(--prism-o); transform: none; }
+}
+@keyframes sweep {
+  from { rotate: var(--from); }
+  to   { rotate: var(--to); }
+}
+@keyframes glint     { 50% { fill-opacity: calc(var(--o) + 0.16); } }
+@keyframes lime-glow { 50% { fill-opacity: 1; } }
 
 /* -------------------------------------------------------------
-   8. THE PROBLEM / THE GUIDE — plain Eggshell prose
+   7b. SERVICES STRIP — Lime Cream, framed by marquee bulbs
+   The bulbs chase along Amethyst rails above and below; the text
+   scrolls. Hovering pauses the text, and the round button
+   pauses every looping animation on the page.
+   ------------------------------------------------------------- */
+.strip {
+  position: relative;
+  background: var(--lime-cream);
+  color: var(--amethyst);
+}
+.strip::before,
+.strip::after {
+  content: "";
+  display: block;
+  height: 16px;
+  /* One lit bulb, two dim, every 66px. Stepping the pattern 22px at a
+     time makes the lit bulb travel: the classic marquee chase. */
+  background:
+    radial-gradient(circle at 11px 8px, var(--prism-lime) 0 3px, rgba(255, 255, 148, 0.35) 3.5px 5.5px, transparent 6px) 0 0 / 66px 16px repeat-x,
+    radial-gradient(circle at 33px 8px, var(--prism-violet) 0 3px, transparent 3.5px) 0 0 / 66px 16px repeat-x,
+    radial-gradient(circle at 55px 8px, var(--prism-violet) 0 3px, transparent 3.5px) 0 0 / 66px 16px repeat-x,
+    var(--amethyst);
+}
+.strip::after { transform: scaleX(-1); }   /* bottom rail chases the other way */
+
+.strip-window { overflow: hidden; padding: 1.1rem 0; }
+.strip-track { display: flex; width: max-content; }
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+/* Diamond separators cycle through the prism colours. */
+.strip-item i {
+  display: block;
+  width: 11px;
+  height: 11px;
+  rotate: 45deg;
+  background: var(--prism-green);
+}
+.strip-item i:nth-of-type(3n + 2) { background: var(--prism-violet); }
+.strip-item i:nth-of-type(3n)     { background: var(--prism-plum); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .strip-track { animation: roll 40s linear infinite; }
+  .strip:hover .strip-track { animation-play-state: paused; }
+  .strip::before,
+  .strip::after { animation: chase 1.2s steps(3) infinite; }
+}
+@keyframes roll  { to { transform: translateX(-50%); } }
+@keyframes chase { to { background-position: -66px 0, -66px 0, -66px 0, 0 0; } }
+
+.motion-toggle {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 5rem;
+  padding: 0 var(--container-pad) 0 0;
+  border: 0;
+  cursor: pointer;
+  color: var(--amethyst);
+  background: linear-gradient(to right, rgba(255, 254, 155, 0), var(--lime-cream) 45%);
+}
+.motion-toggle svg {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border: 2px solid var(--amethyst);
+  border-radius: 50%;
+  background: var(--lime-cream);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+.motion-toggle:hover svg { background: var(--amethyst); color: var(--lime-cream); }
+.motion-toggle .icon-play { display: none; fill: currentColor; stroke-width: 1.5; }
+.motion-toggle[aria-pressed="true"] .icon-pause { display: none; }
+.motion-toggle[aria-pressed="true"] .icon-play { display: block; }
+.motion-toggle:focus-visible { outline: none; }
+.motion-toggle:focus-visible svg { outline: 3px solid var(--amethyst); outline-offset: 3px; }
+
+/* The pause button stops every looping animation on the page. */
+.motion-paused .beam,
+.motion-paused .hero-prism .facet,
+.motion-paused .strip-track,
+.motion-paused .strip::before,
+.motion-paused .strip::after,
+.motion-paused .live-wave,
+.motion-paused .tile--live::before { animation-play-state: paused !important; }
+
+/* -------------------------------------------------------------
+   8. THE PROBLEM — prose beside an illustrative chart
    ------------------------------------------------------------- */
 .prose p + p { margin-top: var(--space-2); }
 .prose p { font-size: var(--text-base); }
+
+.problem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.chart {
+  margin: 0;
+  min-width: 0;
+  padding: var(--space-3);
+  background: var(--near-white);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 0 var(--amethyst-14), 0 14px 34px -22px rgba(39, 20, 66, 0.45);
+}
+
+/* Toggle doubles as the legend: each button carries its line's swatch. */
+.chart-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+}
+.chart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--amethyst);
+  background: transparent;
+  border: 2px solid var(--amethyst-14);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease);
+}
+.chart-btn:hover { border-color: var(--amethyst); }
+.chart-btn[aria-pressed="true"] {
+  background: var(--lime-cream);
+  border-color: var(--amethyst);
+}
+.swatch {
+  display: block;
+  width: 24px;
+  border-top: 3.5px solid var(--moss-deep);
+}
+.swatch--dash { border-top: 2.5px dashed rgba(34, 34, 34, 0.7); }
+
+.chart-plot {
+  position: relative;
+  aspect-ratio: 640 / 260;
+}
+.chart-plot svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.chart-onair { fill: var(--lime-cream); }
+.chart-axis {
+  stroke: var(--carbon);
+  stroke-opacity: 0.35;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.chart-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.chart-line--without {
+  stroke: var(--carbon);
+  stroke-opacity: 0.55;
+  stroke-width: 2.5;
+  stroke-dasharray: 7 6;
+  transition: stroke-opacity 400ms var(--ease);
+}
+.chart-line--with { stroke: var(--moss-deep); stroke-width: 3.5; }
+.chart[data-show="with"] .chart-line--without { stroke-opacity: 0.32; }
+
+.chart-label,
+.chart-note,
+.chart-dot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+}
+.chart-label {
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--carbon);
+  white-space: nowrap;
+}
+.chart-label--onair { font-weight: 700; color: var(--amethyst); }
+.chart-label--end { transform: translate(-100%, -50%); }
+.chart-label--y { transform: translate(-50%, -50%) rotate(-90deg); }
+
+/* Notes sit in the clear bands above and below the lines, not on them. */
+.chart-note {
+  transform: translate(-50%, -50%);
+  padding: 0.1rem 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  color: var(--carbon);
+  white-space: nowrap;
+  background: var(--near-white);
+  border-radius: 4px;
+}
+.chart-dot {
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--moss-deep);
+  box-shadow: 0 0 0 4px var(--near-white);
+}
+
+/* Draw-in. JS adds .chart--live and steps data-show through
+   none → without → with. Each line is revealed by a clip rect that
+   scales from the left edge, so the dashed line can wipe in too.
+   Without JS everything simply shows. */
+.chart-wipe { transform-box: view-box; transform-origin: 0 0; }
+.chart--live .chart-wipe {
+  transform: scaleX(0);
+  transition: transform 1.5s cubic-bezier(0.45, 0.05, 0.35, 1);
+}
+.chart--live .chart-wipe--with { transition-duration: 1.9s; }
+.chart--live[data-show="without"] .chart-wipe--without,
+.chart--live[data-show="with"] .chart-wipe { transform: scaleX(1); }
+.chart--live[data-show="without"] .chart-wipe--with { transition-duration: 0.5s; }
+
+.chart--live .chart-dot,
+.chart--live .chart-note {
+  opacity: 0;
+  transition: opacity 350ms var(--ease), scale 350ms var(--ease);
+}
+.chart--live .chart-dot { scale: 0.3; }
+.chart--live[data-show="with"] .chart-dot,
+.chart--live[data-show="with"] .chart-note {
+  opacity: 1;
+  scale: 1;
+  transition-delay: calc(0.9s + var(--i) * 0.45s);
+}
+
+.chart-caption {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--carbon);
+}
+
+/* -------------------------------------------------------------
+   8b. THE GUIDE — the 35+ figure leads. No founder names or photos
+   on the homepage; those live on About.
+   ------------------------------------------------------------- */
+.guide {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--space-5);
+  align-items: center;
+}
+.big-num {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(6rem, 15vw, 11rem);   /* Moss on Eggshell: far above 24px */
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--moss);
+  font-variant-numeric: tabular-nums;
+}
+.big-num-label {
+  margin-top: var(--space-2);
+  max-width: 20ch;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--amethyst);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--amethyst);
+  border: 2px solid var(--amethyst);
+  border-radius: 22px;
+}
+/* A prism-coloured facet in front of each chip. */
+.chips li::before {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  rotate: 45deg;
+  background: var(--prism-green);
+}
+.chips li:nth-child(2)::before { background: var(--prism-violet); }
+.chips li:nth-child(3)::before { background: var(--prism-plum); }
 
 /* -------------------------------------------------------------
    9. HOW IT WORKS
@@ -387,7 +807,8 @@ a { color: inherit; }
 .how-step p { font-size: var(--text-sm); }
 
 /* -------------------------------------------------------------
-   10. WHAT WE HANDLE — four cards, deliberately NOT numbered
+   10. WHAT WE HANDLE — cards (Services page)
+   Deliberately NOT numbered.
    ------------------------------------------------------------- */
 .handle-cards {
   display: grid;
@@ -412,70 +833,191 @@ a { color: inherit; }
 .handle-card p { font-size: var(--text-sm); }
 
 /* -------------------------------------------------------------
-   11. RESULTS
+   10b. WHAT WE HANDLE + TOOLS — homepage bento
+   The core service gets the biggest tile. Tools is the fifth tile
+   (id="tools" for the nav link). Icons sit on faceted badges in
+   the prism colours; hovering a tile turns the facets.
    ------------------------------------------------------------- */
-.results-lede { font-size: var(--text-base); margin-bottom: var(--space-4); }
-
-.stat-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-5);
-  margin: var(--space-4) 0;
+@property --facet-turn {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
-/* Stat cards — auto-fit so 2, 3 or 4 cards all sit correctly. */
-.stat-cards {
+.bento {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-2);
-}
-/* Caption sits above the grid, NOT inside it — a child spanning 1/-1 keeps
-   auto-fit's empty tracks alive and pins the cards to their min width. */
-.stat-caption {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2);
   margin-top: var(--space-4);
-  font-size: var(--text-sm);
-  color: var(--amethyst);   /* small accent text on light is Amethyst, never Moss */
-  margin: 0;
 }
-.stat-card {
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   min-width: 0;
   padding: var(--space-3);
-  border: 2px solid var(--amethyst-14);
-  border-radius: var(--radius);
-  background: var(--eggshell);
+  border-radius: 18px;
 }
-/* Held below the section-level stat size so a 5-character figure such as
-   "+214%" still fits when four cards share the row. Floor stays well above
-   the 24px that Moss-on-Eggshell needs. */
-.stat-card .stat-number {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  margin-bottom: 0.35rem;
-}
-.stat-card .stat-label {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--carbon);
-  margin: 0;
-}
-.stat-card .stat-note {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
+.tile h3 { font-size: 1.5rem; line-height: 1.15; }
+.tile p { font-size: var(--text-sm); }
+
+.tile--live {
+  --ring-c: calc(var(--space-4) + 38px);   /* centre of the large badge */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  grid-column: span 4;
+  grid-row: span 2;
+  padding: var(--space-4);
+  background: var(--lime-cream);
   color: var(--amethyst);
-  margin: 0.5rem 0 0;
+}
+/* Broadcast rings radiate from the live icon across the tile. */
+@property --ripple {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+.tile--live::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-radial-gradient(circle at var(--ring-c) var(--ring-c),
+    transparent var(--ripple),
+    transparent calc(var(--ripple) + 40px),
+    rgba(39, 20, 66, 0.10) calc(var(--ripple) + 40px),
+    rgba(39, 20, 66, 0.10) calc(var(--ripple) + 42px));
+  -webkit-mask-image: radial-gradient(circle at var(--ring-c) var(--ring-c), #000 0, transparent 560px);
+          mask-image: radial-gradient(circle at var(--ring-c) var(--ring-c), #000 0, transparent 560px);
+}
+.tile--live h3 {
+  margin-top: auto;
+  max-width: 14ch;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  line-height: 1.08;
+}
+.tile--live p { max-width: 44ch; font-size: var(--text-base); color: var(--carbon); }
+
+.tile--ads {
+  grid-column: span 2;
+  background: var(--amethyst);
+  color: var(--near-white);
+}
+.tile--email {
+  grid-column: span 2;
+  background: var(--eggshell);
+  box-shadow: inset 0 0 0 2px var(--amethyst-14);
+  color: var(--amethyst);
+}
+.tile--email p { color: var(--carbon); }
+.tile--amazon {
+  grid-column: span 3;
+  background: var(--near-white);
+  box-shadow: inset 0 0 0 2px var(--amethyst-10);
+  color: var(--amethyst);
+}
+.tile--amazon p { color: var(--carbon); }
+.tile--tools {
+  grid-column: span 3;
+  background: var(--moss-deep);   /* Near White on Moss Deep: 5.86:1 */
+  color: var(--near-white);
+  scroll-margin-top: 6.5rem;      /* clears the sticky nav on /#tools */
+}
+
+.facet-badge {
+  --facet-turn: 0deg;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: conic-gradient(from calc(var(--facet-from, 20deg) + var(--facet-turn)) at 30% 70%,
+    var(--f1) 0 24%,
+    var(--f2) 0 46%,
+    var(--prism-lime) 0 51%,
+    var(--f3) 0 74%,
+    var(--f4) 0 100%);
+  box-shadow: 0 8px 18px -10px rgba(34, 17, 49, 0.6);
+  transition: --facet-turn 700ms var(--ease);
+}
+.tile:hover .facet-badge { --facet-turn: 48deg; }
+.facet-badge svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--near-white);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.facet-badge--large { width: 76px; height: 76px; border-radius: 18px; }
+.facet-badge--large svg { width: 42px; height: 42px; }
+
+/* Each badge takes the facets that stand out from its tile. */
+.tile--live   .facet-badge { --facet-from: 20deg;
+  --f1: var(--prism-violet); --f2: var(--prism-plum); --f3: var(--prism-green); --f4: var(--prism-night); }
+.tile--ads    .facet-badge { --facet-from: 80deg;
+  --f1: var(--prism-green); --f2: var(--prism-sage); --f3: var(--prism-green-deep); --f4: var(--prism-olive); }
+.tile--email  .facet-badge { --facet-from: 140deg;
+  --f1: var(--prism-plum); --f2: var(--prism-violet); --f3: var(--prism-night); --f4: var(--prism-green); }
+.tile--amazon .facet-badge { --facet-from: 200deg;
+  --f1: var(--prism-green-deep); --f2: var(--prism-green); --f3: var(--prism-violet); --f4: var(--prism-plum); }
+.tile--tools  .facet-badge { --facet-from: 260deg;
+  --f1: var(--prism-violet); --f2: var(--prism-plum); --f3: var(--prism-night); --f4: var(--prism-violet); }
+
+/* The live icon broadcasts: its arcs pulse outward. */
+@media (prefers-reduced-motion: no-preference) {
+  .live-wave { animation: broadcast 2.4s ease-in-out infinite; }
+  .live-wave--outer { animation-delay: 0.3s; }
+  .tile--live::before { animation: ripple 3.2s linear infinite; }
+}
+@keyframes broadcast { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes ripple { to { --ripple: 42px; } }
+
+/* -------------------------------------------------------------
+   11. RESULTS — Amethyst band, Lime Cream figures
+   ------------------------------------------------------------- */
+.results .section-title { max-width: 30ch; }
+.results-lede { font-size: var(--text-base); color: var(--near-white); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--near-white-20);
+}
+.stat {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+  min-width: 0;
+  padding: var(--space-3) var(--space-2) 0 0;
+}
+.stat + .stat {
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--near-white-20);
 }
 .stat-number {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-stat);   /* big stat numbers — Moss is allowed here */
+  font-size: clamp(3rem, 7vw, 5.25rem);
   line-height: 1;
-  color: var(--moss);
+  color: var(--lime-cream);      /* 15.7:1 on Amethyst */
+  font-variant-numeric: tabular-nums;
 }
 .stat-label {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--near-white);
+}
+.stat-caption {
+  margin: var(--space-3) 0 0;
   font-size: var(--text-sm);
-  color: var(--carbon);
-  margin-top: 0.25rem;
+  color: var(--near-white-75);
 }
 
 /* Placeholder blocks stand in for real footage. No AI imagery. */
@@ -496,7 +1038,7 @@ a { color: inherit; }
 .placeholder-block--16x9     { aspect-ratio: 16 / 9; width: 100%; }
 
 /* -------------------------------------------------------------
-   12. FOUNDING 15 — Lime Cream band
+   12. FOUNDING 5 — Lime Cream band, five-seat ticket
    Amethyst headings, Carbon body, Moss CTA.
    ------------------------------------------------------------- */
 .founding { background: var(--lime-cream); color: var(--carbon); }
@@ -513,53 +1055,156 @@ a { color: inherit; }
 /* Pricing/fee line is intentionally empty pending a team decision. */
 .fee-detail { margin: 0 0 var(--space-3); min-height: 0; }
 .fee-detail:empty { display: none; }
-.founding .btn { margin-top: var(--space-2); }
+
+.founding-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: var(--space-5);
+  align-items: center;
+}
+
+/* Ticket: the notches are Lime Cream circles painted over the card at
+   the height of the dashed tear line (--stub). */
+.ticket {
+  --notch: 14px;
+  --stub: 68px;
+  min-width: 0;
+  padding: 0 var(--space-3) var(--space-3);
+  color: var(--amethyst);
+  background:
+    radial-gradient(circle at 0 calc(var(--stub) - 1px), var(--lime-cream) var(--notch), transparent calc(var(--notch) + 0.5px)),
+    radial-gradient(circle at 100% calc(var(--stub) - 1px), var(--lime-cream) var(--notch), transparent calc(var(--notch) + 0.5px)),
+    var(--near-white);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px -26px rgba(39, 20, 66, 0.6);
+}
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  height: var(--stub);
+  margin-bottom: var(--space-3);
+  border-bottom: 2px dashed rgba(39, 20, 66, 0.3);
+}
+.ticket-title { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; }
+.ticket-count { font-family: var(--font-display); font-weight: 600; font-size: 1.0625rem; }
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.seat {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--amethyst);
+  background: var(--lime-cream);
+  border: 2px solid var(--amethyst);
+  border-radius: 12px;
+}
+.ticket .btn { width: 100%; margin-top: var(--space-3); }
+
+/* Seats light up one by one when the ticket comes on screen. */
+.motion-ok .ticket:not(.is-in) .seat { opacity: 0; }
+.motion-ok .ticket.is-in .seat {
+  animation: seat-in 560ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--i) * 110ms);
+}
+@keyframes seat-in {
+  0%   { opacity: 0; scale: 0.5; box-shadow: 0 0 0 0 rgba(255, 255, 148, 0); }
+  60%  { opacity: 1; scale: 1.06; box-shadow: 0 0 0 6px rgba(255, 255, 148, 0.9); }
+  100% { opacity: 1; scale: 1; box-shadow: 0 0 0 0 rgba(255, 255, 148, 0); }
+}
 
 /* -------------------------------------------------------------
-   13. WHY VISYN — comparison table
-   On mobile the TABLE scrolls inside its own container with the
-   first column pinned. The page body never scrolls sideways.
+   13. WHY VISYN — comparison table, Visyn column raised
+   Still a real <table>. A Lime Cream card sits behind the Visyn
+   column; table-layout: fixed pins the column widths so the card
+   lines up. On mobile the table scrolls inside its own container
+   with the first column pinned. The page body never scrolls sideways.
    ------------------------------------------------------------- */
 .table-scroll {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
+  padding: 14px 6px 18px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: var(--radius);
 }
-.compare-table {
-  width: 100%;
+.compare-wrap {
+  position: relative;
   min-width: 680px;
+}
+.compare-raise {
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: 25%;
+  width: 27%;
+  background: var(--lime-cream);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px -24px rgba(39, 20, 66, 0.55), inset 0 0 0 2px var(--amethyst);
+}
+.compare-table {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: var(--text-sm);
   text-align: left;
 }
+.col-w-label { width: 25%; }
+.col-w-visyn { width: 27%; }
+.col-w-other { width: 24%; }
+
 .compare-table th,
 .compare-table td {
-  padding: 0.9rem 1rem;
+  padding: 0.95rem 1rem;
   border-bottom: 2px solid var(--amethyst-10);
   vertical-align: top;
   background: var(--eggshell);
+  color: #4C4A47;   /* the other two columns step back: 8.2:1 on Eggshell */
 }
 .compare-table thead th {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.25rem;
+  line-height: 1.25;
   color: var(--amethyst);
+  vertical-align: bottom;
   border-bottom-width: 3px;
 }
-/* The Visyn column header is the one Moss item here, held at 24px
-   so it stays within the large-text contrast allowance. */
-.compare-table thead th.col-visyn {
-  font-size: 1.5rem;
-  color: var(--moss);
+.compare-table .col-visyn {
+  background: transparent;
+  padding-left: 1.25rem;
+  color: var(--amethyst);
+  font-weight: 600;
 }
-.compare-table td.col-visyn { font-weight: 600; }
+.compare-table thead th.col-visyn { font-size: 1.5rem; }
+.compare-table .tick {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  vertical-align: -4px;
+  fill: none;
+  stroke: var(--moss-deep);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .compare-table th:first-child,
 .compare-table td:first-child {
   position: sticky;
   left: 0;
   z-index: 1;
   font-weight: 600;
+  color: var(--carbon);
   box-shadow: 1px 0 0 var(--amethyst-10);
 }
 .compare-table tbody tr:last-child th,
@@ -753,12 +1398,56 @@ a { color: inherit; }
   .how-steps,
   .handle-cards,
   .stack-cards,
-  .about-team { grid-template-columns: 1fr; }
+  .about-team,
+  .problem,
+  .guide,
+  .founding-inner { grid-template-columns: 1fr; }
 
-  .stat-row { gap: var(--space-4); }
+  /* Hero: the prism drops behind the copy, faded, top right. */
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-prism {
+    position: absolute;
+    z-index: -1;
+    top: -8%;
+    right: -34%;
+    width: 92%;
+    max-width: none;
+    --prism-o: 0.3;
+  }
+  /* On phones the copy fills the hero, so the beams run dimmer. */
+  .hero-lights { opacity: 0.65; }
+
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile--live { --ring-c: calc(var(--space-3) + 38px); grid-column: span 2; grid-row: auto; padding: var(--space-3); }
+  .tile--live h3 { margin-top: var(--space-2); }
+  .tile--ads, .tile--email, .tile--amazon, .tile--tools { grid-column: span 1; }
+
+  .guide { gap: var(--space-3); }
 
   /* Keep the sticky bar from covering the last of the page. */
   .footer { padding-bottom: 6rem; }
+}
+
+@media (max-width: 620px) {
+  .stats { grid-template-columns: 1fr; }
+  .stat { padding: var(--space-3) 0; }
+  .stat + .stat { padding-left: 0; border-left: 0; border-top: 1px solid var(--near-white-20); }
+  .stat:last-child { padding-bottom: 0; }
+
+  .bento { grid-template-columns: 1fr; }
+  .tile--live, .tile--ads, .tile--email, .tile--amazon, .tile--tools { grid-column: auto; }
+
+  /* Chart: taller plot, edge labels dropped (the On air band says it),
+     the second note nudged left so it stays inside the card. */
+  .chart { padding: var(--space-2); }
+  .chart-plot { aspect-ratio: 640 / 360; }
+  .chart-label--start { display: none; }
+  .chart-label, .chart-note { font-size: 0.8125rem; }
+  .chart-note--high { transform: translate(-64%, -50%); }
+
+  .ticket { padding: 0 var(--space-2) var(--space-2); }
+  .seats { gap: 0.5rem; }
+  .seat { font-size: 1.25rem; border-radius: 10px; }
 }
 
 @media (max-width: 420px) {
@@ -783,4 +1472,9 @@ a { color: inherit; }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  /* Spotlights hold still at their resting angles; nothing loops, so
+     there is nothing for the pause button to do. */
+  .beam, .strip-track, .strip::before, .strip::after,
+  .tile--live::before { animation: none !important; }
+  .motion-toggle { display: none; }
 }
