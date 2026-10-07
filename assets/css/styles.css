@@ -19,7 +19,7 @@
   --near-white: #FCFCFC; /* body text on dark sections */
 
   /* Prism colours, sampled from the logo's V. Decorative only:
-     spotlights, icon badges, marquee bulbs, separators. Never text. */
+     spotlights, icon badges, chip markers. Never text. */
   --prism-green:      #4E781B;
   --prism-green-deep: #3C591E;
   --prism-olive:      #313C1D;
@@ -130,6 +130,7 @@ a { color: inherit; }
   outline-offset: 3px;
   border-radius: 4px;
 }
+.hero :focus-visible,
 .section--dark :focus-visible,
 .footer :focus-visible {
   outline-color: var(--lime-cream);
@@ -427,7 +428,7 @@ a { color: inherit; }
   .hero-prism { animation: prism-in 900ms var(--ease) 180ms both; }
 
   /* Ambient: beams sweep, prism facets catch the light. These loop, so
-     the strip's pause button stops them (WCAG 2.2.2). */
+     the pause button in the hero's corner stops them (WCAG 2.2.2). */
   .beam { animation: sweep var(--t) ease-in-out var(--d) infinite alternate; }
   .hero-prism .facet--glint { animation: glint 7s ease-in-out infinite; }
   .hero-prism .facet--glint:nth-of-type(6) { animation-delay: -2.4s; }
@@ -450,106 +451,48 @@ a { color: inherit; }
 @keyframes lime-glow { 50% { fill-opacity: 1; } }
 
 /* -------------------------------------------------------------
-   7b. SERVICES STRIP — Lime Cream, framed by marquee bulbs
-   The bulbs chase along Amethyst rails above and below; the text
-   scrolls. Hovering pauses the text, and the round button
-   pauses every looping animation on the page.
+   7b. PAUSE BUTTON — bottom-right corner of the hero
+   Stops every looping animation on the page (WCAG 2.2.2): the
+   spotlights, prism glint, live icon and its broadcast rings.
    ------------------------------------------------------------- */
-.strip {
-  position: relative;
-  background: var(--lime-cream);
-  color: var(--amethyst);
-}
-.strip::before,
-.strip::after {
-  content: "";
-  display: block;
-  height: 16px;
-  /* One lit bulb, two dim, every 66px. Stepping the pattern 22px at a
-     time makes the lit bulb travel: the classic marquee chase. */
-  background:
-    radial-gradient(circle at 11px 8px, var(--prism-lime) 0 3px, rgba(255, 255, 148, 0.35) 3.5px 5.5px, transparent 6px) 0 0 / 66px 16px repeat-x,
-    radial-gradient(circle at 33px 8px, var(--prism-violet) 0 3px, transparent 3.5px) 0 0 / 66px 16px repeat-x,
-    radial-gradient(circle at 55px 8px, var(--prism-violet) 0 3px, transparent 3.5px) 0 0 / 66px 16px repeat-x,
-    var(--amethyst);
-}
-.strip::after { transform: scaleX(-1); }   /* bottom rail chases the other way */
-
-.strip-window { overflow: hidden; padding: 1.1rem 0; }
-.strip-track { display: flex; width: max-content; }
-.strip-item {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  padding-right: 1.4rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-  line-height: 1.2;
-  white-space: nowrap;
-}
-/* Diamond separators cycle through the prism colours. */
-.strip-item i {
-  display: block;
-  width: 11px;
-  height: 11px;
-  rotate: 45deg;
-  background: var(--prism-green);
-}
-.strip-item i:nth-of-type(3n + 2) { background: var(--prism-violet); }
-.strip-item i:nth-of-type(3n)     { background: var(--prism-plum); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .strip-track { animation: roll 40s linear infinite; }
-  .strip:hover .strip-track { animation-play-state: paused; }
-  .strip::before,
-  .strip::after { animation: chase 1.2s steps(3) infinite; }
-}
-@keyframes roll  { to { transform: translateX(-50%); } }
-@keyframes chase { to { background-position: -66px 0, -66px 0, -66px 0, 0 0; } }
-
 .motion-toggle {
   position: absolute;
-  top: 16px;
-  bottom: 16px;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 5rem;
-  padding: 0 var(--container-pad) 0 0;
-  border: 0;
-  cursor: pointer;
-  color: var(--amethyst);
-  background: linear-gradient(to right, rgba(255, 254, 155, 0), var(--lime-cream) 45%);
-}
-.motion-toggle svg {
-  width: 36px;
-  height: 36px;
-  padding: 8px;
-  border: 2px solid var(--amethyst);
+  z-index: 2;
+  right: max(var(--container-pad), calc((100% - var(--container)) / 2));
+  bottom: 1.25rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--near-white);
+  background: rgba(39, 20, 66, 0.6);   /* keeps the ring legible over a passing beam */
+  border: 2px solid var(--near-white-75);
   border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease);
+}
+.motion-toggle:hover {
+  color: var(--amethyst);
   background: var(--lime-cream);
+  border-color: var(--lime-cream);
+}
+.motion-toggle:focus-visible { border-radius: 50%; }
+.motion-toggle svg {
+  width: 18px;
+  height: 18px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: background-color 160ms var(--ease), color 160ms var(--ease);
 }
-.motion-toggle:hover svg { background: var(--amethyst); color: var(--lime-cream); }
 .motion-toggle .icon-play { display: none; fill: currentColor; stroke-width: 1.5; }
 .motion-toggle[aria-pressed="true"] .icon-pause { display: none; }
 .motion-toggle[aria-pressed="true"] .icon-play { display: block; }
-.motion-toggle:focus-visible { outline: none; }
-.motion-toggle:focus-visible svg { outline: 3px solid var(--amethyst); outline-offset: 3px; }
 
-/* The pause button stops every looping animation on the page. */
 .motion-paused .beam,
 .motion-paused .hero-prism .facet,
-.motion-paused .strip-track,
-.motion-paused .strip::before,
-.motion-paused .strip::after,
 .motion-paused .live-wave,
 .motion-paused .tile--live::before { animation-play-state: paused !important; }
 
@@ -1474,7 +1417,6 @@ a { color: inherit; }
   }
   /* Spotlights hold still at their resting angles; nothing loops, so
      there is nothing for the pause button to do. */
-  .beam, .strip-track, .strip::before, .strip::after,
-  .tile--live::before { animation: none !important; }
+  .beam, .tile--live::before { animation: none !important; }
   .motion-toggle { display: none; }
 }

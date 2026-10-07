@@ -53,7 +53,7 @@ Add a booking CTA by putting `data-book` on the anchor — never hard-code the U
 **Prism colours** (`--prism-*`), sampled from the logo's V: greens `#4E781B`,
 `#3C591E`, `#313C1D`, `#688857`; purples `#653B7B`, `#3E2154`, `#221131`;
 lime `#FFFF94`; cream `#EFE6B9`. **Decorative only, never text**: hero
-spotlights, the faceted icon badges, marquee bulbs, diamond separators.
+spotlights, the faceted icon badges, the chip markers.
 
 **Terracotta and Honey Bronze are fully retired.** They were previously kept
 alive by the old wordmark; with the green logo in place they no longer appear
@@ -79,6 +79,18 @@ Display widths are tokens (`--logo-w: 220px`, `--logo-w-small: 176px`). The V
 is nearly twice the height of the wordmark, so the lockup needs more width
 than a plain wordmark to keep the letters legible.
 
+### Favicon
+
+The prism V, supplied as a square transparent PNG, built into:
+
+- `favicon.ico` at the site root: 16, 32 and 48px, for browser tabs.
+- `assets/img/favicon/favicon-192.png`: Android and high-density tabs.
+- `assets/img/favicon/apple-touch-icon.png`: 180px, the V on white with
+  padding, because iOS paints transparency black and rounds the corners.
+
+Every page links all three in `<head>`, after the Google tag. visyn.studio
+and visyn.cloud use the same files; replace both sets together.
+
 ### Contrast rules — requirements, not suggestions
 
 Measured ratios (verified against WCAG 2.1):
@@ -89,7 +101,7 @@ Measured ratios (verified against WCAG 2.1):
 | Moss on Eggshell | **3.79:1** | Large text only: step numbers, the 35+ figure, Services card headers, all **≥24px**. Never use Moss at body size on Eggshell. The test suite checks every Moss-coloured text node on every page |
 | Carbon on Eggshell | 14.12:1 | Body text on light |
 | Near White on Amethyst | 16.18:1 | Body text on dark |
-| Amethyst on Lime Cream | 15.73:1 | Buttons + headings on the Founding 5 band and the services strip |
+| Amethyst on Lime Cream | 15.73:1 | Buttons + headings on the Founding 5 band |
 | Lime Cream on Amethyst | 15.73:1 | Results figures |
 | Near White on Moss Deep | 5.86:1 | The Tools bento tile |
 | Hero text over spotlights | ≥5.5:1 worst case | Measured by sampling rendered pixels behind every hero text line at nine points in the sweep cycle, at 375, 900 and 1280px. Re-run that check after changing beam colours, alphas or the phone prism opacity |
@@ -108,8 +120,7 @@ Homepage, in order:
 | Section | Background | Treatment |
 |---|---|---|
 | Nav | Eggshell | Moss Deep links; CTA button Moss |
-| Hero `#top` | Amethyst | Near White; primary CTA Lime Cream. Prism V on the right (behind the copy at 30% on phones); four spotlights in prism colours sweep up from the bottom edge |
-| Services strip | Lime Cream | Amethyst text scrolling between two Amethyst rails of chasing marquee bulbs. Holds the pause button |
+| Hero `#top` | Amethyst | Near White; primary CTA Lime Cream. Prism V on the right (behind the copy at 30% on phones); four spotlights in prism colours sweep up from the bottom edge. The pause button sits in the bottom-right corner |
 | The problem | Eggshell | Prose beside an illustrative chart (labelled “Illustration, not real data.”). The chart draws itself on first view; a two-button toggle switches lines |
 | The guide | Eggshell | “35+” in Moss, three promise chips. No founder names or photos |
 | How it works `#how-it-works` | Eggshell | Step numbers in Moss |
@@ -142,9 +153,9 @@ Body copy is capped at `--measure` (68ch, under the ~75-character target) with
 - The hero eyebrow is the **only** eyebrow label on the site.
 - **No all-caps labels anywhere.** Headings are sentence case.
 - Motion (Ian asked for it, superseding the original “one motion moment”):
-  - **Looping:** hero spotlights, prism glint, services strip text, marquee
-    bulbs, the live icon and its broadcast rings. Every looping animation
-    stops with the round pause button in the services strip (WCAG 2.2.2).
+  - **Looping:** hero spotlights, prism glint, the live icon and its
+    broadcast rings. Every looping animation stops with the round pause
+    button in the hero's bottom-right corner (WCAG 2.2.2).
     The choice is remembered in `localStorage`.
   - **Once:** hero copy rise on load; the chart draw; count-up figures
     (35+ and the Boxed Joy results, each with an `sr-only` twin holding the

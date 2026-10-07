@@ -13,6 +13,9 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/assets/img/favicon/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
   <title>Visyn Studio | TikTok Live &amp; Shop Accelerator for Small CPG Brands</title>
   <meta name="description" content="We turn TikTok lives into a growth engine for growing CPG brands. Ads, email, and Shop management, with no retainer. We get paid when you grow.">
 
@@ -58,8 +61,8 @@
      HERO — Amethyst / Near White / Lime Cream CTA
      Spotlights in the logo's prism colours sweep up from the
      bottom edge; the prism V sits on the right. Both are
-     decorative, pause with the motion button in the services
-     strip, and hold still under prefers-reduced-motion.
+     decorative, stop with the pause button in the bottom-right
+     corner, and hold still under prefers-reduced-motion.
      ============================================= -->
 <section class="hero" id="top">
   <div class="hero-lights" aria-hidden="true">
@@ -93,26 +96,12 @@
       <path class="facet" style="--o:.04" d="M147.9 314.1 L284.5 314.1 L216.2 238.69Z"/>
     </svg>
   </div>
-</section>
-
-<!-- =============================================
-     SERVICES STRIP — Lime Cream, framed by marquee bulbs
-     The scrolling track is decorative; screen readers get the
-     plain list instead.
-     ============================================= -->
-<div class="strip" id="services-strip">
-  <p class="sr-only">What we handle: TikTok Live, TikTok Shop, ads that follow your lives, Klaviyo email and SMS, Amazon strategy, and custom live tools.</p>
-  <div class="strip-window" aria-hidden="true">
-    <div class="strip-track">
-      <div class="strip-item">TikTok Live<i></i>TikTok Shop<i></i>Ads that follow your lives<i></i>Klaviyo email &amp; SMS<i></i>Amazon strategy<i></i>Custom live tools<i></i></div>
-      <div class="strip-item">TikTok Live<i></i>TikTok Shop<i></i>Ads that follow your lives<i></i>Klaviyo email &amp; SMS<i></i>Amazon strategy<i></i>Custom live tools<i></i></div>
-    </div>
-  </div>
+  <!-- Stops every looping animation on the page (WCAG 2.2.2). -->
   <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false" aria-label="Pause animations" title="Pause animations">
     <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12"/></svg>
     <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg>
   </button>
-</div>
+</section>
 
 <!-- =============================================
      THE PROBLEM — Eggshell, with an illustrative chart
