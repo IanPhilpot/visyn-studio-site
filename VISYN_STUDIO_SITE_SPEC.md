@@ -56,23 +56,23 @@ anywhere on the site.
 
 ### Logo
 
-Two files, identical geometry (627 x 105, transparent PNG), so they are
-drop-in interchangeable:
+SVG lockups in `assets/img/logo/`: the faceted prism **V** plus the
+**ISYN STUDIO** wordmark. All share one canvas (1871.92 x 314.1), so they are
+drop-in interchangeable.
 
-| File | Ink | Used on |
-|---|---|---|
-| `visyn-studio-logo.png` | green `#40891F`, exactly as supplied | Nav (Eggshell) |
-| `visyn-studio-logo-reversed.png` | Near White | Footer and OG image (Amethyst) |
+| File | Wordmark | Used on | Source |
+|---|---|---|---|
+| `visyn-studio-logo.svg` | Moss `#4D891F` | Nav (Eggshell) | **Derived** — supplied dark-bg file with only the wordmark fill changed, mirroring the supplied `visyn-cloud-logo.svg`. Replace with an official light-background file if one is produced |
+| `visyn-studio-logo-dark-bg.svg` | White | Footer and OG image (Amethyst) | Supplied, unmodified |
+| `visyn-studio-logo-mono-white.svg` | White, flat V | Not used yet — for photos or busy backgrounds | Supplied, unmodified |
 
-The reversed file exists because the green measures only **3.81:1** on
-Amethyst. That clears the 3:1 non-text minimum, but it reads muddy — the mark
-sinks into the purple. The reversed version is the same letterforms with the
-ink swapped; no shapes were altered. **If an official reversed logo arrives,
-replace that file and nothing else needs to change.**
+Supplied files carry a C2PA content credential and are kept byte-for-byte.
+The derived file has it stripped, because the credential hashes the original
+bytes and would no longer verify.
 
-Display widths are tokens (`--logo-w`, `--logo-w-small`), not per-rule values.
-The artwork carries roughly 7% transparent padding, so the tokens run slightly
-wider than the visible ink.
+Display widths are tokens (`--logo-w: 220px`, `--logo-w-small: 176px`). The V
+is nearly twice the height of the wordmark, so the lockup needs more width
+than a plain wordmark to keep the letters legible.
 
 ### Contrast rules — requirements, not suggestions
 
